@@ -1,0 +1,13 @@
+RewriteEngine On
+Options -Indexes
+
+#OCULTAR EXTENSION
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+RewriteRule ^tour/(.+)/(.+)/(.+)$ info-tour.php?tour=$3
+
+
+
+#ErrorDocument 404 enlace...

@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6 hidden-xs">
                     <ul id="top_links">
-                        <li><a href="#0" id="wishlist_link">CLIENTES</a></li>
+                        <li><a href="#0" id="wishlist_link">MI OFICINA</a></li>
                         <!-- <li><a href="#0">CLIENTES</a></li> -->
                     </ul>
                 </div>

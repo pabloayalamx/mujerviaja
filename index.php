@@ -43,7 +43,7 @@
 		<div class="container">
 			<div class="main_title">
 				<h2>Las <span>experiencias</span> más solicitados</h2>
-				<p>Estos son las experiencias más solicitados por nuestros clientes</p>
+				<p>Estos son las experiencias más solicitadas por nuestros clientes</p>
 			</div>
 			<div class="row">
                 <?php

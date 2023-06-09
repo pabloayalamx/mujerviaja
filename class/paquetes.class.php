@@ -11,16 +11,8 @@ class Paquetes
 
     public function __construct()
     {
-        //Token sandbox
-        // $this->token = "Bearer 5|JdIokOQ6ev9g5vvvwcm6kFNo7LmkFSzH22zoUFTh";
-
-        //Token advanced
-        // $this->token = "Bearer 6|9uzg4I7TzxbIqOlbvcrpueN2bF3zjy3Fp84QNNOf";        
-
         //Token mujer viaja
         $this->token = "Bearer 7|KGlBtMybUvRNvuOHH4OSlBRWaP12fJqD4oXONKZg";                
-
-
         $this->cookie = "XSRF-TOKEN=eyJpdiI6IjgrZXI1amFCcCtRV0t4dGRuUjlGeVE9PSIsInZhbHVlIjoiVXgrVnFPSmtUQ1lsd3ltMG9GWEdYUUNDYkdHWG9UMy9JTUQ1QnU3Tlk4eVl5N21hQTNMSnlVNVlEcVFDWldFNjVqVXAraGt3K1dsT0RXUDNMeGk4YjNJZGhyRUhJcVFNaHQwaDh6OUdBV0ppRnRhQWMrbk9lajB3aVJtcklBbGciLCJtYWMiOiIzYWJmNTliNDlkNzhiZDhkYzMwYTRhMGM0Y2IxN2QwOTg3YWEwNThmZjEyZGZjOThlMjg0YzgwNWUxZmUzNDVhIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6Ii85QXpxVGViU3FtdG9lTTFwR1B6eGc9PSIsInZhbHVlIjoiWWFHdUdNY0FvcjJ1Q3F5OGN4ZEw1QWlpSmJXS2diTXhScHBsODRwYVlMZm4vREIzUUJQemtYUGp3OGUyQlZCUnFiclVzMVV4WTJkMkRHKzhaSU5WZmJCRXRlSmpCK252K2YrV2FscWZQdVk2dktJN2JSWjV6MGVWQWVtNFFnOVciLCJtYWMiOiJhMWJlN2ZmZTVmMjE3NDRiMzc2ZDRkMGM4NDRjZmYyZWIyOTg1MWMyNGZjMmE4NDliZDk5MWU1YTQwZGZkZWNkIiwidGFnIjoiIn0%3D";  
     }
 

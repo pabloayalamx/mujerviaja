@@ -34,7 +34,7 @@ class funciones
     public function baseMeta()
     {
         $url = $_SERVER['HTTP_HOST'];
-        $path = $url == 'localhost' ? 'http://localhost/demo1/' : 'https://demo1.bookingtrap.com/';
+        $path = $url == 'localhost' ? 'http://localhost/demo1/' : 'https://franquicia.mujerviaja.com/';
 
         return $path;
     }

@@ -4,7 +4,7 @@
     include("class/allclass.php"); 
 ?>   
 <head>
-    <title>Demo 1 | BookingTrap</title>    
+    <title>Mujer Viaja</title>    
     <meta name="description" content="">
     <meta name="keywords" content="">	
     <?php include("templates/head.php"); ?>

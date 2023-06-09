@@ -39,13 +39,19 @@
                             <a href="index">Inicio</a>
                         </li>
                         <li>
-                            <a href="tours">Tours</a>
+                            <a href="tours">Experiencias</a>
+                        </li>
+                        <li>
+                            <a href="#">Tours</a>
+                        </li>
+                        <li>
+                            <a href="#">Hoteles</a>
                         </li>
                         <li>
                             <a href="nosotros">Nosotros</a>
                         </li>
                         <li>
-                            <a href="faqs">Faq</a>
+                            <a href="#">Cotizaciones especiales</a>
                         </li>
                         <li>
                             <a href="contacto">Contáctanos</a>

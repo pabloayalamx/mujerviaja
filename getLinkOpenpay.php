@@ -20,7 +20,7 @@
     $formData["descripcion"] = $descripcion;
     $formData["total"]       = $total;
     $formData["email"]       = $email; 
-    $formData["domain"]      = "https://demo1.bookingtrap.com";
+    $formData["domain"]      = "https://franquicia.mujerviaja.com";
     $formData["gracias"]     = "gracias-openpay";
 
     $respuesta = $info->linkPayGenerator($formData);

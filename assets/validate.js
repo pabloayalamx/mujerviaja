@@ -106,7 +106,8 @@ jQuery(document).ready(function(){
 			email_contact: $('#email_contact').val(),
 			phone_contact: $('#phone_contact').val(),
 			message_contact: $('#message_contact').val(),
-			verify_contact: $('#verify_contact').val()
+			verify_contact: $('#verify_contact').val(),
+			email_afiliado: $('#email_afiliado').val()
 		},
 			function(data){
 				document.getElementById('message-contact').innerHTML = data;

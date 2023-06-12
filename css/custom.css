@@ -222,6 +222,15 @@
 #contieneprecios table{
 	font-size: 0.8em;
 }
+.tituloContacto{
+	color: #cc0066;
+}
+.linkcontacto{
+	color: #333 !important;
+}
+.img-responsive{
+	max-width: 100%;
+}
 
 @media only screen and (max-width: 400px) {
 	.mt-cel{

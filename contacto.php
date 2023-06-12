@@ -41,10 +41,28 @@
 					<div class="box_style_2">
 						<h4 class="nomargin_top">Información de contacto</h4>
 						<p>
-							11 Fifth Ave - New York, US
-							<br><?php echo $myWebSite["telefono"]; ?>
-							<br>
-							<a href="mailto:<?php echo $myWebSite["email_publico"]; ?>"><?php echo $myWebSite["email_publico"]; ?></a>
+						<?php if($afiliado > 0){ ?>
+							<p>
+								<span class="tituloContacto">Nombre: </span><br>
+								<?php echo $nombreAfiliado; ?><br><br>
+
+								<span class="tituloContacto">Email: </span><br>
+								<a href="mailto:<?php echo $emailAfiliado; ?>" class="linkcontacto"><?php echo $emailAfiliado; ?></a><br><br>	
+								
+								<span class="tituloContacto">Teléfono: </span><br>
+								<a href="tel:<?php echo $telefono_oficina_codigo_pais.$telefono_oficina; ?>" class="linkcontacto"><?php echo "(".$telefono_oficina_codigo_pais.") ".$telefono_oficina; ?></a><br><br>
+
+								<?php if($img_afiliado != ''){ ?>
+									<img src="https://app.bookingtrap.com/public/storage/<?php echo $img_afiliado; ?>" alt="<?php echo $nombreAfiliado; ?>" class="img-responsive">
+								<?php } ?>
+							</p>
+						<?php }else{ ?>
+								<span class="tituloContacto">Email: </span><br>
+								<a href="mailto:<?php echo $myWebSite["email_publico"]; ?>"><?php echo $myWebSite["email_publico"]; ?></a><br><br>	
+								
+								<span class="tituloContacto">Teléfono: </span><br>
+								<?php echo $myWebSite["telefono"]; ?><br><br>	
+						<?php } ?>
 						</p>
 					</div>
 				</aside>
@@ -54,8 +72,8 @@
 					<h3>Contáctanos</h3>
 					<p>Completa el formulario y nos pondremos en contacto contigo lo más pronto posible</p>
 					<div>
-						<div id="message-contact"></div>
 						<form method="post" action="assets/contact.php" id="contactform">
+							<input type="hidden" name="email_afiliado" id="email_afiliado" value="<?php echo $afiliado > 0 ? $emailAfiliado : ''; ?>">
 							<div class="row">
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
@@ -80,7 +98,7 @@
 								<div class="col-md-6 col-sm-6">
 									<div class="form-group">
 										<label>Teléfono:</label>
-										<input type="text" id="phone_contact" name="phone_contact" class="form-control styled" placeholder="10 dígitos">
+										<input type="number" id="phone_contact" name="phone_contact" class="form-control styled" placeholder="10 dígitos">
 									</div>
 								</div>
 							</div>
@@ -100,6 +118,7 @@
 									</div>
 									<p>
 										<input type="submit" value="Enviar" class="btn_1" id="submit-contact">
+										<div id="message-contact"></div>
 									</p>
 								</div>
 							</div>

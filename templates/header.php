@@ -41,12 +41,12 @@
                         <li>
                             <a href="tours">Experiencias</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#">Tours</a>
                         </li>
                         <li>
                             <a href="#">Hoteles</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="nosotros">Nosotros</a>
                         </li>

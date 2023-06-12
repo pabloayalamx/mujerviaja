@@ -1,7 +1,7 @@
 <?php 
     session_start();
-    include("class/paquetes.class.php");
-    include("class/utilities.class.php");
+    include("../class/paquetes.class.php");
+    include("../class/utilities.class.php");
 
     if(isset($_SESSION["logotipo"])){
         $logotipo = $_SESSION["logotipo"];

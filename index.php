@@ -4,9 +4,9 @@
     include("class/allclass.php"); 
 ?>   
 <head>
-    <title>Mujer Viaja</title>    
-    <meta name="description" content="">
-    <meta name="keywords" content="">	
+    <title>Descubre destinos únicos diseñados para mujeres y vive experiencias turísticas inolvidables. ¡Explora con nosotras!</title>    
+    <meta name="description" content="Vive aventuras inolvidables con nuestras experiencias de viaje exclusivas para mujeres. Celebra despedidas de soltera y quinceañeras de ensueño. ¡Explora y disfruta al máximo!">
+    <meta name="keywords" content="experiencias para mujeres, experiencias de viaje para mujeres, tours para mujers, tour mujer holística, viajes para quinceañeras, despedidas de solteras, viajes para sibaritas">	
     <?php include("templates/head.php"); ?>
 </head>
 

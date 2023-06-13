@@ -5,9 +5,9 @@
 ?>   
 
 <head>
-    <title>Demo 1 | BookingTrap</title>    
-    <meta name="description" content="">
-    <meta name="keywords" content="">	
+    <title>Acerca de Mujer Viaja</title>    
+    <meta name="description" content="Mujer Viaja te ayuda a que tengas tu propia agencia de viajes digital. Empieza ahora, nosotros te capacitamos!">
+    <meta name="keywords" content="agencias de viajes, franquicias de agencias de viajes, agencias de viajes digitales, mi agencia de viajes online">	
     <?php include("templates/head.php"); ?>
 </head>
 
@@ -237,7 +237,7 @@
 	<div class="container margin_60">
 		<div class="banner">
 			<h3>¿Estás listo para tener la mejor aventura? Conoce nuestros tours, reserva con tiempo y paga poco a poco.</h3>
-			<a href="tours" class="btn_1 white">Ver tours ahora</a>
+			<a href="tours" class="btn_1 white">Ver experiencias ahora</a>
 		</div>
 		<!-- end banner -->
 	</div>

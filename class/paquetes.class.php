@@ -1,6 +1,6 @@
 <?php 
 namespace PaquetesClass;
-require_once 'vendor/autoload.php';
+include_once(dirname(__FILE__, 2).'/vendor/autoload.php');
 
 use HTTP_Request2;
 

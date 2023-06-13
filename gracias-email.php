@@ -2,6 +2,88 @@
 <?php 
     include("templates/language.php"); 
     include("class/allclass.php"); 
+
+    include_once('vendor/autoload.php');
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    function isEmail($email_contact ) {
+        return(preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/",$email_contact ));
+    }
+
+    if (!defined("PHP_EOL")) define("PHP_EOL", "\r\n");
+    $name_contact        = $_POST['name_contact'];
+    $lastname_contact    = $_POST['lastname_contact'];
+    $email_contact       = $_POST['email_contact'];
+    $phone_contact       = $_POST['phone_contact'];
+    $message_contact     = $_POST['message_contact'];
+    $verify_contact      = $_POST['verify_contact'];
+    $email_afiliado      = $_POST["email_afiliado"];
+    $nombre_afiliado     = $_POST["nombre_afiliado"];    
+
+    $bodyMail = '
+    <!DOCTYPE html>
+    <html lang="es">            
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gracias por escribirnos</title>
+    </head>
+    <body> 
+        <h4>Se ha generado un nuevo prospecto: </h4>
+        <p>
+            <b>Nombre: </b>'.$name_contact. ' '.$lastname_contact.'<br>
+            <b>Correo: </b>'.$email_contact.'<br>
+            <b>Teléfono: </b>'.$phone_contact.'<br>
+            <b>Comentarios: </b>'.$message_contact.'<br>';
+
+            if($email_afiliado != ''){
+                $bodyMail .='<b>Afiliado: </b>'.$nombre_afiliado.'<br>';
+            }		
+
+    $bodyMail .= '</p>
+        <br><br>
+        <h5>Éxito!</h5>
+    </body>    
+    </html>         
+    ';
+
+    $mail = new PHPMailer(true);
+    try {
+        //Server settings
+        $mail->SMTPDebug = false;
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'mail.smtp2go.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'bookingtrap.com';                     //SMTP username
+        $mail->Password   = 'NJ3YvJVJvNKZ83ih';                               //SMTP password
+        $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->SMTPSecure = "tls";
+        $mail->CharSet = 'UTF-8';
+
+        //Recipients
+        $mail->setFrom('notificaciones@bookingtrap.com', 'Notificaciones Viaja Mujer');
+        $mail->addAddress($myWebSite["email_form"]);     //Add a recipient
+        if($myWebSite["cc_email_form"] != ''){
+            $mail->addAddress($myWebSite["cc_email_form"]);  
+        }  
+        if($email_afiliado != ''){
+            $mail->addAddress($email_afiliado);  
+        }       
+
+        $mail->addReplyTo($email_contact, $name_contact.' '.$lastname_contact);
+
+        $mail->isHTML(true);   
+        $mail->Subject = 'Nuevo prospecto generado desde el sitio web';
+        $mail->Body    = $bodyMail;
+        $mail->AltBody = 'ALT del cuerpo del correo';    
+        $mail->send();
+        } catch (Exception $e) {
+            echo "Error";
+        }      
 ?>   
 
 <head>
@@ -70,62 +152,8 @@
 
 				<div class="col-md-9">
 					<div id="paso1">
-						<h3>Contáctanos</h3>
-						<p>Completa el formulario y nos pondremos en contacto contigo lo más pronto posible</p>
-						<div>
-							<form method="post" action="gracias-email" id="contactform">
-								<input type="hidden" name="email_afiliado" id="email_afiliado" value="<?php echo $afiliado > 0 ? $emailAfiliado : ''; ?>">
-								<input type="hidden" name="nombre_afiliado" id="nombre_afiliado" value="<?php echo $afiliado > 0 ? $nombreAfiliado : ''; ?>">
-								<div class="row">
-									<div class="col-md-6 col-sm-6">
-										<div class="form-group">
-											<label>Nombre</label>
-											<input type="text" required class="form-control styled" id="name_contact" name="name_contact" placeholder="Nombre">
-										</div>
-									</div>
-									<div class="col-md-6 col-sm-6">
-										<div class="form-group">
-											<label>Apellido</label>
-											<input type="text" required class="form-control styled" id="lastname_contact" name="lastname_contact" placeholder="Apellido">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6 col-sm-6">
-										<div class="form-group">
-											<label>Email:</label>
-											<input type="email" required id="email_contact" name="email_contact" class="form-control styled" placeholder="Escribe tu email">
-										</div>
-									</div>
-									<div class="col-md-6 col-sm-6">
-										<div class="form-group">
-											<label>Teléfono:</label>
-											<input type="number" required id="phone_contact" name="phone_contact" class="form-control styled" placeholder="10 dígitos">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<div class="form-group">
-											<label>Comentarios:</label>
-											<textarea rows="5" id="message_contact" name="message_contact" class="form-control styled" style="height:100px;" placeholder="Escribe tus comentarios"></textarea>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label>¿Eres humano? 3 + 1 =</label>
-											<input type="text" id="verify_contact" name="verify_contact" required class=" form-control styled" placeholder="Escribe el resultado">
-										</div>
-										<p>
-											<input form="contactform" type="submit" value="Enviar" class="btn_1" id="submit-contact">
-											<div id="message-contact"></div>
-										</p>
-									</div>
-								</div>
-							</form>
-						</div>
+						<h3>Gracias por contactarnos</h3>
+						<p>En breve una representante de Viaja Mujer te contactará</p>
 					</div>
 				</div>
 				<!-- End col lg 9 -->

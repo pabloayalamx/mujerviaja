@@ -49,11 +49,9 @@
     <div class="row">
         <div class="col-sm-8">
             <div class="styled-select">
-                <select class="form-control" name="lang" id="lang">
-                    <option value="English">English</option>
-                    <option value="French">French</option>
-                    <option value="Spanish" selected>Spanish</option>
-                    <option value="Russian">Russian</option>
+                <select class="form-control" name="lang" id="lang" disabled>
+                    <option value="ES" selected>Español</option>    
+                    <option value="EN">English</option>                    
                 </select>
             </div>
             <span id="copy"><?php echo strip_tags($myWebSite["footer_copyright"]); ?></span>

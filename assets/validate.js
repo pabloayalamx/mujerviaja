@@ -89,7 +89,7 @@ jQuery(document).ready(function(){
 // Jquery validate form contact
 jQuery(document).ready(function(){
 
-	$('#contactform').submit(function(){
+	$('#contactformasdasdasd').submit(function(){
 
 		var action = $(this).attr('action');
 
@@ -97,28 +97,40 @@ jQuery(document).ready(function(){
 		$('#message-contact').hide();
 
  		$('#submit-contact')
-			.after('<i class="icon-spin4 animate-spin loader"></i>')
-			.attr('disabled','disabled');
-			
-		$.post(action, {
-			name_contact: $('#name_contact').val(),
-			lastname_contact: $('#lastname_contact').val(),
-			email_contact: $('#email_contact').val(),
-			phone_contact: $('#phone_contact').val(),
-			message_contact: $('#message_contact').val(),
-			verify_contact: $('#verify_contact').val(),
-			email_afiliado: $('#email_afiliado').val()
-		},
-			function(data){
-				document.getElementById('message-contact').innerHTML = data;
-				$('#message-contact').slideDown('slow');
-				$('#contactform .loader').fadeOut('slow',function(){$(this).remove()});
-				$('#submit-contact').removeAttr('disabled');
-				if(data.match('success') != null) $('#contactform').slideUp('slow');
+		.after('<i class="icon-spin4 animate-spin loader"></i>')
+		.attr('disabled','disabled');
 
+		$.ajax({
+			data: {
+				"name_contact": $('#name_contact').val(),
+				"lastname_contact": $('#lastname_contact').val(),
+				"email_contact": $('#email_contact').val(),
+				"phone_contact": $('#phone_contact').val(),
+				"message_contact": $('#message_contact').val(),
+				"verify_contact": $('#verify_contact').val(),
+				"email_afiliado": $('#email_afiliado').val(),
+				"nombre_afiliado": $('#nombre_afiliado').val()				
+			},
+			type: "GET",
+			dataType: "json",
+			url: "assets/contact.php",
+		})
+		.done(function(response) {
+			if(response === 'error'){
+				alert("aqui");
+				$("i.icon-spin4").hide()
+				$("#message-contact").html("Ha ocurrido un error, inténtelo de nuevo").show();
+
+			}else{
+				alert("aqui 2");
+				$("#parte1").addClass("d-none");
+				$("#parte2").removeClass("d-none").html(data);
 			}
-		);
-
+		})
+		.fail(function() {
+	
+		}); 			
+			
 		});
 		return false;
 	});
@@ -129,7 +141,6 @@ jQuery(document).ready(function(){
 jQuery(document).ready(function(){
 
 	$('#review').submit(function(){
-
 		var action = $(this).attr('action');
 
 		$("#message-review").slideUp(750,function() {
@@ -146,7 +157,9 @@ jQuery(document).ready(function(){
 			email_review: $('#email_review').val(),
 			rating_review: $('#rating_review').val(),
 			review_text: $('#review_text').val(),
-			verify_review: $('#verify_review').val()
+			verify_review: $('#verify_review').val(),
+			email_afiliado: $('#email_afiliado').val(),
+			nombre_afiliado: $('#nombre_afiliado').val()			
 		},
 		
 			function(data){

@@ -42,21 +42,60 @@
 			</div>
 
 			<div class="row">
-				<div class="col-sm-6">
-					<h3>La empresa</h3>
-					<p>Si bien no tenemos mucho tiempo en el mercado, somos una empresa conformada por jóvenes entusiastas en el ramo turístico, donde otorgamos a cada 
-						uno de nuestros viajeros una experiencia inolvidable en cada viaje
-					</p>
+				<div class="col-12">
+					<p>
+					Mujer Viaja es la Agencia de Viajes especialista en la creación de Experiencias Turísticas  para las Mujeres y sus familias.
+					<br><br>
+					Brindamos servicios completos que parten desde la transportación vía aérea o terrestre, el hospedaje, traslados, recorridos, atracciones, rentas de automóviles y seguros de viajeras. Todo esto a nivel Nacional e Internacional.
+					<br><br>
+					Mujer Viaja nace en el 2018, con la visión de sus fundadores Adriana Arguelles y Alejandro Mirabal de atender el importante mercado de las mujeres en el turismo y que representa el 68% de las reservas internacionales, así como con la finalidad de generar fuentes de ingresos productivas para las personas emprendedoras que se unan al fascinante mundo del Turismo.
+					<br><br>
+					Tod@s los que formamos parte de Mujer Viaja nos capacitamos constantemente para poder brindar la mejor asesoría a nuestras clientes siendo verdader@s expert@s Turístic@s.
+					<br><br>
+					Con sus más de 40 Franquicias online operando a nivel nacional e internacional, Mujer Viaja busca ofrecer un servicio cálido y de calidad para las mujeres que desean cumplir sus sueños viajando.
+					<br><br>
+					Somos especialistas en viajes para celebrar Quince Años donde promovemos viajes a Cancún, los Ángeles, Cruceros por el Caribe, Europa, Orlando y Canadá,
+					<br><br>
+					De igual manera creamos maravillosas experiencias de Despedidas de Solteras a Las Vegas y a playas nacionales,
+					<br><br>
+					Otro mercado que apoyamos fuertemente es el de las Jubiladas, a donde les ofrecemos destinos como Mérida, Chiapas, Oaxaca, viajes internacionales por España y recorridos por Tierra Santa y por la Antártida o en lujosos cruceros por el Caribe.
+					<br><br>
+					Tenemos viajes para Sibaritas y para Mujeres Holísticas para las mujeres que saben lo que quieren y lo que necesitan.
+					<br><br>
+					Otros mercados que atendemos son las de miel en inolvidables cruceros y experiencias mágicas a Orlando, pedidas de mano por Europa o Asia o viajes de shopping a San Antonio y San Marcos.
+					<br><br>
+					Impulsamos fuertemente el que las familias de nuestras clientas visiten diversos destinos en temporada baja, en donde a través de una asesoría de calidad logramos acrecentar la relación precio producto. Con la convicción de que el enriquecimiento de poder viajar genera no sólo lazos entrañables entre los miembros de la familia, sino además también un enriquecimiento vivencial con la cultura, gastronomía, tecnología y ecología de diversas regiones.
+					<br><br>
+					A nivel local podemos ofrecer recorridos a museos, parques naturales y parques recreativos para los pequeños estudiantes en las escuelas, así como la promoción a diversos eventos culturales a nivel nacional.
+					<br><br>
+					Promovemos con amor a nuestro país, recorridos a los Pueblos Mágicos con la firme creencia que contamos con la mayor riqueza internacional en destinos por disfrutar y vivir.
+					<br><br>
+					Somos además agencias promotoras del desarrollo intelectual de estudiantes que desean prepararse intelectualmente en diversos países incrementando y enriqueciendo su vida personal.
+					<br><br>
+					Nuestro lema es ¡¡Porque somos viajeras!! Y hacemos con pasión cada cotización, cada reserva y cada servicio turístico para crear experiencias únicas en cada persona que viaja con nuestras agencias.
+					<br><br>
+					Te invitamos a viajar con la asesoría y atención de nuestras franquicias Mujer Viaja.						
+					<br><br>
+						<b>Alejando Mirabal Cornejo<br>
+						Socio Fundador y CEO</b>					
+					</p>					
+				</div>
+			</div>
 
+			<div class="row">
+				<div class="col-sm-6">
 					<h4>Misión</h4>
 					<p>
-						Superar las expectativas de nuestros viajeros en cada uno de los tours que ofrecemos en México y en el mundo, trabajando de la mano con 
-						touroperadores que tengan la misma filosofía que nosotros					
+						Ser el instrumento que permita a todas nuestras viajeras Vivir experiencias turísticas únicas que trasciendan en sus vidas. <br><br>
+						Para nuestras franquicias generar una fuente de ingresos redituable en un negocio próspero lleno de aprendizaje y de viajes.				
 					</p>
 				</div>
 				<div class="col-sm-6">
-					<p class="advertise"><img src="img/trip-advisor.jpg" alt="" class="img-responsive">
-					</p>
+					<h4>Visión</h4>
+					<p>
+						Ser la agencia de viajes líder de creación de Experiencias Turísticas para las Mujeres y sus familias, utilizando tecnología de vanguardia y ofreciendo calidad 
+						y calidez en la atención a todos nuestros clientes y asociados.
+					</p>					
 				</div>
 			</div>
 			<!-- End row -->
@@ -237,7 +276,7 @@
 	<div class="container margin_60">
 		<div class="banner">
 			<h3>¿Estás listo para tener la mejor aventura? Conoce nuestros tours, reserva con tiempo y paga poco a poco.</h3>
-			<a href="tours" class="btn_1 white">Ver experiencias ahora</a>
+			<a href="experiencias" class="btn_1 white">Ver experiencias ahora</a>
 		</div>
 		<!-- end banner -->
 	</div>

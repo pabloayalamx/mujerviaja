@@ -690,7 +690,7 @@
 
 	<?php if(count($toursRelacionados["data"]["tours"]) > 0){ ?>
 	<div class="container margin_30">
-		<h3 class="second_title">Tours similares</h3>
+		<h3 class="second_title">Experiencias similares</h3>
 		<div class="owl-carousel owl-theme carousel add_bottom_30">
 
 			<?php 

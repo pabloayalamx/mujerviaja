@@ -1,3 +1,4 @@
+<?php $categorias = $tours->getCategories(); ?>
 <header>
     <div id="top_line">
         <div class="container">
@@ -40,10 +41,16 @@
                     <a href="#" class="open_close" id="close_in"><i class="icon_set_1_icon-77"></i></a>
                     <ul>
                         <li>
-                            <a href="index">Inicio</a>
+                            <a href="/">Inicio</a>
                         </li>
-                        <li>
-                            <a href="tours">Experiencias</a>
+                        <li class="submenu">
+                            <a href="javascript:void(0);" class="show-submenu">Experiencias</a>
+                                <ul>
+                                    <li><a href="experiencias">Ver todas las experiencias</a></li>
+                                    <?php foreach($categorias["data"] as $categoria){ ?>
+                                        <li><a href="experiencias/<?php echo $fn->reemplaza_espacios($categoria["nombre"]); ?>/<?php echo $categoria["id"]; ?>"><?php echo $categoria["nombre"]; ?></a></li>
+                                    <?php } ?>
+                                </ul>
                         </li>
                         <!-- <li>
                             <a href="#">Tours</a>

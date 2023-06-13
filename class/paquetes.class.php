@@ -13,7 +13,38 @@ class Paquetes
     {
         //Token mujer viaja
         $this->token = "Bearer 7|KGlBtMybUvRNvuOHH4OSlBRWaP12fJqD4oXONKZg";                
-        $this->cookie = "XSRF-TOKEN=eyJpdiI6IjgrZXI1amFCcCtRV0t4dGRuUjlGeVE9PSIsInZhbHVlIjoiVXgrVnFPSmtUQ1lsd3ltMG9GWEdYUUNDYkdHWG9UMy9JTUQ1QnU3Tlk4eVl5N21hQTNMSnlVNVlEcVFDWldFNjVqVXAraGt3K1dsT0RXUDNMeGk4YjNJZGhyRUhJcVFNaHQwaDh6OUdBV0ppRnRhQWMrbk9lajB3aVJtcklBbGciLCJtYWMiOiIzYWJmNTliNDlkNzhiZDhkYzMwYTRhMGM0Y2IxN2QwOTg3YWEwNThmZjEyZGZjOThlMjg0YzgwNWUxZmUzNDVhIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6Ii85QXpxVGViU3FtdG9lTTFwR1B6eGc9PSIsInZhbHVlIjoiWWFHdUdNY0FvcjJ1Q3F5OGN4ZEw1QWlpSmJXS2diTXhScHBsODRwYVlMZm4vREIzUUJQemtYUGp3OGUyQlZCUnFiclVzMVV4WTJkMkRHKzhaSU5WZmJCRXRlSmpCK252K2YrV2FscWZQdVk2dktJN2JSWjV6MGVWQWVtNFFnOVciLCJtYWMiOiJhMWJlN2ZmZTVmMjE3NDRiMzc2ZDRkMGM4NDRjZmYyZWIyOTg1MWMyNGZjMmE4NDliZDk5MWU1YTQwZGZkZWNkIiwidGFnIjoiIn0%3D";  
+        $this->cookie = "XSRF-TOKEN=".uniqid('bt_');
+    }
+
+    public function getCategories(){
+        $url = $_SERVER['HTTP_HOST'];
+        
+        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/categories' : 'https://app.bookingtrap.com/api/categories';
+        
+        $request = new HTTP_Request2();
+        $request->setUrl($path);
+        $request->setMethod(HTTP_Request2::METHOD_GET);
+
+        $request->setConfig(array(
+            'follow_redirects' => TRUE
+        ));
+        $request->setHeader(array(
+            'Authorization' => $this->token
+        ));   
+        
+        try {
+            $response = $request->send();
+            if ($response->getStatus() == 200) {
+                $respuesta =  (array) json_decode($response->getBody(), true);  
+                return $respuesta;                 
+            }else {
+                echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+                $response->getReasonPhrase();
+            }
+        }
+        catch(HTTP_Request2_Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+        }  
     }
 
     public function getPrices($tour, $dias, $fecha){
@@ -85,6 +116,39 @@ class Paquetes
         
         $request = new HTTP_Request2();
         $path = $tour > 0 ? $path.'?tour='.$tour : $path;
+
+        $request->setUrl($path);
+        $request->setMethod(HTTP_Request2::METHOD_GET);
+
+        $request->setConfig(array(
+            'follow_redirects' => TRUE
+        ));
+        $request->setHeader(array(
+            'Authorization' => $this->token
+        ));   
+        
+        try {
+            $response = $request->send();
+            if ($response->getStatus() == 200) {
+                $respuesta =  (array) json_decode($response->getBody(), true);  
+                return $respuesta;                 
+            }else {
+                echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+                $response->getReasonPhrase();
+            }
+        }
+        catch(HTTP_Request2_Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+        }          
+    }
+
+    public function getToursCategories($categoria){
+        $url = $_SERVER['HTTP_HOST'];
+        
+        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/tours-categories' : 'https://app.bookingtrap.com/api/tours-categories';
+        
+        $request = new HTTP_Request2();
+        $path .= "?id=".$categoria;
 
         $request->setUrl($path);
         $request->setMethod(HTTP_Request2::METHOD_GET);

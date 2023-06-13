@@ -14,6 +14,15 @@ class funciones
         return $this->minusculas($cadena);
     }
 
+    public function reemplaza_espacios($string){
+        $string         = $this->minusculas($string);
+        $searchString   = " ";
+        $replaceString  = "-";         
+        $outputString   = str_replace($searchString, $replaceString, $string);         
+
+        return $outputString;
+    }    
+
     public function removeCorchetes($string){
         $caracteres = array("[", "]");
         $resultado = str_replace($caracteres, "", $string);  
@@ -34,7 +43,7 @@ class funciones
     public function baseMeta()
     {
         $url = $_SERVER['HTTP_HOST'];
-        $path = $url == 'localhost' ? 'http://localhost/demo1/' : 'https://franquicia.mujerviaja.com/';
+        $path = $url == 'localhost' ? 'http://localhost/mujerviaja/' : 'https://franquicia.mujerviaja.com/';
 
         return $path;
     }

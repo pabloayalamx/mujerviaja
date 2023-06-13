@@ -84,7 +84,7 @@
 	<div class="container margin_60">
 		<div class="banner">
 			<h3>¿Estás listo para tener la mejor aventura? Conoce nuestros tours, reserva con tiempo y paga poco a poco.</h3>
-			<a href="tours" class="btn_1 white">Ver tours ahora</a>
+			<a href="experiencias" class="btn_1 white">Ver experiencias ahora</a>
 		</div>
 		<!-- end banner -->
 	</div>

@@ -99,3 +99,21 @@
     <!-- End row -->
 </div>
 <!-- End container -->
+
+<?php if($myWebSite["whatsapp"] != ''){ 
+    if($afiliado > 0){
+        $whatsappNumero = $telefono_celular_codigo_pais.$telefono_celular;
+    }else{
+        $whatsappNumero = $myWebSite["whatsapp"];
+    }
+    
+?>
+<div id="whatsIcon" style="display: block;">
+    <a class="btn-whatsapp-icon" target="_blank" href="https://api.whatsapp.com/send/?phone=<?php echo $whatsappNumero; ?>&amp;text=Hola%2C+Me+podría+brindar+más+información+de+sus+tours&amp;app_absent=0">
+    <img src="img/whatsapp.png" alt="Escríbenos por whatsapp">    
+    <!-- <span class="fab fa-whatsapp iconitowhats" aria-hidden="true"></span> -->
+    </a>    
+</div>
+<?php } ?>
+
+<?php echo $myWebSite["snippet_footer"]; ?>

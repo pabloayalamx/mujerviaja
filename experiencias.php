@@ -5,9 +5,9 @@
 ?>   
 
 <head>
-    <title>Demo 1 | BookingTrap</title>    
-    <meta name="description" content="">
-    <meta name="keywords" content="">	
+    <title>Descubre las mejores experiencias de viaje para Mujeres</title>    
+    <meta name="description" content="Experiencias mágicas de viaje exclusivas para mujeres">
+    <meta name="keywords" content="viajes para mujeres, tours para mujeres, despedidas de solteras, quinceañeras, viajes para quinceañeras">	
     <?php include("templates/head.php"); ?>
 </head>
 

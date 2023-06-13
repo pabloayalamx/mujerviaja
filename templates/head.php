@@ -18,9 +18,11 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
 	<link rel="manifest" href="manifest.json">
-	<meta name="msapplication-TileColor" content="#DE5870">
 	<meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
-	<meta name="theme-color" content="#DE5870">  
+	<meta name="theme-color" content="#DE5870">
+	<meta name="msapplication-TileColor" content="#DE5870">  
+	<meta name="msapplication-navbutton-color" content="#DE5870">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#DE5870">	
 
 	<!-- GOOGLE WEB FONT -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Satisfy" rel="stylesheet">

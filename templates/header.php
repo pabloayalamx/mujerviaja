@@ -7,7 +7,11 @@
                 </div>
                 <div class="col-md-6 col-sm-6 hidden-xs">
                     <ul id="top_links">
-                        <li><a href="#0" id="wishlist_link">MI OFICINA</a></li>
+                        <li>
+                        <?php if($nombreAfiliado != ''){ ?>
+                            <span class="nombreAfiliado"><?php echo $nombreAfiliado; ?></span>
+                        <?php } ?>                            
+                        </li>
                         <!-- <li><a href="#0">CLIENTES</a></li> -->
                     </ul>
                 </div>
@@ -23,7 +27,7 @@
             <div class="col-md-3 col-sm-3 col-xs-3">
                 <div id="logo_home">
                     <h1>
-                        <a href="index.html" title="City tours travel template" <?php if($logotipo != ''){ ?> style="background-image: url(assets/<?php echo $logotipo; ?>);" <?php } ?>>BesTours Travel&amp;Excursion Multipurpose Template</a>
+                        <a href="/" title="Mujer Viaja" style="background-image: url(img/logo.png);">Mujer viaja</a>
                     </h1>
                 </div>
             </div>
@@ -31,7 +35,7 @@
                 <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
                 <div class="main-menu">
                     <div id="header_menu">
-                        <img src="img/logo_menu.png" width="145" height="34" alt="Bestours">
+                        <img src="img/logo.png" width="145" height="34" alt="Mujer Viaja">
                     </div>
                     <a href="#" class="open_close" id="close_in"><i class="icon_set_1_icon-77"></i></a>
                     <ul>
@@ -57,6 +61,10 @@
                             <a href="contacto">Contáctanos</a>
                         </li>
                     </ul>
+
+                    <?php if($nombreAfiliado != ''){ ?>
+                            <span class="nombreAfiliadoCel"><?php echo $nombreAfiliado; ?></span>
+                    <?php } ?>                       
                 </div>
                 <!-- End main-menu -->
             </nav>

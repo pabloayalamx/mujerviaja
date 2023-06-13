@@ -40,7 +40,7 @@
             <b>Teléfono: </b>'.$phone_contact.'<br>
             <b>Comentarios: </b>'.$message_contact.'<br>';
 
-            if($email_afiliado != ''){
+            if($nombre_afiliado != ''){
                 $bodyMail .='<b>Afiliado: </b>'.$nombre_afiliado.'<br>';
             }		
 

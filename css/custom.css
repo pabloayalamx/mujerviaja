@@ -109,7 +109,7 @@
 }
 
 @media only screen and (max-width: 991px) {
-	#header_menu{background:#cc0066 url(../img/pattern_3.png) repeat;}
+	#header_menu{background:#fff url(../img/pattern_3.png) repeat;}
 	.main-menu ul li a:hover,
 	a.show-submenu:hover,
 	a.show-submenu:focus,
@@ -231,9 +231,29 @@
 .img-responsive{
 	max-width: 100%;
 }
+.nombreAfiliado{
+    display: block;
+    font-family: 'Satisfy', cursive;
+    font-size: 1.8em;
+    color: #fff !important;
+    font-weight: normal;
+}
+.nombreAfiliadoCel{
+    display: block;
+    font-family: 'Satisfy', cursive;
+    font-size: 1.8em;
+    color: #ff3366 !important;
+    font-weight: normal;	
+    margin-top: 10px;
+    margin-right: 10px;	
+	display: none;
+}
 
 @media only screen and (max-width: 400px) {
 	.mt-cel{
 		margin-top: 15px;
+	}
+	.nombreAfiliadoCel{
+		display: block;
 	}
 }

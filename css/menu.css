@@ -231,6 +231,6 @@ header .cmn-toggle-switch span::after, header .cmn-toggle-switch span::before {b
 @media only screen and (max-width: 600px) {
 .main-menu {width: 100%;}
 a#close_in {display:block;position:absolute;right:15px;top:10px;width:24px;height:24px;}
-#close_in i{color:#fff !important;font-size:24px;}
+#close_in i{color:#000 !important;font-size:24px;}
 
 }

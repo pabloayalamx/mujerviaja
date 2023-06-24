@@ -88,9 +88,10 @@
         }
     }   
 
-    if($afiliado == 0 && $_SERVER["REQUEST_URI"] != '/direcciones_in'){
-        header('Location: direcciones_in');
-    }
+    echo "afikl: ".$afiliado;
+    // if($afiliado == 0 && $_SERVER["REQUEST_URI"] != '/direcciones_in'){
+    //     header('Location: direcciones_in');
+    // }
 
     use PaquetesClass\Paquetes;
     use funcionesglobales\funciones;    

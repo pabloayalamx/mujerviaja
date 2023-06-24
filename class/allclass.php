@@ -3,6 +3,12 @@
     include_once(dirname(__FILE__, 2)."/class/paquetes.class.php");
     include_once(dirname(__FILE__, 2)."/class/utilities.class.php");
 
+    use PaquetesClass\Paquetes;
+    use funcionesglobales\funciones;    
+
+    $tours = new Paquetes();
+    $fn = new funciones();    
+
     //Verificando afiliado
     if(isset($_GET["affiliate"])){
         if(isset($_SESSION["afiliadoSession"])){
@@ -88,16 +94,10 @@
         }
     }   
 
-    echo "afikl: ".$afiliado;
-    // if($afiliado == 0 && $_SERVER["REQUEST_URI"] != '/direcciones_in'){
-    //     header('Location: direcciones_in');
-    // }
-
-    use PaquetesClass\Paquetes;
-    use funcionesglobales\funciones;    
-
-    $tours = new Paquetes();
-    $fn = new funciones();
+    // echo "afikl: ".$afiliado;
+    if($afiliado == 0 && $_SERVER["REQUEST_URI"] != '/direcciones_in'){
+        header('Location: direcciones_in');
+    }
     
     if(isset($_GET["delete"])){
         $delete = $_GET["delete"];

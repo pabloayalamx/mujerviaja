@@ -87,10 +87,10 @@
             $telefono_oficina_codigo_pais  = '';             
         }
     }   
-echo $_SERVER["REQUEST_URI"];
-    // if($afiliado == 0 && $_SERVER["REQUEST_URI"] != 'direcciones_in'){
-    //     header('Location: direcciones_in');
-    // }
+
+    if($afiliado == 0 && $_SERVER["REQUEST_URI"] != '/direcciones_in'){
+        header('Location: direcciones_in');
+    }
 
     use PaquetesClass\Paquetes;
     use funcionesglobales\funciones;    

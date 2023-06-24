@@ -3,37 +3,6 @@
     include_once(dirname(__FILE__, 2)."/class/paquetes.class.php");
     include_once(dirname(__FILE__, 2)."/class/utilities.class.php");
 
-    if(isset($_SESSION["logotipo"])){
-        $logotipo = $_SESSION["logotipo"];
-    }else{
-        $logotipo = '';
-    }
-
-    use PaquetesClass\Paquetes;
-    use funcionesglobales\funciones;    
-
-    $tours = new Paquetes();
-    $fn = new funciones();
-    
-    if(isset($_GET["delete"])){
-        $delete = $_GET["delete"];
-        if($delete == 1){
-            session_destroy();
-        }        
-    }
-
-    if(isset($_SESSION["apiconection"])){
-        //Website definida
-        $myWebSiteB = $_SESSION["mywebsite"];
-    }else{
-        //Website no definida
-        $myWebSiteB = $tours->myWebSite();
-        $_SESSION["mywebsite"] = $myWebSiteB;
-        $_SESSION["apiconection"] = true;
-    }    
-    $myWebSite = $myWebSiteB[0];
-
-
     //Verificando afiliado
     if(isset($_GET["affiliate"])){
         if(isset($_SESSION["afiliadoSession"])){
@@ -118,6 +87,34 @@
             $telefono_oficina_codigo_pais  = '';             
         }
     }   
+
+    if($afiliado == 0 && $_SERVER["REQUEST_URI"] != 'direcciones_in'){
+        header('Location: direcciones_in');
+    }
+
+    use PaquetesClass\Paquetes;
+    use funcionesglobales\funciones;    
+
+    $tours = new Paquetes();
+    $fn = new funciones();
+    
+    if(isset($_GET["delete"])){
+        $delete = $_GET["delete"];
+        if($delete == 1){
+            session_destroy();
+        }        
+    }
+
+    if(isset($_SESSION["apiconection"])){
+        //Website definida
+        $myWebSiteB = $_SESSION["mywebsite"];
+    }else{
+        //Website no definida
+        $myWebSiteB = $tours->myWebSite();
+        $_SESSION["mywebsite"] = $myWebSiteB;
+        $_SESSION["apiconection"] = true;
+    }    
+    $myWebSite = $myWebSiteB[0];
 
     function array_search_values( $m_needle, $a_haystack, $b_strict = false){
         return array_intersect_key( $a_haystack, array_flip( array_keys( $a_haystack, $m_needle, $b_strict)));

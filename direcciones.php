@@ -33,13 +33,13 @@
         .liCiudad:hover{
             background: #83CACC;
             font-weight: bold;
-        }     
+        } 
+        .ulCiudad{
+            padding-left: 0;
+        }    
     </style>
 </head>
 <body>
-    <?php 
-        $respuesta = $tours->getAddress();
-    ?>
 <?php include("templates/js.php") ?>
 <div class="container">
     <div class="row">
@@ -47,6 +47,7 @@
             <div class="panel-group" id="accordion">
 
                 <?php
+                    $respuesta = $tours->getAddress();
                     foreach($respuesta["data"]["direcciones"] as $i => $paises){
                     $anterior    = $i - 1;
                     $siguiente   = $i + 1;
@@ -66,7 +67,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <ul>
+                                        <ul class="ulCiudad">
                                             <li class="liCiudad"><a href="<?php echo $link; ?>"><?php echo $paises["ciudad_comercial"]; ?></a></li>
                                         </ul>
                                     </div>
@@ -88,7 +89,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <ul id="lista_<?php echo $fn->reemplaza_espacios($paises["estado_comercial"]); ?>">
+                                        <ul class="ulCiudad" id="lista_<?php echo $fn->reemplaza_espacios($paises["estado_comercial"]); ?>">
                                             <li class="liCiudad"><a href="<?php echo $link; ?>"><?php echo $paises["ciudad_comercial"]; ?></a></li>
                                         </ul>
                                     </div>

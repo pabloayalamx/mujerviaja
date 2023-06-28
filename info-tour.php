@@ -688,7 +688,7 @@
 		<input type="hidden" name="pmenor" id="pmenor">
 		<input type="hidden" name="pinfante" id="pinfante">
 		<input type="hidden" name="gtotal" id="gtotal">
-		<input type="hidden" name="hoteleria" id="<?php echo $tour["paquete"][0]["hoteleria"]; ?>">
+		<input type="hidden" name="hoteleria" value="<?php echo $tour["paquete"][0]["hoteleria"]; ?>">
 
 		<input type="hidden" name="id_temporada" id="id_temporada">
 		<input type="hidden" name="nombre_temporada" id="nombre_temporada">

@@ -25,7 +25,6 @@
 
     $respuesta = $info->linkPayGenerator($formData);
     echo json_encode($respuesta);
-    //testmejor
 
     
 ?>

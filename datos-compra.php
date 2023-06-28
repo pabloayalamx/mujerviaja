@@ -2,7 +2,6 @@
 <?php 
     include("templates/language.php"); 
     include("class/allclass.php"); 
-
     $idtour = $_POST["idtour"];
     $imagen = $_POST["imagen"];
     $cadultos = $_POST["cadultos"];

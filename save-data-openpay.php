@@ -186,5 +186,5 @@
 
     }
     
-    // header('Location: '.$openpayLINK);
+    header('Location: '.$openpayLINK);
 ?>    

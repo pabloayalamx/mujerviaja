@@ -104,11 +104,11 @@
             $telefono_oficina_codigo_pais  = '';             
         }
     }   
-    
-    // echo "afikl: ".$afiliado;
-    if($afiliado == 0 && $_SERVER["REQUEST_URI"] != '/direcciones_in'){
-        header('Location: direcciones_in');
-    }
+
+    echo "afikl: ".$afiliado;
+    // if($afiliado == 0 && $_SERVER["REQUEST_URI"] != '/direcciones_in'){
+    //     header('Location: direcciones_in');
+    // }
     
     if(isset($_GET["delete"])){
         $delete = $_GET["delete"];

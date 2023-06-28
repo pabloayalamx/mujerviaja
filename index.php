@@ -4,6 +4,7 @@
     include("class/allclass.php"); 
 ?>   
 <head>
+	<base href="<?php echo $fn->baseMeta(); ?>">
     <title>Descubre destinos únicos diseñados para mujeres y vive experiencias turísticas inolvidables. ¡Explora con nosotras!</title>    
     <meta name="description" content="Vive aventuras inolvidables con nuestras experiencias de viaje exclusivas para mujeres. Celebra despedidas de soltera y quinceañeras de ensueño. ¡Explora y disfruta al máximo!">
     <meta name="keywords" content="experiencias para mujeres, experiencias de viaje para mujeres, tours para mujers, tour mujer holística, viajes para quinceañeras, despedidas de solteras, viajes para sibaritas">	

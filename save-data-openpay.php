@@ -166,7 +166,8 @@
         $formReserva["paxesMenores"] = 0;
     }   
 
-    $reservacion = $tours->addReservation($formReserva);               
+    $reservacion = $tours->addReservation($formReserva);     
+    print_r($reservacion);
         
     if($aplicapromo == 1){
         if($descuento_frm == 1){
@@ -185,5 +186,5 @@
 
     }
     
-    header('Location: '.$openpayLINK);
+    // header('Location: '.$openpayLINK);
 ?>    

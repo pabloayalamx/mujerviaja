@@ -1847,6 +1847,10 @@ ul.contacts_info li:last-child {
 	text-transform: uppercase;
 }
 
+.img-responsive-height{
+	height: 100%;
+}
+
 /*-------- 2.7 Gallery page --------*/
 .magnific-gallery .img_container a:hover img {
 	opacity: 1;

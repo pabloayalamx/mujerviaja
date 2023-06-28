@@ -96,7 +96,7 @@
 						</div>
 						<div class="img_container">
 							<a href="tour/<?php echo mb_strtolower($data["carpeta_seo"]); ?>/<?php echo $fn->stringToUrl($data["nombre"])."/".$data["id"]; ?>">
-								<img src="<?php echo $data["imagen"]; ?>" width="800" height="533" class="img-responsive" alt="<?php echo mb_strtoupper($data["nombre"]); ?>">
+								<img src="<?php echo $data["imagen"]; ?>" width="800" height="533" class="img-responsive img-responsive-height" alt="<?php echo mb_strtoupper($data["nombre"]); ?>">
 								<div class="short_info">
 									<em>Duración <?php echo $data["cantidad_dias"] > 1 ? $data["cantidad_dias"]." días " : $data["cantidad_dias"]." día "; ?></em>
 									<div class="score_wp">Tripadvisor

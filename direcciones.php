@@ -52,7 +52,7 @@
                     $anterior    = $i - 1;
                     $siguiente   = $i + 1;
                     $nestado[$i] = $paises["estado_comercial"];
-                    $link        = "https://".$paises["pagina_web"]."?affiliate=".$paises["link_afiliado"]; 
+                    $link        = "https://".$paises["pagina_web"]."/agencia/".$paises["link_afiliado"]; 
 
                     if($i==0){
                 ?>

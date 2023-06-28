@@ -5,6 +5,10 @@ namespace funcionesglobales;
 class funciones
 {
 
+    public function precioMinimoHome($precios){
+
+    }
+
     public function precioMinimo($precios){
         $sgl = min(array_column($precios, 'adulto_sencilla'));
         $dbl = min(array_column($precios, 'adulto_doble'));

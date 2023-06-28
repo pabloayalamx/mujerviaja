@@ -47,7 +47,6 @@
 			<div class="row">
                 <?php
                     $respuesta = $tours->homeTours();
-					// print_r($respuesta);
                     $ids = [];
                     $precios = $respuesta["data"]["precios"];
                     $incluyes = $respuesta["data"]["incluye"];
@@ -88,8 +87,8 @@
 									}else{
 										$precio = 0;
 									}	
-									
-									$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
+
+									$precioReal    = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
 
 								?>
                                 <sup>$</sup><?php echo $precioReal["precioformato"]; ?> <small><?php echo $precioReal["iso"]; ?></small>

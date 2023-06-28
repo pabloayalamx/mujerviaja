@@ -64,6 +64,28 @@
                 
                 foreach($respuesta["data"]["tours"] as $x => $data){                 
                 $clave = array_search($data["id"], array_column($precios, 'id_paquete')); 
+				if($clave != ''){
+					//Buscamos el precio
+					if($precios[$clave]["adulto_cuadruple"] > 0){
+						$precio = $precios[$clave]["adulto_cuadruple"];
+					}
+
+					if($precios[$clave]["adulto_triple"] > 0){
+						$precio = $precios[$clave]["adulto_triple"];
+					}
+					
+					if($precios[$clave]["adulto_doble"] > 0){
+						$precio = $precios[$clave]["adulto_doble"];
+					}
+					
+					if($precios[$clave]["adulto_sencilla"] > 0){
+						$precio = $precios[$clave]["adulto_sencilla"];
+					}
+				}else{
+					$precio = 0;
+				}		
+				
+				$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);				
 			?>
 			<div class="row strip_list wow fadeIn animated" data-wow-delay="0.2s">
 				<div class="col-md-5">
@@ -72,7 +94,7 @@
 							<span>Popular</span>
 						</div>
 						<div class="price_grid">
-							<sup>$</sup><?php echo $fn->moneda($precios[$clave]["adulto_sencilla"]); ?> <small>MXN</small>
+							<sup>$</sup><?php echo $precioReal["precioformato"]; ?> <small><?php echo $precioReal["iso"]; ?></small>
 						</div>
 						<div class="img_container">
 							<a href="tour/<?php echo mb_strtolower($data["carpeta_seo"]); ?>/<?php echo $fn->stringToUrl($data["nombre"])."/".$data["id"]; ?>">

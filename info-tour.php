@@ -7,6 +7,9 @@
     $tour            = $tours->getList($idtour); 
 	$categorias      = $tour["categorias"];	
 
+	$precioMinimoB   = $fn->precioMinimo($tour["fechas"]);
+	$precioMinimo    = $fn->precio($precioMinimoB, $tour["paquete"][0]["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
+
 	foreach($categorias as $i => $categoria){
 		$categoriasArray[$i] = $categoria["id_categoria"];
 	}
@@ -373,7 +376,9 @@
 					<div class="box_style_1">
 						<div class="price">
                             <small>Desde</small>
-                            <strong>$ <?php echo $fn->moneda($tour["precios"][0]["adulto_sencilla"]); ?></strong> <br>
+                            <strong>$ <?php echo $precioMinimo["precioformato"]; ?><small> <?php echo $precioMinimo["iso"]; ?> </small></strong>
+							
+							<br>
                             <small>por persona</small>
 						</div>
 						<ul class="list_ok">

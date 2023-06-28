@@ -47,6 +47,7 @@
 			<div class="row">
                 <?php
                     $respuesta = $tours->homeTours();
+					// print_r($respuesta);
                     $ids = [];
                     $precios = $respuesta["data"]["precios"];
                     $incluyes = $respuesta["data"]["incluye"];
@@ -86,10 +87,12 @@
 										}
 									}else{
 										$precio = 0;
-									}									
+									}	
+									
+									$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
 
 								?>
-                                <sup>$</sup><?php echo $fn->moneda($precio); ?> <small>MXN</small>
+                                <sup>$</sup><?php echo $precioReal["precioformato"]; ?> <small><?php echo $precioReal["iso"]; ?></small>
                             </div>
                             <div class="img_container">
                                 <a href="tour/<?php echo mb_strtolower($data["carpeta_seo"]); ?>/<?php echo $fn->stringToUrl($data["nombre"])."/".$data["id"]; ?>" title="<?php echo mb_strtoupper($data["nombre"]); ?>">
@@ -150,7 +153,9 @@
 								}
 							}else{
 								$precio = 0;
-							}							                          
+							}	
+							
+							$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
                     ?>                    
                         <div class="col-sm-6">
                             <!-- <h3>New Tours</h3> -->
@@ -160,7 +165,7 @@
                                             <figure><img src="<?php echo $data["imagen"]; ?>" alt="<?php echo "Tour ".$data["nombre"]; ?>" class="img-rounded" width="60" height="60"></figure>
                                             <h4><?php echo mb_strtoupper($data["nombre"]); ?></h4>
                                             <small><?php echo $data["cantidad_dias"] > 1 ? $data["cantidad_dias"]." días " : $data["cantidad_dias"]." día "; ?></small>
-                                            <span class="price_list">$ <?php echo $fn->moneda($precio); ?> <small>MXN</small></span>
+                                            <span class="price_list">$ <?php echo $precioReal["precioformato"]; ?> <small><?php echo $precioReal["iso"]; ?></small></span>
                                         </a>
                                     </div>
                                 </li>	

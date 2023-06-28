@@ -614,6 +614,21 @@ function getLinkPay(){
   
 }
 
+function changeCurrency(monedaSeleccionada){
+    $.ajax({
+        data: {"moneda": monedaSeleccionada},
+        type: "GET",
+        dataType: "html",
+        url: "changeCurrency",
+    })
+     .done(function(response) {
+        location.reload();
+     })
+     .fail(function() {
+
+    });       
+}
+
 function currencyFormatter({ currency, value}) {
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',

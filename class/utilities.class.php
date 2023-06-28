@@ -4,6 +4,78 @@ namespace funcionesglobales;
 
 class funciones
 {
+
+    public function precioMinimo($precios){
+        $sgl = min(array_column($precios, 'adulto_sencilla'));
+        $dbl = min(array_column($precios, 'adulto_doble'));
+        $tpl = min(array_column($precios, 'adulto_triple'));
+        $cpl = min(array_column($precios, 'adulto_cuadruple'));
+
+        if($sgl > 0){
+            $form["sgl"] = $sgl;
+        }else{
+            $form["sgl"] = 99999999999;
+        }
+
+        if($dbl > 0){
+            $form["dbl"] = $dbl;
+        }else{
+            $form["dbl"] = 99999999998;
+        }
+        
+        if($tpl > 0){
+            $form["tpl"] = $tpl;
+        }else{
+            $form["tpl"] = 99999999997;
+        }
+        
+        if($cpl > 0){
+            $form["cpl"] = $cpl;
+        }else{
+            $form["cpl"] = 99999999996;
+        }      
+
+        $minimo = min($form);        
+        
+        return $minimo;
+    }
+
+    public function precio($precioBase, $monedaPrecio, $monedaSeleccionada, $monedaDefault, $monedas){
+        if($monedaPrecio == $monedaSeleccionada){
+            $precioReal = $precioBase;
+        }else{
+            //Obtiene el tipo de cambio de la moneda del tour respecto al precio base
+            $keyPrecio        = array_search($monedaPrecio, array_column($monedas["data"], 'iso')); 
+            $tipoCambioPrecio = $monedas["data"][$keyPrecio]["tipo_cambio"]; 
+            $precioReal = $precioBase * $tipoCambioPrecio;
+
+            if($monedaPrecio == $monedaDefault){
+                $keyPrecio        = array_search($monedaSeleccionada, array_column($monedas["data"], 'iso')); 
+                $tipoCambioPrecio = $monedas["data"][$keyPrecio]["tipo_cambio"];    
+
+                $precioReal = $precioBase / $tipoCambioPrecio;
+            }
+
+            if($monedaPrecio != $monedaDefault){
+                //Convertimos el precio a la moneda default
+                $keyPrecio        = array_search($monedaPrecio, array_column($monedas["data"], 'iso')); 
+                $tipoCambioPrecio = $monedas["data"][$keyPrecio]["tipo_cambio"];  
+                $precioMonedaDefault = $precioBase * $tipoCambioPrecio;
+
+                $keyPrecioMonedaSeleccionada        = array_search($monedaSeleccionada, array_column($monedas["data"], 'iso')); 
+                $tipoCambioPrecioMonedaSeleccionada = $monedas["data"][$keyPrecioMonedaSeleccionada]["tipo_cambio"];   
+                
+                $precioReal = $precioMonedaDefault / $tipoCambioPrecioMonedaSeleccionada;
+            }
+        }
+
+        $form["preciosimple"]  = number_format($precioReal, 2, '.', '');
+        $form["precioformato"] = number_format($precioReal, 2, '.', ',');
+        $form["iso"]           = $monedaSeleccionada;
+        
+        return $form;
+    }
+
     public function stringToUrl($string)
     {
         //Rememplazamos caracteres especiales latinos 

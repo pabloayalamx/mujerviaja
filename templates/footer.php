@@ -49,9 +49,10 @@
     <div class="row">
         <div class="col-sm-8">
             <div class="styled-select">
-                <select class="form-control" name="lang" id="lang" disabled>
-                    <option value="ES" selected>Español</option>    
-                    <option value="EN">English</option>                    
+                <select class="form-control" name="currency" id="currency" onchange="changeCurrency(value)">
+                    <?php foreach($monedas["data"] as $i => $moneda){ ?>
+                    <option value="<?php echo $moneda["iso"] ?>" <?php echo $moneda["iso"]==$monedaSeleccionada ? 'selected' : ''; ?>><?php echo $moneda["iso"] ?></option>    
+                    <?php } ?>
                 </select>
             </div>
             <span id="copy"><?php echo strip_tags($myWebSite["footer_copyright"]); ?></span>

@@ -7,7 +7,18 @@
     use funcionesglobales\funciones;    
 
     $tours = new Paquetes();
-    $fn = new funciones();    
+    $fn = new funciones(); 
+    
+    //Monedas
+    $monedas       = $tours->monedas();
+    $monedaDefault = $monedas["data"]["0"]["iso"];
+    $tipoCambio    = $monedas["data"]["0"]["tipo_cambio"];
+
+    if(isset($_SESSION["moneda"])){
+        $monedaSeleccionada = $_SESSION["moneda"];
+    }else{
+        $monedaSeleccionada = $monedas["data"]["0"]["iso"];
+    }
 
     //Verificando afiliado
     if(isset($_GET["affiliate"])){

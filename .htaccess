@@ -9,6 +9,4 @@ RewriteRule ^(.*)$ $1.php
 RewriteRule ^tour/(.+)/(.+)/(.+)$ info-tour.php?tour=$3
 RewriteRule ^experiencias/(.+)/(.+)$ list-experiences.php?categoria=$2
 
-
-
 #ErrorDocument 404 enlace...

@@ -33,6 +33,15 @@
                 </div>
             </div>
             <nav class="col-md-9 col-sm-9 col-xs-9">
+                <ul id="tools_top">
+                    <li>
+                        <select name="currencyHeader" id="currencyHeader" onchange="changeCurrency(value)">
+                            <?php foreach($monedas["data"] as $i => $moneda){ ?>
+                                <option value="<?php echo $moneda["iso"] ?>" <?php echo $moneda["iso"]==$monedaSeleccionada ? 'selected' : ''; ?>><?php echo $moneda["iso"] ?></option>    
+                            <?php } ?>
+                        </select>
+                    </li>
+                </ul>
                 <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
                 <div class="main-menu">
                     <div id="header_menu">

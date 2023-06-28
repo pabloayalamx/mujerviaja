@@ -35,6 +35,8 @@ function mostrarPreciosCircuitos(select){
     var id_clase_servicio = $("#id_clase_servicio_"+id).val();
     var nombre_servicio = $("#nombre_servicio_"+id).val();
 
+    var currency = $("#currency").val();
+
     //Precios sin promocion
     var adulto_sgl = parseInt($("#adulto_sen_"+id).val());
     var adulto_dbl = parseInt($("#adulto_dbl_"+id).val());
@@ -105,20 +107,20 @@ function mostrarPreciosCircuitos(select){
             var sgl = '<tr>'
                     +'<th scope="col" style="background-color:#f1f1f1">HAB SENCILLA</th>'
                     +'<td style="background-color: #c7dff2; color:black;">'
-                        +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+adulto_sgl.toLocaleString('en-US')+' MXN</label></p>'
-                        +'<p class="text-center"><label>$ '+adulto_sgl_promo.toLocaleString('en-US')+' MXN</label></p>'
+                        +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+adulto_sgl.toLocaleString('en-US')+''+currency+'</label></p>'
+                        +'<p class="text-center"><label>$ '+adulto_sgl_promo.toLocaleString('en-US')+''+currency+'</label></p>'
                         +'<input type="hidden" id="adulto_precio" value="'+adulto_sgl+'">'
                     +'</td>'
 
                     +'<td style="background-color: #c7dff2; color:black;">'
-                        +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+menor_sgl.toLocaleString('en-US')+' MXN</label></p>'
-                        +'<p class="text-center"><label>$ '+menor_sgl_promo.toLocaleString('en-US')+' MXN</label></p>'
+                        +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+menor_sgl.toLocaleString('en-US')+''+currency+'</label></p>'
+                        +'<p class="text-center"><label>$ '+menor_sgl_promo.toLocaleString('en-US')+''+currency+'</label></p>'
                         +'<input type="hidden" id="menor_precio" value="'+menor_sgl+'">'
                     +'</td>'
 
                     +'<td style="background-color: #c7dff2; color:black;">'
-                        +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+infante_sgl.toLocaleString('en-US')+' MXN</label></p>'
-                        +'<p class="text-center"><label>$ '+infante_sgl_promo.toLocaleString('en-US')+' MXN</label></p>'
+                        +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+infante_sgl.toLocaleString('en-US')+''+currency+'</label></p>'
+                        +'<p class="text-center"><label>$ '+infante_sgl_promo.toLocaleString('en-US')+''+currency+'</label></p>'
                         +'<input type="hidden" id="infante_precio" value="'+infante_sgl+'">'
                     +'</td>'
                 +'</tr>';
@@ -126,17 +128,17 @@ function mostrarPreciosCircuitos(select){
             var sgl = '<tr>'
                     +'<th scope="col" style="background-color:#f1f1f1">HAB SENCILLA</th>'
                     +'<td style="background-color: #c7dff2; color:black;">'
-                        +'<p class="text-center"><label>$ '+adulto_sgl.toLocaleString('en-US')+' MXN</label></p>'
+                        +'<p class="text-center"><label>$ '+adulto_sgl.toLocaleString('en-US')+''+currency+'</label></p>'
                         +'<input type="hidden" id="adulto_precio" value="'+adulto_sgl+'">'
                     +'</td>'
 
                     +'<td style="background-color: #c7dff2; color:black;">'
-                        +'<p class="text-center"><label>$ '+menor_sgl.toLocaleString('en-US')+' MXN</label></p>'
+                        +'<p class="text-center"><label>$ '+menor_sgl.toLocaleString('en-US')+''+currency+'</label></p>'
                         +'<input type="hidden" id="menor_precio" value="'+menor_sgl+'">'
                     +'</td>'
 
                     +'<td style="background-color: #c7dff2; color:black;">'
-                        +'<p class="text-center"><label>$ '+infante_sgl.toLocaleString('en-US')+' MXN</label></p>'
+                        +'<p class="text-center"><label>$ '+infante_sgl.toLocaleString('en-US')+''+currency+'</label></p>'
                         +'<input type="hidden" id="infante_precio" value="'+infante_sgl+'">'
                     +'</td>'
                 +'</tr>';            
@@ -148,20 +150,20 @@ function mostrarPreciosCircuitos(select){
         var dbl = '<tr>'
                     +'<th scope="col" style="background-color:#f1f1f1">HAB DOBLE</th>'
                     +'<td style="background-color: #c7dff2; color:black;">'
-                        +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+adulto_dbl.toLocaleString('en-US')+' MXN</label></p>'
-                        +'<p class="text-center"><label>$ '+adulto_dbl_promo.toLocaleString('en-US')+' MXN</label></p>'
+                        +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+adulto_dbl.toLocaleString('en-US')+''+currency+'</label></p>'
+                        +'<p class="text-center"><label>$ '+adulto_dbl_promo.toLocaleString('en-US')+''+currency+'</label></p>'
                         +'<input type="hidden" id="adulto_precio" value="'+adulto_dbl+'">'
                     +'</td>'
 
                     +'<td style="background-color: #c7dff2; color:black;">'
-                        +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+menor_dbl.toLocaleString('en-US')+' MXN</label></p>'
-                        +'<p class="text-center"><label>$ '+menor_dbl_promo.toLocaleString('en-US')+' MXN</label></p>'
+                        +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+menor_dbl.toLocaleString('en-US')+''+currency+'</label></p>'
+                        +'<p class="text-center"><label>$ '+menor_dbl_promo.toLocaleString('en-US')+''+currency+'</label></p>'
                         +'<input type="hidden" id="menor_precio" value="'+menor_dbl+'">'
                     +'</td>'
 
                     +'<td style="background-color: #c7dff2; color:black;">'
-                        +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+infante_dbl.toLocaleString('en-US')+' MXN</label></p>'
-                        +'<p class="text-center"><label>$ '+infante_dbl_promo.toLocaleString('en-US')+' MXN</label></p>'
+                        +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+infante_dbl.toLocaleString('en-US')+''+currency+'</label></p>'
+                        +'<p class="text-center"><label>$ '+infante_dbl_promo.toLocaleString('en-US')+''+currency+'</label></p>'
                         +'<input type="hidden" id="infante_precio" value="'+infante_dbl+'">'
                     +'</td>'
                 +'</tr>'; 
@@ -169,17 +171,17 @@ function mostrarPreciosCircuitos(select){
         var dbl = '<tr>'
         +'<th scope="col" style="background-color:#f1f1f1">HAB DOBLE</th>'
         +'<td style="background-color: #c7dff2; color:black;">'
-            +'<p class="text-center"><label>$ '+adulto_dbl.toLocaleString('en-US')+' MXN</label></p>'
+            +'<p class="text-center"><label>$ '+adulto_dbl.toLocaleString('en-US')+''+currency+'</label></p>'
             +'<input type="hidden" id="adulto_precio" value="'+adulto_dbl+'">'
         +'</td>'
 
         +'<td style="background-color: #c7dff2; color:black;">'
-            +'<p class="text-center"><label>$ '+menor_dbl.toLocaleString('en-US')+' MXN</label></p>'
+            +'<p class="text-center"><label>$ '+menor_dbl.toLocaleString('en-US')+''+currency+'</label></p>'
             +'<input type="hidden" id="menor_precio" value="'+menor_dbl+'">'
         +'</td>'
 
         +'<td style="background-color: #c7dff2; color:black;">'
-            +'<p class="text-center"><label">$ '+infante_dbl.toLocaleString('en-US')+' MXN</label></p>'
+            +'<p class="text-center"><label">$ '+infante_dbl.toLocaleString('en-US')+''+currency+'</label></p>'
             +'<input type="hidden" id="infante_precio" value="'+infante_dbl+'">'
         +'</td>'
     +'</tr>';         
@@ -191,20 +193,20 @@ function mostrarPreciosCircuitos(select){
             var tpl = '<tr>'
             +'<th scope="col" style="background-color:#f1f1f1">HAB TRIPLE</th>'
             +'<td style="background-color: #c7dff2; color:black;">'
-                +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+adulto_tpl.toLocaleString('en-US')+' MXN</label></p>'
-                +'<p class="text-center"><label>$ '+adulto_tpl_promo.toLocaleString('en-US')+' MXN</label></p>'
+                +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+adulto_tpl.toLocaleString('en-US')+''+currency+'</label></p>'
+                +'<p class="text-center"><label>$ '+adulto_tpl_promo.toLocaleString('en-US')+''+currency+'</label></p>'
                 +'<input type="hidden" id="adulto_precio" value="'+adulto_tpl+'">'
             +'</td>'
 
             +'<td style="background-color: #c7dff2; color:black;">'
-                +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+menor_tpl.toLocaleString('en-US')+' MXN</label></p>'
-                +'<p class="text-center"><label>$ '+menor_tpl_promo.toLocaleString('en-US')+' MXN</label></p>'
+                +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+menor_tpl.toLocaleString('en-US')+''+currency+'</label></p>'
+                +'<p class="text-center"><label>$ '+menor_tpl_promo.toLocaleString('en-US')+''+currency+'</label></p>'
                 +'<input type="hidden" id="menor_precio" value="'+menor_tpl+'">'
             +'</td>'
 
             +'<td style="background-color: #c7dff2; color:black;">'
-                +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+infante_tpl.toLocaleString('en-US')+' MXN</label></p>'
-                +'<p class="text-center"><label>$ '+infante_tpl_promo.toLocaleString('en-US')+' MXN</label></p>'
+                +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+infante_tpl.toLocaleString('en-US')+''+currency+'</label></p>'
+                +'<p class="text-center"><label>$ '+infante_tpl_promo.toLocaleString('en-US')+''+currency+'</label></p>'
                 +'<input type="hidden" id="infante_precio" value="'+infante_tpl+'">'
             +'</td>'
             +'</tr>';  
@@ -212,17 +214,17 @@ function mostrarPreciosCircuitos(select){
             var tpl = '<tr>'
             +'<th scope="col" style="background-color:#f1f1f1">HAB TRIPLE</th>'
             +'<td style="background-color: #c7dff2; color:black;">'
-                +'<p class="text-center"><label>$ '+adulto_tpl.toLocaleString('en-US')+' MXN</label></p>'
+                +'<p class="text-center"><label>$ '+adulto_tpl.toLocaleString('en-US')+''+currency+'</label></p>'
                 +'<input type="hidden" id="adulto_precio" value="'+adulto_tpl+'">'
             +'</td>'
 
             +'<td style="background-color: #c7dff2; color:black;">'
-                +'<p class="text-center"><label>$ '+menor_tpl.toLocaleString('en-US')+' MXN</label></p>'
+                +'<p class="text-center"><label>$ '+menor_tpl.toLocaleString('en-US')+''+currency+'</label></p>'
                 +'<input type="hidden" id="menor_precio" value="'+menor_tpl+'">'
             +'</td>'
 
             +'<td style="background-color: #c7dff2; color:black;">'
-                +'<p class="text-center"><label>$ '+infante_tpl.toLocaleString('en-US')+' MXN</label></p>'
+                +'<p class="text-center"><label>$ '+infante_tpl.toLocaleString('en-US')+''+currency+'</label></p>'
                 +'<input type="hidden" id="infante_precio" value="'+infante_tpl+'">'
             +'</td>'
             +'</tr>';  
@@ -234,19 +236,19 @@ function mostrarPreciosCircuitos(select){
             var cpl = '<tr>'
             +'<th scope="col" style="background-color:#f1f1f1">HAB CUADRUPLE</th>'
             +'<td style="background-color: #c7dff2; color:black;">'
-                +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+adulto_cpl.toLocaleString('en-US')+' MXN</label></p>'
+                +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+adulto_cpl.toLocaleString('en-US')+''+currency+'</label></p>'
                 +'<p class="text-center">$ <label>'+adulto_cpl_promo.toLocaleString('en-US')+'</label> MXN</p>'
                 +'<input type="hidden" id="adulto_precio" value="'+adulto_cpl+'">'
             +'</td>'
 
             +'<td style="background-color: #c7dff2; color:black;">'
-                +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+menor_cpl.toLocaleString('en-US')+' MXN</label></p>'
+                +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+menor_cpl.toLocaleString('en-US')+''+currency+'</label></p>'
                 +'<p class="text-center">$ <label>'+menor_cpl_promo.toLocaleString('en-US')+'</label> MXN</p>'
                 +'<input type="hidden" id="menor_precio" value="'+menor_cpl+'">'
             +'</td>'
 
             +'<td style="background-color: #c7dff2; color:black;">'
-                +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+infante_cpl.toLocaleString('en-US')+' MXN</label></p>'
+                +'<p class="text-center"><label class="text-decoration-line-through text-danger">$ '+infante_cpl.toLocaleString('en-US')+''+currency+'</label></p>'
                 +'<p class="text-center">$ <label>'+infante_cpl_promo.toLocaleString('en-US')+'</label> MXN</p>'
                 +'<input type="hidden" id="infante_precio" value="'+infante_cpl+'">'
             +'</td>'

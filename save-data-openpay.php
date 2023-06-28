@@ -33,6 +33,7 @@
         $pinfante = $_POST["pinfante"];
         $gtotal = $_POST["gtotal"];
         $tipohabitacion = $_POST["tipohabitacion"];
+        $hoteleria = $_POST["hoteleria"];
 
         //Aplica solo para circuitos:
         $id_temporada = isset($_POST["id_temporada"]) ? $_POST["id_temporada"] : '';
@@ -114,6 +115,7 @@
         $formReserva["id_forma_pago"] = 9;
         $formReserva["id_moneda"] = 2;
         $formReserva["pagado"] = 0;
+        $formReserva["hoteleria"] = $hoteleria;
 
         $formReserva["tit_nombre"] = $nombre;
         $formReserva["tit_apellido"] = $apellido;
@@ -122,7 +124,7 @@
         $formReserva["tit_fec_nac"] = $fnacTitular;
         $formReserva["idopenpay"] = $idopenpay;
 
-        $nombreImagen = "https://advancetraveling.com/medios/logo.jpg";
+        $nombreImagen = "https://franquicia.mujerviaja.com/img/logo.png";
         $imagenBase64 = "data:image/png;base64," . base64_encode(file_get_contents($nombreImagen));
    
     

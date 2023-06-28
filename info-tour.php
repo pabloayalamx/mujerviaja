@@ -6,6 +6,7 @@
     $idtour          = filter_input(INPUT_GET, 'tour', FILTER_SANITIZE_NUMBER_INT);
     $tour            = $tours->getList($idtour); 
 	$categorias      = $tour["categorias"];	
+	$isotour         = $tour["paquete"][0]["iso"];
 
 	$precioMinimoB   = $fn->precioMinimo($tour["fechas"]);
 	$precioMinimo    = $fn->precio($precioMinimoB, $tour["paquete"][0]["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
@@ -395,6 +396,7 @@
 							<div class="form-group">
 								<?php if($tour["paquete"][0]["cantidad_dias"] > 1){  
                                     $fechas =  $tour["fechas"]; 
+									// print_r($fechas);
 									$cpromos = count($tour["promociones"]);
 									if($cpromos > 0){
 										$promociones =  $tour["promociones"][0]; 
@@ -480,6 +482,7 @@
                                         </select>		
 										
                                         <?php foreach($fechas as $fecha){ ?>
+											<!-- $precioReal    = $fn->precio($precio, $iso["iso"], $monedaSeleccionada, $monedaDefault, $monedas); -->
                                             <input type="hidden" id="fecha_inicio_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["fecha_inicio"]; ?>">
                                             <input type="hidden" id="fecha_fin_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["fecha_fin"]; ?>"> 
                                             <input type="hidden" id="id_temporada_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["id_temporada"]; ?>"> 
@@ -487,21 +490,38 @@
                                             <input type="hidden" id="id_clase_servicio_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["id_clase_servicio"]; ?>"> 
                                             <input type="hidden" id="nombre_servicio_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["nombre_servicio"]; ?>"> 
                                             <input type="hidden" id="id_temporada_costo_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["id_temporada_costo"]; ?>"> 
-                                            
-                                            <input type="hidden" id="adulto_sen_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["adulto_sencilla"]; ?>">
-                                            <input type="hidden" id="adulto_dbl_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["adulto_doble"]; ?>"> 
-                                            <input type="hidden" id="adulto_tpl_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["adulto_triple"]; ?>"> 
-                                            <input type="hidden" id="adulto_cpl_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["adulto_cuadruple"]; ?>"> 
 
-                                            <input type="hidden" id="menor_sen_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["menor_sencilla"]; ?>"> 
-                                            <input type="hidden" id="menor_dbl_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["menor_doble"]; ?>"> 
-                                            <input type="hidden" id="menor_tpl_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["menor_triple"]; ?>"> 
-                                            <input type="hidden" id="menor_cpl_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["menor_cuadruple"]; ?>"> 
+											<?php 
+												$adulto_sencilla   = $fn->precio($fecha["adulto_sencilla"], $isotour, $monedaSeleccionada, $monedaDefault, $monedas);
+												$adulto_doble      = $fn->precio($fecha["adulto_doble"], $isotour, $monedaSeleccionada, $monedaDefault, $monedas);
+												$adulto_triple     = $fn->precio($fecha["adulto_triple"], $isotour, $monedaSeleccionada, $monedaDefault, $monedas); 
+												$adulto_cuadruple  = $fn->precio($fecha["adulto_cuadruple"], $isotour, $monedaSeleccionada, $monedaDefault, $monedas); 
+	
+												$menor_sencilla    = $fn->precio($fecha["menor_sencilla"], $isotour, $monedaSeleccionada, $monedaDefault, $monedas); 
+												$menor_doble       = $fn->precio($fecha["menor_doble"], $isotour, $monedaSeleccionada, $monedaDefault, $monedas); 
+												$menor_triple      = $fn->precio($fecha["menor_triple"], $isotour, $monedaSeleccionada, $monedaDefault, $monedas); 
+												$menor_cuadruple   = $fn->precio($fecha["menor_cuadruple"], $isotour, $monedaSeleccionada, $monedaDefault, $monedas); 
+												
+												$infante_sencilla  = $fn->precio($fecha["infante_sencilla"], $isotour, $monedaSeleccionada, $monedaDefault, $monedas); 
+												$infante_doble     = $fn->precio($fecha["infante_doble"], $isotour, $monedaSeleccionada, $monedaDefault, $monedas); 
+												$infante_triple    =  $fn->precio($fecha["infante_triple"], $isotour, $monedaSeleccionada, $monedaDefault, $monedas); 
+												$infante_cuadruple =  $fn->precio($fecha["infante_cuadruple"], $isotour, $monedaSeleccionada, $monedaDefault, $monedas); 												
+											?>
                                             
-                                            <input type="hidden" id="infante_sen_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["infante_sencilla"]; ?>"> 
-                                            <input type="hidden" id="infante_dbl_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["infante_doble"]; ?>"> 
-                                            <input type="hidden" id="infante_tpl_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["infante_triple"]; ?>"> 
-                                            <input type="hidden" id="infante_cpl_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["infante_cuadruple"]; ?>">                                        
+                                            <input type="hidden" id="adulto_sen_<?php echo $fecha["id"]; ?>" value="<?php echo $adulto_sencilla["preciosimple"]; ?>">
+                                            <input type="hidden" id="adulto_dbl_<?php echo $fecha["id"]; ?>" value="<?php echo $adulto_doble["preciosimple"]; ?>"> 
+                                            <input type="hidden" id="adulto_tpl_<?php echo $fecha["id"]; ?>" value="<?php echo $adulto_triple["preciosimple"]; ?>"> 
+                                            <input type="hidden" id="adulto_cpl_<?php echo $fecha["id"]; ?>" value="<?php echo $adulto_cuadruple["preciosimple"]; ?>"> 
+
+                                            <input type="hidden" id="menor_sen_<?php echo $fecha["id"]; ?>" value="<?php echo $menor_sencilla["preciosimple"]; ?>"> 
+                                            <input type="hidden" id="menor_dbl_<?php echo $fecha["id"]; ?>" value="<?php echo $menor_doble["preciosimple"]; ?>"> 
+                                            <input type="hidden" id="menor_tpl_<?php echo $fecha["id"]; ?>" value="<?php echo $menor_triple["preciosimple"]; ?>"> 
+                                            <input type="hidden" id="menor_cpl_<?php echo $fecha["id"]; ?>" value="<?php echo $menor_cuadruple["preciosimple"]; ?>"> 
+                                            
+                                            <input type="hidden" id="infante_sen_<?php echo $fecha["id"]; ?>" value="<?php echo $infante_sencilla["preciosimple"]; ?>"> 
+                                            <input type="hidden" id="infante_dbl_<?php echo $fecha["id"]; ?>" value="<?php echo $infante_doble["preciosimple"]; ?>"> 
+                                            <input type="hidden" id="infante_tpl_<?php echo $fecha["id"]; ?>" value="<?php echo $infante_triple["preciosimple"]; ?>"> 
+                                            <input type="hidden" id="infante_cpl_<?php echo $fecha["id"]; ?>" value="<?php echo $infante_cuadruple["preciosimple"]; ?>">                                        
                                         <?php } ?>										
 							    <?php }else{ ?>
 									<label>Selecciona una fecha</label>
@@ -668,6 +688,7 @@
 		<input type="hidden" name="pmenor" id="pmenor">
 		<input type="hidden" name="pinfante" id="pinfante">
 		<input type="hidden" name="gtotal" id="gtotal">
+		<input type="hidden" name="hoteleria" id="<?php echo $tour["paquete"][0]["hoteleria"]; ?>">
 
 		<input type="hidden" name="id_temporada" id="id_temporada">
 		<input type="hidden" name="nombre_temporada" id="nombre_temporada">

@@ -15,6 +15,7 @@
     $fechaviaje = $_POST["fechaviaje"];
     $gtotal = $_POST["gtotal"];  
     $tipohabitacion = $_POST["tipohabitacion"];
+    $hoteleria = $_POST["hoteleria"];
 
     //Aplica solo para circuitos:
     $id_temporada = $_POST["id_temporada"];
@@ -78,6 +79,7 @@
 				<div class="col-md-8">
                     <form id="frmCompra" action="save-data-openpay" method="post">
                         <input type="hidden" name="tipohabitacion" id="tipohabitacion" value="<?php echo $tipohabitacion; ?>"> 
+                        <input type="hidden" name="hoteleria" value="<?php echo $hoteleria; ?>">
                         <input type="hidden" name="idtour" value="<?php echo $idtour; ?>">
                         <input type="hidden" name="cadultos" value="<?php echo $cadultos; ?>">
                         <input type="hidden" name="cmenores" value="<?php echo $cmenores; ?>">
@@ -379,9 +381,9 @@
 										<td><strong>TOTAL</strong></td>
 										<td colspan="2" class="text-right">
                                         <?php if($aplicapromo == 1){ ?>
-                                            <input name="total" class="text-right" id="total" value="<?php echo "$ ".$fn->moneda($gtotalPromo); ?>" disabled>                             
+                                            <input name="total" class="text-right" id="total" value="<?php echo "$ ".$fn->moneda($gtotalPromo)." ".$monedaSeleccionada; ?>" disabled>                             
                                         <?php }else{ ?>   
-                                            <input name="total" class="text-right" id="total" value="<?php echo "$ ".$fn->moneda($gtotal); ?>" disabled>                            
+                                            <input name="total" class="text-right" id="total" value="<?php echo "$ ".$fn->moneda($gtotal)." ".$monedaSeleccionada; ?>" disabled>                            
                                         <?php } ?>                                             
 											
 										</td>

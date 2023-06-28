@@ -106,7 +106,7 @@
     }   
 
     // echo "afikl: ".$afiliado;
-    if($afiliado == 0 && ($_SERVER["REQUEST_URI"] != '/direcciones_in' && $_SERVER["REQUEST_URI"] != '/mujerviaja/direcciones_in')){
+    if($afiliado == 0 && $_SERVER["REQUEST_URI"]){
         header('Location: direcciones_in');
     }
     

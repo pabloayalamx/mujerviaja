@@ -64,9 +64,9 @@
                         <li>
                             <a href="tours">Tours</a>
                         </li>
-                        <!--<li>
-                            <a href="#">Hoteles</a>
-                        </li> -->
+                        <li>
+                            <a href="hoteles">Hoteles</a>
+                        </li>
                         <li>
                             <a href="nosotros">Nosotros</a>
                         </li>

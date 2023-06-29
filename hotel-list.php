@@ -11,6 +11,7 @@
 
     $checkinDate             = filter_input(INPUT_POST, "checkin", FILTER_DEFAULT);
     $checkoutDate            = filter_input(INPUT_POST, "checkout", FILTER_DEFAULT);
+    echo "checkin: ".$checkinData." - checkout: ".$checkoutDate;
     $residency               = "MX";
     $currency                = $monedaSeleccionada;
     $language                = "es";
@@ -95,18 +96,17 @@
             <!-- INICIA MOTOR -->
             <div class="row borderMotor">
                 <div class="col-12">
-
                     <!-- INICIA MOTOR -->
                     <form id="form-buscar" action="tours" method="GET">
                         <div class="row">
                             <h3 class="tituloMotor">¿A dónde quieres ir?</h3>                        
                             <div class="col-12 col-sm-5 text-left cajamotor">
                                 <div class="form-group">
-                                    <input type="hidden" name="nombreDestino" id="nombreDestino" value="<?php if(isset($_GET["nombreDestino"])){ echo $_GET["nombreDestino"]; } ?>">
+                                    <input type="hidden" name="nombreDestino" id="nombreDestino" value="<?php if(isset($_POST["nombreDestino"])){ echo $_POST["nombreDestino"]; } ?>">
                                     <input type="hidden" name="lang" id="lang" value="es">
                                     <label for="">Busca tu destino</label>
                                     <select name="destino_tours" id="destino_tours" class="form-control">
-                                    <?php if(isset($_GET["nombreDestino"])){ ?> <option value="<?php echo $_GET["destino_tours"]; ?>"><?php echo $_GET["nombreDestino"]; ?></option>  <?php } ?>
+                                    <?php if(isset($_POST["nombreDestino"])){ ?> <option value="<?php echo $_POST["destino_tours"]; ?>"><?php echo $_POST["nombreDestino"]; ?></option>  <?php } ?>
                                     </select>
                                 </div>                             
                             </div>
@@ -123,7 +123,7 @@
                                     <label for="">Adultos</label>
                                     <select name="adultos" id="adultos" class="form-control">
                                         <?php for($i=0; $i<=10; $i++){ ?>
-                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                            <option value="<?php echo $i; ?>" <?php echo $adultos == $i ? 'selected' : ''; ?>><?php echo $i; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>                             
@@ -134,7 +134,7 @@
                                     <label for="">Menores</label>
                                     <select name="menores" id="menores" class="form-control" onchange="menoresEdades(value)">
                                         <?php for($i=0; $i<=4; $i++){ ?>
-                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                            <option value="<?php echo $i; ?>" <?php echo $menoresInput == $i ? 'selected' : ''; ?>><?php echo $i; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>                             
@@ -192,7 +192,7 @@
 
                             <div class="col-12 col-sm-3 cajamotor">
                                 <label for="">&nbsp;</label>
-                                <button form="form-buscar" class="btn btn-primary w-100 btnMotor" type="submit">
+                                <button for="formbuscador" id="btnBuscahotel" onclick="buscarHotel()" class="btn btn-primary w-100 btnMotor" type="button">
                                     BUSCAR HOTELES
                                 </button>                                                    
                             </div>                            
@@ -370,8 +370,8 @@
 	<!-- COMMON SCRIPTS -->
 	<?php include("templates/js.php") ?>
 
-    <!-- Scripts -->  
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+ <!-- Scripts -->  
+ <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
@@ -380,7 +380,10 @@
 	<!-- SPECIFIC SCRIPTS -->
 	<script src="js/jquery.selectbox-0.2.js"></script>
     <script>
-        $(document).ready(function(){          
+        $(document).ready(function(){    
+            
+            // $checkinDate             = filter_input(INPUT_POST, "checkin", FILTER_DEFAULT);
+            // $checkoutDate            = filter_input(INPUT_POST, "checkout", FILTER_DEFAULT);
 
             let today  = moment().add(2, 'days').format("YYYY/MM/DD")
             let maxday = moment().add(730, 'days').format("YYYY/MM/DD")
@@ -456,6 +459,14 @@
                 document.querySelector('.select2-search__field').focus();
             });                
         });
+
+        function buscarHotel(){
+            // formbuscador
+            if($("#formbuscador").submit()){
+                $("#btnBuscahotel").html("BUSCANDO HOTELES....");
+            }
+            
+        }
     </script>    
 
 </body>

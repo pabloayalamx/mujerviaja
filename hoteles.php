@@ -139,7 +139,7 @@
 
                             <div class="col-12 col-sm-3 cajamotor">
                                 <label for="">&nbsp;</label>
-                                <button for="formbuscador" class="btn btn-primary w-100 btnMotor" type="submit">
+                                <button for="formbuscador" id="btnBuscahotel" onclick="buscarHotel()" class="btn btn-primary w-100 btnMotor" type="button">
                                     BUSCAR HOTELES
                                 </button>                                                    
                             </div>                            
@@ -273,6 +273,14 @@
                 document.querySelector('.select2-search__field').focus();
             });                
         });
+
+        function buscarHotel(){
+            // formbuscador
+            if($("#formbuscador").submit()){
+                $("#btnBuscahotel").html("BUSCANDO HOTELES....");
+            }
+            
+        }
     </script>    
 
 </body>

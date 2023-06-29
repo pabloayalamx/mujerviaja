@@ -572,6 +572,16 @@ function sendFormCompra(){
     $("#btnPagarSend").click();
 }
 
+function menoresEdades(menores){
+    for(i=1; i<=4; i++){
+        if(i <= menores){
+            $("#edad_"+i).show();
+        }else{
+            $("#edad_"+i).hide();
+        }
+    }
+}
+
 function getLinkPay(){
     $("#btnPagar").val("Procesando, por favor espera...").attr("disabled", "disabled");
     var id          = $("#openpayID").val();

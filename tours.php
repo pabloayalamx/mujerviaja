@@ -5,7 +5,7 @@
 
     if(isset($_GET["nombreDestino"])){
         $form["lang"]     = $_GET["lang"];
-        $form["currency"] = $_GET["currency"];
+        $form["currency"] = $monedaSeleccionada;
         $form["id"]       = $_GET["destino_tours"];
         $civitatis        = $tours->getActivitiesCivitatis($form);
         $markup           = $civitatis->empresa[0]->comision_tours;
@@ -67,12 +67,12 @@
 
                     <!-- INICIA MOTOR -->
                     <div class="row">
+                        <h3 class="tituloMotor">¿A dónde quieres ir?</h3>
                         <form id="form-buscar" action="tours" method="GET">
                             <div class="col-12 col-sm-5 text-left cajamotor">
                                 <div class="form-group">
                                     <input type="hidden" name="nombreDestino" id="nombreDestino" value="<?php if(isset($_GET["nombreDestino"])){ echo $_GET["nombreDestino"]; } ?>">
                                     <input type="hidden" name="lang" id="lang" value="es">
-                                    <input type="hidden" name="currency" id="currency" value="<?php echo $fn->minusculas($monedaSeleccionada); ?>">
                                     <select name="destino_tours" id="destino_tours" class="form-control">
                                     <?php if(isset($_GET["nombreDestino"])){ ?> <option value="<?php echo $_GET["destino_tours"]; ?>"><?php echo $_GET["nombreDestino"]; ?></option>  <?php } ?>
                                     </select>
@@ -206,7 +206,7 @@
 					var $result = $("<span class='optgroup'></span>");
                     var $list = $("<span></span>");
 
-                    if(data.text === 'Regiones' || data.text === 'Hoteles'){
+                    if(data.text === 'Regiones' || data.text === 'Tours'){
                         $result.text(data.text);
                         return $result;
                     }else{

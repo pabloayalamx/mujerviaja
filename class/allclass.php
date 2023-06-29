@@ -7,6 +7,7 @@
     use funcionesglobales\funciones;    
 
     $tours = new Paquetes();
+    $hotels = new Paquetes();
     $fn = new funciones(); 
     
     //Monedas

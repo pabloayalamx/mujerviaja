@@ -3290,6 +3290,16 @@ ul.list_ok li:before {
 }
 
 /*MOTOR*/
+.oculto{
+	display: none;
+}
+.tituloMotor{
+	padding-left: 10px;
+	color: #DE5871;
+}
+.select2-selection{
+	height: 35px !important;
+}
 .tabpanel{
 	margin-top: 84px;
 }
@@ -3309,11 +3319,10 @@ ul.list_ok li:before {
 }
 .btnMotor{
     height: 40px;
-    margin-top: -7px;
 }
 .borderMotor{
 	margin-bottom: 19px;
-    border-bottom: 1px solid #DE5871;
+    /* border-bottom: 1px solid #DE5871; */
 }
 
 @media (max-width: 400px) {

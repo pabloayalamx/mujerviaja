@@ -8,6 +8,7 @@
         $form["currency"] = $_GET["currency"];
         $form["id"]       = $_GET["destino_tours"];
         $civitatis        = $tours->getActivitiesCivitatis($form);
+        $markup           = $civitatis->empresa[0]->comision_tours;
     }
 ?>   
 
@@ -100,7 +101,7 @@
 							<span>Popular</span>
 						</div> -->
 						<div class="price_grid">
-							<sup>$</sup> <?php echo $actividad->minimumPrice; ?> <small><?php echo $actividad->currency; ?></small>
+                            <sup>$</sup> <?php echo $fn->tarifaPublicaAgenciasTours($actividad->minimumPrice, $markup); ?> <small><?php echo $actividad->currency; ?></small>
 						</div>
 						<div class="img_container">
 							<a href="tour/">

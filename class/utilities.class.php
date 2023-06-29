@@ -5,8 +5,17 @@ namespace funcionesglobales;
 class funciones
 {
 
-    public function precioMinimoHome($precios){
+    public function tarifaNetaAgenciasTours($tarifa){
+        //Precio que bookingtrap le da a las agencias
+        $precio = $tarifa / .99;
+        return $precio;
+    }       
 
+    public function tarifaPublicaAgenciasTours($tarifa, $markup){
+        //Tarifa que le dara la agencia al cliente final
+        $tarifaAgencia = $this->tarifaNetaAgenciasTours($tarifa);
+        $precio = $tarifaAgencia / (1- ($markup/100) );
+        return number_format($precio, 2, '.', '');
     }
 
     public function precioMinimo($precios){

@@ -25,14 +25,14 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-3 col-xs-3">
+            <div class="col-md-2 col-sm-2 col-xs-2">
                 <div id="logo_home">
                     <h1>
                         <a href="/" title="Mujer Viaja" style="background-image: url(img/logo.png);">Mujer viaja</a>
                     </h1>
                 </div>
             </div>
-            <nav class="col-md-9 col-sm-9 col-xs-9">
+            <nav class="col-md-10 col-sm-10 col-xs-10">
                 <ul id="tools_top">
                     <li>
                         <select name="currencyHeader" id="currencyHeader" onchange="changeCurrency(value)">

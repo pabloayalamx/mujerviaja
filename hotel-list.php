@@ -221,7 +221,7 @@
                     $total = $fn->tarifaPublicaAgencias($total);   
                     $totalPublico = $total / (1 - ($markup / 100));
     
-                        $imgLink="public/assets/img/trabajando.png";
+                        $imgLink="img/fotolocal.jpg";
                         $clave = array_search($idhotel, array_column($hotelsBDs, 'idHotel'));  
                         $claveAds = array_search($hotel["rates"][0]["meal"], array_column($hotelAds, 'name')); 
 
@@ -239,8 +239,10 @@
 
                             $imagenes  = json_decode($hotelsBDs[$clave]["images"]);
                             if(is_array($imagenes)){
-                                $imagen = $imagenes[0];   
-                                $imgLink = str_replace("{size}", "1024x768", $imagen); 
+                                if(count($imagenes) > 0){
+                                    $imagen = $imagenes[0];   
+                                    $imgLink = str_replace("{size}", "1024x768", $imagen); 
+                                }
                             }
                                 
                             $filters = json_decode($hotelsBDs[$clave]["serp_filters"]);
@@ -288,7 +290,21 @@
 							<a href="tour/">
 								<img src="<?php echo $imgLink ?>" width="800" height="533" class="img-responsive img-responsive-height" alt="<?php echo $hotelName; ?>">
 								<div class="short_info">
-                                    <em>Duración 1 día</em>
+                                    <em>
+                                        <?php if($stars > 1){ ?>
+                                            <i class="<?php echo $stars >= 1 ? 'fas' : 'far'; ?> fa-star estrellaHotel"></i>
+                                            <i class="<?php echo $stars >= 2 ? 'fas' : 'far'; ?> fa-star estrellaHotel"></i>
+                                            <i class="<?php echo $stars >= 3 ? 'fas' : 'far'; ?> fa-star estrellaHotel"></i>
+                                            <i class="<?php echo $stars >= 4 ? 'fas' : 'far'; ?> fa-star estrellaHotel"></i>
+                                            <i class="<?php echo $stars >= 5 ? 'fas' : 'far'; ?> fa-star estrellaHotel"></i>
+                                        <?php }else{ ?>
+                                            <i class="fas fa-star estrellaHotel"></i>
+                                            <i class="fas fa-star estrellaHotel"></i>
+                                            <i class="fas fa-star estrellaHotel"></i>
+                                            <i class="<?php echo $stars >= 4 ? 'fas' : 'far'; ?> fa-star estrellaHotel"></i>
+                                            <i class="<?php echo $stars >= 5 ? 'fas' : 'far'; ?> fa-star estrellaHotel"></i>
+                                        <?php } ?>
+                                    </em>
 									<div class="score_wp">Tripadvisor
 										<div class="score">8.5</div>
 									</div>
@@ -299,8 +315,16 @@
 					<!-- End img_wrapper -->
 				</div>
 				<div class="col-md-7">
-					<h3><?php echo $hotelName; ?></h3>
-					<p>Descripcion del hotel</p>
+					<h3 class="mt-0"><?php echo $hotelName; ?></h3>
+                    <p><i class="fas fa-map-marker-alt"></i> <?php echo $direccion; ?></p>
+
+                    <h5><?php echo $room_name; ?></h5>
+                    <p>
+                        <?php echo $meal; ?> <br>
+                        <?php echo $allotment > 1 ? $allotment." habitaciones disponibles" : "1 habitación disponible" ?>
+                    </p>
+                    
+                    <h5>Checkin: <?php echo $checkin; ?> | Checkout <?php echo $checkout; ?></h5>               
 					<p>
 						<a href="tour/" class="btn_1">Ver habitaciones</a>
 					</p>
@@ -319,7 +343,7 @@
 
 	<div class="container margin_60">
 		<div class="banner">
-			<h3>Reserva con anticipación y paga poco a poco tus tours. Para más información contáctanos</h3>
+			<h3>Reserva con anticipación y paga poco a poco tu hospedaje. Para más información contáctanos</h3>
 			<a href="contacto" class="btn_1 white">contáctanos ahora mismo</a>
 		</div>
 		<!-- end banner -->

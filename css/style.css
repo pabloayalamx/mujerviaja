@@ -3324,6 +3324,12 @@ ul.list_ok li:before {
 	margin-bottom: 19px;
     /* border-bottom: 1px solid #DE5871; */
 }
+.estrellaHotel{
+	color: #F79D04;
+}
+.mt-0{
+	margin-top: 0 !important;
+}
 
 @media (max-width: 400px) {
 	.tabContent{
@@ -3331,5 +3337,8 @@ ul.list_ok li:before {
 	}	
 	.cajamotor{
 		padding: 0 40px;
+	}	
+	ul#tools_top {
+		margin-right: 70px !important;
 	}	
 }

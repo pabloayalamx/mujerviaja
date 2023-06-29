@@ -32,7 +32,8 @@
 	<section class="parallax_window_in" data-parallax="scroll" data-image-src="img/tours.jpg" data-natural-width="1400" data-natural-height="470">
 		<div id="sub_content_in">
 			<div id="animate_intro">
-
+                <h1>Nuestros tours</h1>
+				<p>Estás a unos clics de tener tu mejor aventura en cualquier parte del mundo</p>
 			</div>
 		</div>
 	</section>

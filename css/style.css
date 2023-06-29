@@ -3288,3 +3288,39 @@ ul.list_ok li:before {
 .WidgetTitle__Container-sc-173f1y-0{
 	display: none !important;
 }
+
+/*MOTOR*/
+.tabpanel{
+	margin-top: 84px;
+}
+.tabContent{
+    background: #fff;
+    height: 95px	
+}
+.pestana{
+	margin-right: -2px;	
+}
+.pestana .link{
+    background: #DE5871;
+    color: #fff;	
+}
+.w-100{
+	width: 100%;
+}
+.btnMotor{
+    height: 40px;
+    margin-top: -7px;
+}
+.borderMotor{
+	margin-bottom: 19px;
+    border-bottom: 1px solid #DE5871;
+}
+
+@media (max-width: 400px) {
+	.tabContent{
+		height: 130px	
+	}	
+	.cajamotor{
+		padding: 0 40px;
+	}	
+}

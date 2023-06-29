@@ -88,9 +88,9 @@
 			<div class="row strip_list wow fadeIn animated" data-wow-delay="0.2s">
 				<div class="col-md-5">
 					<div class="img_wrapper">
-						<div class="ribbon">
+						<!-- <div class="ribbon">
 							<span>Popular</span>
-						</div>
+						</div> -->
 						<div class="price_grid">
 							<sup>$</sup><?php echo $precioReal["precioformato"]; ?> <small><?php echo $precioReal["iso"]; ?></small>
 						</div>

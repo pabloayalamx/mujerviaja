@@ -61,10 +61,10 @@
                                     <?php } ?>
                                 </ul>
                         </li>
-                        <!-- <li>
-                            <a href="#">Tours</a>
-                        </li>
                         <li>
+                            <a href="tours">Tours</a>
+                        </li>
+                        <!--<li>
                             <a href="#">Hoteles</a>
                         </li> -->
                         <li>

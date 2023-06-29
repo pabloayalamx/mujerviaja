@@ -15,7 +15,7 @@ class funciones
         //Tarifa que le dara la agencia al cliente final
         $tarifaAgencia = $this->tarifaNetaAgenciasTours($tarifa);
         $precio = $tarifaAgencia / (1- ($markup/100) );
-        return number_format($precio, 2, '.', '');
+        return number_format($precio, 2, '.', ',');
     }
 
     public function precioMinimo($precios){

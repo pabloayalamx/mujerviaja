@@ -117,7 +117,7 @@
                                         <em>Duración <?php echo ceil($actividad->duration->duration/60); ?> <?php echo $actividad->duration->duration/60 > 1 ? 'Horas' : 'Hora' ?></em>
                                     <?php } ?>
 									<div class="score_wp">Tripadvisor
-										<div class="score"><?php echo $actividad->score < 5 ? '7.5' : $actividad->score.".0"; ?></div>
+										<div class="score"><?php echo $actividad->score < 5 ? '7.5' : $actividad->score; ?></div>
 									</div>
 								</div>
 							</a>

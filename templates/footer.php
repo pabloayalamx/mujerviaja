@@ -60,7 +60,7 @@
         <div class="col-sm-4" id="social_footer">
             <ul>
                 <?php if ($myWebSite["whatsapp"] != '') { ?>
-                    <li><a target="_blank" href="https://wa.me/<?php echo $myWebSite["whatsapp"].'?text=Estoy interesada(o) en un tour'; ?>"><i class="fab fa-whatsapp"></i></a></li>
+                    <li><a target="_blank" href="https://wa.me/<?php echo $telefono_celular_codigo_pais.$telefono_celular.'?text=Estoy interesada(o) en un tour'; ?>"><i class="fab fa-whatsapp"></i></a></li>
                 <?php } ?>
 
                 <?php if ($myWebSite["facebook"] != '') { ?>

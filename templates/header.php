@@ -4,7 +4,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <a href="tel:<?php echo $myWebSite["telefono"]; ?>" id="phone_top"><?php echo $myWebSite["telefono"]; ?></a><span id="opening"><?php echo nl2br($myWebSite["horario_atencion"]); ?></span>
+                    <?php if($afiliado == 0){ ?>
+                        <a href="tel:<?php echo $myWebSite["telefono"]; ?>" id="phone_top"><?php echo $myWebSite["telefono"]; ?></a><span id="opening"><?php echo nl2br($myWebSite["horario_atencion"]); ?></span>
+                    <?php }else{ ?>
+                        <a href="tel:<?php echo $telefono_celular_codigo_pais.$telefono_celular; ?>" id="phone_top"><?php echo $telefono_celular_codigo_pais.$telefono_celular; ?></a><span id="opening"><?php echo nl2br($myWebSite["horario_atencion"]); ?></span>
+                    <?php } ?>
                 </div>
                 <div class="col-md-6 col-sm-6 hidden-xs">
                     <ul id="top_links">

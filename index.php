@@ -138,7 +138,7 @@
 							$tipoprecio = '';
                             $clave = array_search($data["id"], array_column($precios, 'id_paquete'));   
 
-							if($clave != ''){
+							if($clave != '' && $clave >= 0){
 								//Buscamos el precio
 								if($precios[$clave]["adulto_cuadruple"] > 0){
 									$precio     = $precios[$clave]["adulto_cuadruple"];

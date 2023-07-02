@@ -128,7 +128,7 @@
 
                         $incluyes = $otrosTours["data"]["incluye"];
                         $compara = [];
-						
+
                         foreach($incluyes as $incluye){
                             $compara[] = $incluye["id_excursion"];
                         }   
@@ -159,7 +159,7 @@
 							
 							$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
                     ?>                    
-                        <div class="col-sm-6">
+                        <div class="col-sm-6" rel="<?php echo $clave; ?>">
                             <!-- <h3>New Tours</h3> -->
                                 <li>
                                     <div>

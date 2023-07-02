@@ -2,7 +2,12 @@
     <div class="row">
         <div class="col-md-3 col-sm-3">
             <h3>¿Necesitas ayuda?</h3>
-            <a href="tel:<?php echo $myWebSite["telefono"]; ?>" id="phone"><?php echo $myWebSite["telefono"]; ?></a>
+            <?php if($afiliado == 0){ ?>
+                <a href="tel:<?php echo $myWebSite["telefono"]; ?>" id="phone"><?php echo $myWebSite["telefono"]; ?></a>
+            <?php }else{ ?>
+                <a href="tel:<?php echo $telefono_celular_codigo_pais.$telefono_celular; ?>" id="phone"><?php echo $telefono_celular_codigo_pais.$telefono_celular;; ?></a>
+            <?php } ?>
+            
             <a href="mailto:<?php echo $myWebSite["email_publico"]; ?>" id="email_footer"><?php echo $myWebSite["email_publico"]; ?></a>
             <?php if($afiliado > 0){ ?>
                 <p><?php echo $nombreAfiliado; ?></p>

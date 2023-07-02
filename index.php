@@ -160,7 +160,7 @@
 									$tipoprecio = 'sencilla';
 								}
 							}else{
-								$precio = 0;
+								$precio = '--';
 							}	
 							
 							$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);

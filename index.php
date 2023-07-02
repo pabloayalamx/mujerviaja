@@ -123,10 +123,12 @@
                     <?php 
 						$data = '';
                         $otrosTours = $tours->toursOthers($ids);
+						print_r($otrosTours);
                         $precios = $otrosTours["data"]["precios"];
 
                         $incluyes = $otrosTours["data"]["incluye"];
                         $compara = [];
+						
                         foreach($incluyes as $incluye){
                             $compara[] = $incluye["id_excursion"];
                         }   

@@ -135,6 +135,7 @@
                         }   
                         
                         foreach($otrosTours["data"]["tours"] as $x => $data){ 
+							$tipoprecio = '';
                             $clave = array_search($data["id"], array_column($precios, 'id_paquete'));   
 
 							if($clave != ''){
@@ -164,7 +165,7 @@
 							
 							$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
                     ?>                    
-                        <div class="col-sm-6" rel="<?php echo $clave; ?>" data-precio="<?php echo $tipoprecio; ?>" data-exc="<?php echo $data["id"]; ?>">
+                        <div class="col-sm-6" data-clave="<?php echo $clave; ?>" data-precio="<?php echo $tipoprecio; ?>" data-tour="<?php echo $data["id"]; ?>">
                             <!-- <h3>New Tours</h3> -->
                                 <li>
                                     <div>

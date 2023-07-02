@@ -139,19 +139,23 @@
 							if($clave != ''){
 								//Buscamos el precio
 								if($precios[$clave]["adulto_cuadruple"] > 0){
-									$precio = $precios[$clave]["adulto_cuadruple"];
+									$precio     = $precios[$clave]["adulto_cuadruple"];
+									$tipoprecio = 'cuadruple';
 								}
 
 								if($precios[$clave]["adulto_triple"] > 0){
-									$precio = $precios[$clave]["adulto_triple"];
+									$precio     = $precios[$clave]["adulto_triple"];
+									$tipoprecio = 'triple';
 								}
 								
 								if($precios[$clave]["adulto_doble"] > 0){
-									$precio = $precios[$clave]["adulto_doble"];
+									$precio     = $precios[$clave]["adulto_doble"];
+									$tipoprecio = 'doble';
 								}
 								
 								if($precios[$clave]["adulto_sencilla"] > 0){
-									$precio = $precios[$clave]["adulto_sencilla"];
+									$precio     = $precios[$clave]["adulto_sencilla"];
+									$tipoprecio = 'sencilla';
 								}
 							}else{
 								$precio = 0;
@@ -159,7 +163,7 @@
 							
 							$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
                     ?>                    
-                        <div class="col-sm-6" rel="<?php echo $clave; ?>">
+                        <div class="col-sm-6" rel="<?php echo $clave; ?>" data-precio="<?php echo $tipoprecio; ?>">
                             <!-- <h3>New Tours</h3> -->
                                 <li>
                                     <div>

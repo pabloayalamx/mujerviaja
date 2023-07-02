@@ -11,7 +11,7 @@
 
     $checkinDate             = filter_input(INPUT_POST, "checkin", FILTER_DEFAULT);
     $checkoutDate            = filter_input(INPUT_POST, "checkout", FILTER_DEFAULT);
-    echo "checkin: ".$checkinData." - checkout: ".$checkoutDate;
+    // echo "checkin: ".$checkinDate." - checkout: ".$checkoutDate;
     $residency               = "MX";
     $currency                = $monedaSeleccionada;
     $language                = "es";
@@ -114,7 +114,7 @@
                             <div class="col-12 col-sm-3 text-left cajamotor">
                                 <div class="form-group">
                                     <label for="">Checkin / Checkout</label>
-                                    <input type="text" id="fechas" name="fechas" class="form-control">
+                                    <input type="text" id="fechas" name="fechas" class="form-control" >
                                 </div>                             
                             </div> 
                             
@@ -395,8 +395,8 @@
                 maxSpan:{
                     "days":30
                 },
-                startDate: moment().add(1, 'days').format("YYYY/MM/DD"),
-                endDate: moment().add(2, 'days').format("YYYY/MM/DD"),
+                startDate: moment('<?php echo $checkinDate; ?>').format("YYYY/MM/DD"),
+                endDate: moment('<?php echo $checkoutDate; ?>').format("YYYY/MM/DD"),
                 locale: {
                     applyLabel: "Aplicar",
                     format: 'YYYY-MM-DD'

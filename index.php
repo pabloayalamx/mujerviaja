@@ -165,8 +165,13 @@
 								$precio = '0';
 							}	
 							
-							$precioReal = $precio;
-							// $precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
+							if($precio > 0){
+								$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
+							}else{
+								$precioReal["precioformato"] = 0;
+								$precioReal["iso"] = 'NA';
+							}
+							
                     ?>                    
                         <div class="col-sm-6" 
 						    data-clave="<?php echo $clave; ?>" 

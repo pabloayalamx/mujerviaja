@@ -131,6 +131,13 @@ class funciones
         return $res;
     }
 
+    public function letraCapital($string){
+        $string = $this->minusculas($string);
+        $string = ucfirst($string);
+        return $string;
+    }
+    
+
     public function baseMeta()
     {
         $url = $_SERVER['HTTP_HOST'];

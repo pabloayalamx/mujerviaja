@@ -720,7 +720,6 @@
 		<div class="owl-carousel owl-theme carousel add_bottom_30">
 
 			<?php 
-			$precios = $toursRelacionados["data"]["precios"];
 			$incluyes = $toursRelacionados["data"]["incluye"];
 			$compara = [];
 			foreach($incluyes as $incluye){
@@ -728,12 +727,30 @@
 			}
 			
 			foreach($toursRelacionados["data"]["tours"] as $x => $data){                 
-				$clave = array_search($data["id"], array_column($precios, 'id_paquete'));  
+				$precio = 0;
+							
+				if($data["adulto_sencilla"] > 0){
+					$precio = $data["adulto_sencilla"];
+				}
+
+				if($data["adulto_doble"] > 0){
+					$precio = $data["adulto_doble"];
+				}
+				
+				if($data["adulto_triple"] > 0){
+					$precio = $data["adulto_triple"];
+				}
+				
+				if($data["adulto_cuadruple"] > 0){
+					$precio = $data["adulto_cuadruple"];
+				}	
+				
+				$precioReal    = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);				
 			?>
 			<div>
 				<div class="img_wrapper">
 					<div class="price_grid">
-						<sup>$</sup><?php echo count($precios) > 0 ? $fn->moneda($precios[$clave]["adulto_sencilla"]) : ''; ?> <small>MXN</small>
+						<sup>$</sup><?php echo $precioReal["precioformato"]; ?><small><?php echo $precioReal["iso"]; ?></small>
 					</div>
 					<!-- End tools i-->
 					<div class="img_container">

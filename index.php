@@ -165,7 +165,12 @@
 							
 							$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
                     ?>                    
-                        <div class="col-sm-6" data-clave="<?php echo $clave; ?>" data-precio="<?php echo $tipoprecio; ?>" data-tour="<?php echo $data["id"]; ?>">
+                        <div class="col-sm-6" data-clave="<?php echo $clave; ?>" data-precio="<?php echo $tipoprecio; ?>" 
+							data-tour="<?php echo $data["id"]; ?>" 
+							data-cpl="<?php echo $precios[$clave]["adulto_cuadruple"]; ?>" 
+							data-tpl="<?php echo $precios[$clave]["adulto_triple"]; ?>"
+							data-dbl="<?php echo $precios[$clave]["adulto_doble"]; ?>"
+							data-snl="<?php echo $precios[$clave]["adulto_sencilla"]; ?>">
                             <!-- <h3>New Tours</h3> -->
                                 <li>
                                     <div>

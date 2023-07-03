@@ -125,7 +125,7 @@
                         $otrosTours = $tours->toursOthers($ids);
 						
                         $precios = $otrosTours["data"]["precios"];
-						// print_r($precios);
+						print_r($precios);
 
                         $incluyes = $otrosTours["data"]["incluye"];
                         $compara = [];

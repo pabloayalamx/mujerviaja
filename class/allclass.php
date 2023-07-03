@@ -106,7 +106,9 @@
         }
     }   
 
-    if($afiliado == 0 && $_SERVER["REQUEST_URI"] != '/direcciones_in'){
+    $urls = explode("/", $_SERVER["REQUEST_URI"]);
+    $url  = end($urls);
+    if($afiliado == 0 && $url != 'direcciones_in'){
         header('Location: direcciones_in');
     }
     

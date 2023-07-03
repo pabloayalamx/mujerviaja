@@ -124,10 +124,6 @@
 						$data = '';
 						$clave = '';
                         $otrosTours = $tours->toursOthers($ids);
-						print_r($otrosTours);
-						
-                        // $precios = $otrosTours["data"]["precios"];
-						// $claves  = array_column($precios, 'id_paquete');
 
                         $incluyes = $otrosTours["data"]["incluye"];
                         $compara = [];

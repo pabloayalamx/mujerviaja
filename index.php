@@ -48,6 +48,7 @@
 			<div class="row">
                 <?php
                     $respuesta = $tours->homeTours();
+					print_r($respuesta);
                     $ids = [];
                     $incluyes = $respuesta["data"]["incluye"];
 					$compara = [];

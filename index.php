@@ -137,9 +137,6 @@
                         }   
                         
                         foreach($otrosTours["data"]["tours"] as $x => $data){ 
-							$tipoprecio = '';
-                            $clave = array_search($data["id"], $claves);
-
 							$precio = 0;
 							
 							if($data["adulto_sencilla"] > 0){

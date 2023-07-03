@@ -177,6 +177,7 @@
 							
                     ?>                    
                         <div class="col-sm-6" 
+						    data-cero="<?php echo $precios[0]["adulto_doble"]; ?>"
 						    data-clave="<?php echo $clave; ?>" 
 						    data-precio="<?php echo $tipoprecio; ?>" 
 							data-tour="<?php echo $data["id"]; ?>" 

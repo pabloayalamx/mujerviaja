@@ -140,8 +140,25 @@
 							$tipoprecio = '';
                             $clave = array_search($data["id"], $claves);
 
-							$precioReal["precioformato"] = 0;
-							$precioReal["iso"] = 'NA';							
+							$precio = 0;
+							
+							if($data["adulto_sencilla"] > 0){
+								$precio = $data["adulto_sencilla"];
+							}
+
+							if($data["adulto_doble"] > 0){
+								$precio = $data["adulto_doble"];
+							}
+							
+							if($data["adulto_triple"] > 0){
+								$precio = $data["adulto_triple"];
+							}
+							
+							if($data["adulto_cuadruple"] > 0){
+								$precio = $data["adulto_cuadruple"];
+							}							
+
+							$precioReal    = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
 							
                     ?>                    
                         <div class="col-sm-6">

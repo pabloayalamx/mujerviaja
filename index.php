@@ -49,7 +49,6 @@
                 <?php
                     $respuesta = $tours->homeTours();
                     $ids = [];
-                    $precios = $respuesta["data"]["precios"];
                     $incluyes = $respuesta["data"]["incluye"];
 					$compara = [];
                     foreach($incluyes as $incluye){
@@ -57,9 +56,25 @@
                     }
                     
                     $contador = 0;
-                    foreach($respuesta["data"]["tours"] as $x => $data){ 
-                        $clave = array_search($data["id"], array_column($precios, 'id_paquete'));   
+                    foreach($respuesta["data"]["tours"] as $x => $data){  
                         $ids["ids"][$contador]=$data["id"];              
+						$precio = 0;
+							
+						if($data["adulto_sencilla"] > 0){
+							$precio = $data["adulto_sencilla"];
+						}
+
+						if($data["adulto_doble"] > 0){
+							$precio = $data["adulto_doble"];
+						}
+						
+						if($data["adulto_triple"] > 0){
+							$precio = $data["adulto_triple"];
+						}
+						
+						if($data["adulto_cuadruple"] > 0){
+							$precio = $data["adulto_cuadruple"];
+						}							
                 ?>                
                     <div class="col-md-4 col-sm-6 wow fadeIn animated" data-wow-delay="0.2s">
                         <div class="img_wrapper">
@@ -67,31 +82,6 @@
                                 <span>Popular</span>
                             </div>
                             <div class="price_grid">
-								<?php
-									if($clave != ''){
-										//Buscamos el precio
-										if($precios[$clave]["adulto_cuadruple"] > 0){
-											$precio = $precios[$clave]["adulto_cuadruple"];
-										}
-
-										if($precios[$clave]["adulto_triple"] > 0){
-											$precio = $precios[$clave]["adulto_triple"];
-										}
-										
-										if($precios[$clave]["adulto_doble"] > 0){
-											$precio = $precios[$clave]["adulto_doble"];
-										}
-										
-										if($precios[$clave]["adulto_sencilla"] > 0){
-											$precio = $precios[$clave]["adulto_sencilla"];
-										}
-									}else{
-										$precio = 0;
-									}	
-
-									$precioReal    = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
-
-								?>
                                 <sup>$</sup><?php echo $precioReal["precioformato"]; ?> <small><?php echo $precioReal["iso"]; ?></small>
                             </div>
                             <div class="img_container">

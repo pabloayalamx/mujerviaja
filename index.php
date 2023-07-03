@@ -124,11 +124,10 @@
 						$data = '';
 						$clave = '';
                         $otrosTours = $tours->toursOthers($ids);
+						print_r($otrosTours);
 						
-                        $precios = $otrosTours["data"]["precios"];
-						$claves  = array_column($precios, 'id_paquete');
-						print_r($precios);
-						print_r($claves);
+                        // $precios = $otrosTours["data"]["precios"];
+						// $claves  = array_column($precios, 'id_paquete');
 
                         $incluyes = $otrosTours["data"]["incluye"];
                         $compara = [];
@@ -141,56 +140,11 @@
 							$tipoprecio = '';
                             $clave = array_search($data["id"], $claves);
 
-							if($clave != '' && $clave >= 0){
-								//Buscamos el precio
-								if($precios[$clave]["adulto_cuadruple"] > 0){
-									$precio     = $precios[$clave]["adulto_cuadruple"];
-									$tipoprecio = 'cuadruple';
-								}
-
-								if($precios[$clave]["adulto_triple"] > 0){
-									$precio     = $precios[$clave]["adulto_triple"];
-									$tipoprecio = 'triple';
-								}
-								
-								if($precios[$clave]["adulto_doble"] > 0){
-									
-									if($clave == 0){
-										$precio = $precios[0]["adulto_doble"];
-									}else{
-										$precio     = $precios[$clave]["adulto_doble"];
-									}
-									$tipoprecio = 'doble';
-								}
-								
-								if($precios[$clave]["adulto_sencilla"] > 0){
-									$precio     = $precios[$clave]["adulto_sencilla"];
-									$tipoprecio = 'sencilla';
-								}
-							}else{
-								$precio = '0';
-							}	
-							
-							// if($precio > 0){
-							// 	$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
-							// }else{
-							// 	$precioReal["precioformato"] = $precio;
-							// 	$precioReal["iso"] = 'NA';
-							// }
-
-							$precioReal["precioformato"] = $precio;
+							$precioReal["precioformato"] = 0;
 							$precioReal["iso"] = 'NA';							
 							
                     ?>                    
-                        <div class="col-sm-6" 
-						    data-cero="<?php echo $precios[0]["adulto_doble"]; ?>"
-						    data-clave="<?php echo $clave; ?>" 
-						    data-precio="<?php echo $tipoprecio; ?>" 
-							data-tour="<?php echo $data["id"]; ?>" 
-							data-cpl="<?php echo $precios[$clave]["adulto_cuadruple"]; ?>" 
-							data-tpl="<?php echo $precios[$clave]["adulto_triple"]; ?>"
-							data-dbl="<?php echo $precios[$clave]["adulto_doble"]; ?>"
-							data-snl="<?php echo $precios[$clave]["adulto_sencilla"]; ?>">
+                        <div class="col-sm-6">
                             <!-- <h3>New Tours</h3> -->
                                 <li>
                                     <div>

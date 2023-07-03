@@ -48,7 +48,6 @@
 			<div class="row">
                 <?php
                     $respuesta = $tours->homeTours();
-					print_r($respuesta);
                     $ids = [];
                     $incluyes = $respuesta["data"]["incluye"];
 					$compara = [];
@@ -75,7 +74,9 @@
 						
 						if($data["adulto_cuadruple"] > 0){
 							$precio = $data["adulto_cuadruple"];
-						}							
+						}	
+						
+						$precioReal    = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
                 ?>                
                     <div class="col-md-4 col-sm-6 wow fadeIn animated" data-wow-delay="0.2s">
                         <div class="img_wrapper">

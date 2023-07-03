@@ -47,10 +47,10 @@ class Paquetes
         }  
     }
 
-    public function getPrices($tour, $dias, $fecha){
+    public function getPrices($tour, $dias, $fecha, $clase){
         $url = $_SERVER['HTTP_HOST'];
         $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/prices' : 'https://app.bookingtrap.com/api/prices';
-        $path = $path."?tour=".$tour."&dias=".$dias."&fecha=".$fecha;
+        $path = $path."?tour=".$tour."&dias=".$dias."&fecha=".$fecha."&clase=".$clase;
         
         $request = new HTTP_Request2();
         $request->setUrl($path);

@@ -1,6 +1,6 @@
-function cargaPrecios(tour, dias, fecha, generales, mostrarpromo, booking, travel){
+function cargaPrecios(tour, dias, fecha, generales, mostrarpromo, booking, travel, clase){
     $.ajax({
-        data: {"tour" : tour, "fecha" : fecha, "dias": dias, "generales":generales, "mostrar":mostrarpromo, "booking":booking, "travel":travel},
+        data: {"tour" : tour, "fecha" : fecha, "dias": dias, "generales":generales, "mostrar":mostrarpromo, "booking":booking, "travel":travel, "clase": clase},
         type: "GET",
         dataType: "html",
         url: "getPrices",

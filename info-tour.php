@@ -532,6 +532,20 @@
 							    <?php }else{ ?>
 									<label>Selecciona una fecha</label>
                                 	<input type="text" name="fecha" id="fecha_viaje_input" class="form-control" placeholder="Fecha">
+
+									<?php if(count($clases) > 1){ ?>
+									<div class="">
+										<label for="">Selecciona el servicio</label>
+										<select name="clase" id="clase" class="selectBook" onchange="buscaPrecios()">
+											<option value="0" disabled selected>Selecciona una opción</option>
+											<?php foreach($clases as $clase){ ?>
+												<option value="<?php echo $clase["id"]; ?>"><?php echo $clase["nombre"]; ?></option>
+											<?php } ?>
+										</select>
+									</div>                       
+									<?php }else{ ?>
+										<input type="hidden" name="clase" id="clase" value="<?php echo $clases[0]["id"]; ?>">
+									<?php } ?>    									
 								<?php } ?>
 							</div>
 							
@@ -964,14 +978,57 @@
                             mostrarpromo = 0;
                         } 
                     }
-                    cargaPrecios('<?php echo $idtour; ?>', '<?php echo $tour["paquete"][0]["cantidad_dias"] ?>', dateText, generales, mostrarpromo, booking, travel);                    
-                    //$("input#DateTo").datepicker('option', 'minDate', min);
+                    var clase = $("#clase").val();
+                    if(clase > 0){
+                        $("#loadingPrices").removeClass("d-none");
+                        cargaPrecios('<?php echo $idtour; ?>', '<?php echo $tour["paquete"][0]["cantidad_dias"] ?>', dateText, generales, mostrarpromo, booking, travel, clase);
+                    }
                 }                 
             });
         }            
 
             
         });
+
+        function buscaPrecios(){
+            $("#contieneprecios").empty();
+
+            $("#adultos").val(0);
+            $("#menores").val(0);
+            $("#infantes").val(0);
+
+            $(".subtotal").text("$0");
+
+            var dateText = $("#fechaviaje").val(); 
+            var idtour   = '<?php echo $idtour; ?>';
+            var dias     = '<?php echo $tour["paquete"][0]["cantidad_dias"] ?>';
+
+            var fecha = updateFecha(dateText);                    
+            var hoy = formatoFecha(new Date(), 'mm/dd/yyyy')            
+            var mostrarpromo = 0;
+            if(booking === 1){  
+                if(validaFecha(bookingInicio, bookingFin, hoy) === 1){
+                    mostrarpromo = 1;                           
+                }else{
+                    mostrarpromo = 0;
+                } 
+            }else{
+                if(travel === 1){
+                    if(validaFecha(travelinicio, travelfin, fecha) === 1){
+                        mostrarpromo = 1;
+                    }else{
+                        mostrarpromo = 0;
+                    } 
+                }else{
+                    mostrarpromo = 0;
+                } 
+            }       
+            var clase = $("#clase").val();    
+            if(dateText != ''){
+                $("#loadingPrices").removeClass("d-none");
+                cargaPrecios(idtour, dias, dateText, generales, mostrarpromo, booking, travel, clase);
+            }
+        }		
 	</script>
 	<script src="js/sidebar_carousel_detail_page_func.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js"></script>

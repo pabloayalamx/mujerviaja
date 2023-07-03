@@ -13,6 +13,7 @@
     $mostrarpromo = $_GET["mostrar"];
     $booking = $_GET["booking"];
     $travel = $_GET["travel"];
+    $clase = $_GET["clase"];
 
     if(isset($_GET["generales"])){
         $grales = 1;
@@ -43,7 +44,7 @@
         $txtFechaPromo.='</span';
     }
 
-    $precios = $info->getPrices($idtour, $dias, $fecha);
+    $precios = $info->getPrices($idtour, $dias, $fecha, $clase);
     $promocion = isset($_GET["generales"]) ? $_GET["generales"] : 0;  
 ?> 
     <input type="hidden" id="descuento" name="descuento" value="<?php echo $grales == 1 ? $promocion[0]["descuento"] : ''; ?>">

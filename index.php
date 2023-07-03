@@ -126,7 +126,9 @@
                         $otrosTours = $tours->toursOthers($ids);
 						
                         $precios = $otrosTours["data"]["precios"];
+						$claves  = array_column($precios, 'id_paquete');
 						print_r($precios);
+						print_r($claves);
 
                         $incluyes = $otrosTours["data"]["incluye"];
                         $compara = [];
@@ -137,7 +139,7 @@
                         
                         foreach($otrosTours["data"]["tours"] as $x => $data){ 
 							$tipoprecio = '';
-                            $clave = array_search($data["id"], array_column($precios, 'id_paquete'));
+                            $clave = array_search($data["id"], $claves);
 
 							if($clave != '' && $clave >= 0){
 								//Buscamos el precio

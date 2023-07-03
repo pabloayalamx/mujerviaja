@@ -163,7 +163,8 @@
 								$precio = '0';
 							}	
 							
-							$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
+							$precioReal = $precio;
+							// $precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
                     ?>                    
                         <div class="col-sm-6" data-clave="<?php echo $clave; ?>" data-precio="<?php echo $tipoprecio; ?>" 
 							data-tour="<?php echo $data["id"]; ?>" 

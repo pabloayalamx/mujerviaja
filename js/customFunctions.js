@@ -569,13 +569,11 @@ function calculaPreciosCircuito(){
 
     $("#adultos").removeAttr("disabled");   
     
-    $("#priceMenor").html("$"+pMenor);
     if(parseInt(aceptaMenores) === 0){
         $("#menores").removeAttr("disabled");
     }
     
     
-    $("#priceInfante").html("$"+pInfante);
     if(parseInt(aceptaInfantes) === 0){
         $("#infantes").removeAttr("disabled");    
     }    

@@ -53,7 +53,6 @@
 		<div class="container">
 			<?php 
                 $respuesta = $tours->getList();
-                $precios = $respuesta["data"]["precios"];
                 $incluyes = $respuesta["data"]["incluye"];
                 $compara = [];
                 foreach($incluyes as $incluye){
@@ -61,29 +60,26 @@
                 }
                 
                 foreach($respuesta["data"]["tours"] as $x => $data){                 
-                $clave = array_search($data["id"], array_column($precios, 'id_paquete')); 
-				if($clave != ''){
-					//Buscamos el precio
-					if($precios[$clave]["adulto_cuadruple"] > 0){
-						$precio = $precios[$clave]["adulto_cuadruple"];
+					$precio = 0;
+							
+					if($data["adulto_sencilla"] > 0){
+						$precio = $data["adulto_sencilla"];
 					}
 
-					if($precios[$clave]["adulto_triple"] > 0){
-						$precio = $precios[$clave]["adulto_triple"];
+					if($data["adulto_doble"] > 0){
+						$precio = $data["adulto_doble"];
 					}
 					
-					if($precios[$clave]["adulto_doble"] > 0){
-						$precio = $precios[$clave]["adulto_doble"];
+					if($data["adulto_triple"] > 0){
+						$precio = $data["adulto_triple"];
 					}
 					
-					if($precios[$clave]["adulto_sencilla"] > 0){
-						$precio = $precios[$clave]["adulto_sencilla"];
-					}
-				}else{
-					$precio = 0;
-				}	
-				
-				$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);				
+					if($data["adulto_cuadruple"] > 0){
+						$precio = $data["adulto_cuadruple"];
+					}	
+					
+					$precioReal    = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);			
+
 			?>
 			<div class="row strip_list wow fadeIn animated" data-wow-delay="0.2s">
 				<div class="col-md-5">

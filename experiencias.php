@@ -53,6 +53,7 @@
 		<div class="container">
 			<?php 
                 $respuesta = $tours->getList();
+				print_r($respuesta);
                 $incluyes = $respuesta["data"]["incluye"];
                 $compara = [];
                 foreach($incluyes as $incluye){

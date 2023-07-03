@@ -165,12 +165,15 @@
 								$precio = '0';
 							}	
 							
-							if($precio > 0){
-								$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
-							}else{
-								$precioReal["precioformato"] = 0;
-								$precioReal["iso"] = 'NA';
-							}
+							// if($precio > 0){
+							// 	$precioReal = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
+							// }else{
+							// 	$precioReal["precioformato"] = $precio;
+							// 	$precioReal["iso"] = 'NA';
+							// }
+
+							$precioReal["precioformato"] = $precio;
+							$precioReal["iso"] = 'NA';							
 							
                     ?>                    
                         <div class="col-sm-6" 

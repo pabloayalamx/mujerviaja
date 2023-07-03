@@ -122,6 +122,7 @@
                 <ul>
                     <?php 
 						$data = '';
+						echo "Data: ".$data;
                         $otrosTours = $tours->toursOthers($ids);
 						
                         $precios = $otrosTours["data"]["precios"];

@@ -122,7 +122,6 @@
                 <ul>
                     <?php 
 						$data = '';
-						echo "Data: ".$data;
                         $otrosTours = $tours->toursOthers($ids);
 						
                         $precios = $otrosTours["data"]["precios"];
@@ -151,7 +150,7 @@
 									$tipoprecio = 'triple';
 								}
 								
-								if($precios[$clave]["adulto_doble"] > 0){
+								if(intval($precios[$clave]["adulto_doble"]) > 0){
 									$precio     = $precios[$clave]["adulto_doble"];
 									$tipoprecio = 'doble';
 								}

@@ -360,7 +360,7 @@
 
 						<div class="tab-pane fade" id="tab_4">
                             <iframe 
-                            width="560" 
+                            width="100%" 
                             height="400" 
                             src="<?php echo $tour["paquete"][0]["youtube"]; ?>" 
                             frameborder="0" 

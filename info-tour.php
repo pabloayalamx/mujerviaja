@@ -20,6 +20,10 @@
 	$formCategorias["idexcursion"] = $idtour;
 
 	$toursRelacionados = $tours->relatedTours($formCategorias);
+    $rangoMenores  = $tour["paquete"][0]["edad_menor_min"]." - ".$tour["paquete"][0]["edad_menor_max"]." años";
+    $rangoInfantes = $tour["paquete"][0]["edad_infante_min"]." - ".$tour["paquete"][0]["edad_infante_max"]." años";
+    $edadAdulta    = $tour["paquete"][0]["edad_menor_max"] + 1;
+    $rangoAdultos  = "A partir de ".$edadAdulta." años";	
 ?>   
 <head>
     <base href="<?php echo $fn->baseMeta(); ?>">
@@ -360,7 +364,7 @@
 
 						<div class="tab-pane fade" id="tab_4">
                             <iframe 
-                            width="100%" 
+                            width="560" 
                             height="400" 
                             src="<?php echo $tour["paquete"][0]["youtube"]; ?>" 
                             frameborder="0" 
@@ -490,6 +494,8 @@
                                             <input type="hidden" id="id_clase_servicio_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["id_clase_servicio"]; ?>"> 
                                             <input type="hidden" id="nombre_servicio_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["nombre_servicio"]; ?>"> 
                                             <input type="hidden" id="id_temporada_costo_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["id_temporada_costo"]; ?>"> 
+											<input type="hidden" id="aceptaInfantes" value="<?php echo  $tour["paquete"][0]["infantes"]; ?>">
+											<input type="hidden" id="aceptaMenores" value="<?php echo  $tour["paquete"][0]["menores"]; ?>">
 
 											<?php 
 												$adulto_sencilla   = $fn->precio($fecha["adulto_sencilla"], $isotour, $monedaSeleccionada, $monedaDefault, $monedas);
@@ -527,7 +533,9 @@
 									<label>Selecciona una fecha</label>
                                 	<input type="text" name="fecha" id="fecha_viaje_input" class="form-control" placeholder="Fecha">
 								<?php } ?>
-							</div>						
+							</div>
+							
+							
 
                             <div id="precios" class="mleft10 mright10">
                                 <div id="contieneprecios">
@@ -599,7 +607,7 @@
 									<tr>
 										<td>
                                             <strong>Adultos</strong>
-                                            <a href="#" class="tooltip-1" data-placement="top" title="" data-original-title="A partir de 16 años">
+                                            <a href="#" class="tooltip-1" data-placement="top" title="" data-original-title="<?php echo $rangoAdultos; ?>">
                                                 <sup class="icon-info-4"></sup>
                                             </a>
 											<span id="priceAdulto" class="price">$0</span>
@@ -625,7 +633,7 @@
 									<tr>
 										<td>
                                             <strong>Menores</strong>
-                                            <a href="#" class="tooltip-1" data-placement="top" title="" data-original-title="Entre 3 y 15 años">
+                                            <a href="#" class="tooltip-1" data-placement="top" title="" data-original-title="<?php echo $rangoMenores; ?>">
                                                 <sup class="icon-info-4"></sup>
                                             </a>
                                             <span id="priceMenor" class="price">$0</span>
@@ -643,7 +651,12 @@
 										</td>
 									</tr>
 									<tr>
-										<td><strong>Infantes</strong> <span id="priceInfante" class="price">$0</span> </td>
+										<td>
+											<strong>Infantes</strong> <span id="priceInfante" class="price">$0</span> 
+                                            <a href="#" class="tooltip-1" data-placement="top" title="" data-original-title="<?php echo $rangoInfantes; ?>">
+                                                <sup class="icon-info-4"></sup>
+                                            </a>											
+										</td>
 										<td>
 											<div class="styled-select">
 												<select class="form-control" name="infantes" id="infantes" <?php if($tour["paquete"][0]["cantidad_dias"] > 1){ ?> onchange="calculaPreciosCircuito()" <?php }else{ ?> onchange="calculaPrecios()" <?php } ?> disabled>

@@ -285,15 +285,24 @@ function preciosSelect(){
     var pAdulto = $("#adulto_precio").val();
     var pMenor = $("#menor_precio").val();
     var pInfante = $("#infante_precio").val();  
+
+    var aceptaInfantes = $("#aceptaInfantes").val();
+    var aceptaMenores = $("#aceptaMenores").val();
     
     $("#priceAdulto").html("$"+pAdulto);
     $("#adultos").removeAttr("disabled");
 
     $("#priceMenor").html("$"+pMenor);
-    $("#menores").removeAttr("disabled");
+    if(parseInt(aceptaMenores) === 1){
+        $("#menores").removeAttr("disabled");
+    }
+    
     
     $("#priceInfante").html("$"+pInfante);
-    $("#infantes").removeAttr("disabled");    
+    if(parseInt(aceptaInfantes) === 1){
+        $("#infantes").removeAttr("disabled");    
+    }
+    
 }
 
 function calculaPrecios(){
@@ -558,9 +567,18 @@ function calculaPreciosCircuito(){
     $("#pinfante").val(pinfante);
     $("#gtotal").val(grantotal);   
 
-    $("#adultos").removeAttr("disabled");
-    $("#menores").removeAttr("disabled");
-    $("#infantes").removeAttr("disabled");      
+    $("#adultos").removeAttr("disabled");   
+    
+    $("#priceMenor").html("$"+pMenor);
+    if(parseInt(aceptaMenores) === 0){
+        $("#menores").removeAttr("disabled");
+    }
+    
+    
+    $("#priceInfante").html("$"+pInfante);
+    if(parseInt(aceptaInfantes) === 0){
+        $("#infantes").removeAttr("disabled");    
+    }    
 
     $(".subtotalAdulto").html(tadultos.toLocaleString('es-MX'));
     $(".subtotalMenor").html(tmenores.toLocaleString('es-MX'));

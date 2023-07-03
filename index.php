@@ -137,8 +137,7 @@
                         
                         foreach($otrosTours["data"]["tours"] as $x => $data){ 
 							$tipoprecio = '';
-                            $clave = array_search($data["id"], array_column($precios, 'id_paquete')); 
-							echo "Clave encontrada: ".$clave;  
+                            $clave = array_search($data["id"], array_column($precios, 'id_paquete'));
 
 							if($clave != '' && $clave >= 0){
 								//Buscamos el precio
@@ -152,8 +151,13 @@
 									$tipoprecio = 'triple';
 								}
 								
-								if(intval($precios[$clave]["adulto_doble"]) > 0){
-									$precio     = $precios[$clave]["adulto_doble"];
+								if($precios[$clave]["adulto_doble"] > 0){
+									
+									if($clave == 0){
+										$precio = $precios[0]["adulto_doble"];
+									}else{
+										$precio     = $precios[$clave]["adulto_doble"];
+									}
 									$tipoprecio = 'doble';
 								}
 								

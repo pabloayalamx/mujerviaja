@@ -396,7 +396,9 @@
 					<div class="box_style_2">
 						<h3>Reserva tu tour<span>Confirmación inmediata</span></h3>
 						<form method="post" action="assets/check_avail.php" id="check_avail" autocomplete="off">
-							<input type="hidden" id="tour_name" name="tour_name" value="General Louvre Tour">
+							<input type="hidden" id="tour_name" name="tour_name" value="">
+							<input type="hidden" id="aceptaInfantes" value="<?php echo  $tour["paquete"][0]["infantes"]; ?>">
+							<input type="hidden" id="aceptaMenores" value="<?php echo  $tour["paquete"][0]["menores"]; ?>">							
 							<div class="form-group">
 								<?php if($tour["paquete"][0]["cantidad_dias"] > 1){  
                                     $fechas =  $tour["fechas"]; 
@@ -494,8 +496,6 @@
                                             <input type="hidden" id="id_clase_servicio_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["id_clase_servicio"]; ?>"> 
                                             <input type="hidden" id="nombre_servicio_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["nombre_servicio"]; ?>"> 
                                             <input type="hidden" id="id_temporada_costo_<?php echo $fecha["id"]; ?>" value="<?php echo $fecha["id_temporada_costo"]; ?>"> 
-											<input type="hidden" id="aceptaInfantes" value="<?php echo  $tour["paquete"][0]["infantes"]; ?>">
-											<input type="hidden" id="aceptaMenores" value="<?php echo  $tour["paquete"][0]["menores"]; ?>">
 
 											<?php 
 												$adulto_sencilla   = $fn->precio($fecha["adulto_sencilla"], $isotour, $monedaSeleccionada, $monedaDefault, $monedas);

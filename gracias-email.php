@@ -153,7 +153,7 @@
 				<div class="col-md-9">
 					<div id="paso1">
 						<h3>Gracias por contactarnos</h3>
-						<p>En breve una representante de Viaja Mujer te contactará</p>
+						<p>En breve una representante de Mujer Viaja te contactará</p>
 					</div>
 				</div>
 				<!-- End col lg 9 -->

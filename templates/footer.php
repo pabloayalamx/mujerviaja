@@ -8,7 +8,7 @@
                 <a href="tel:<?php echo $telefono_celular_codigo_pais.$telefono_celular; ?>" id="phone"><?php echo $telefono_celular_codigo_pais.$telefono_celular;; ?></a>
             <?php } ?>
             
-            <a href="mailto:<?php echo $myWebSite["email_publico"]; ?>" id="email_footer"><?php echo $myWebSite["email_publico"]; ?></a>
+            <a href="mailto:<?php echo $afiliado > 0 ? $emailAfiliado : $myWebSite["email_publico"]; ?>" id="email_footer"><?php echo $afiliado > 0 ? $emailAfiliado : $myWebSite["email_publico"]; ?></a>
             <?php if($afiliado > 0){ ?>
                 <p><?php echo $nombreAfiliado; ?></p>
             <?php } ?>

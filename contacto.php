@@ -12,13 +12,10 @@
 </head>
 
 <body>
-
-    <?php include("templates/preloader.php") ?>
+	<?php include("templates/preloader.php") ?>
 	<!-- End Preload -->
 
-	<!-- Header================================================== -->
-    <div id="header_1"><?php include("templates/header.php"); ?></div>
-	<!-- End Header 1-->
+	<div id="header_1"><?php include("templates/header.php"); ?></div>
 
 	<!-- SubHeader =============================================== -->
 	<section class="parallax_window_in" data-parallax="scroll" data-image-src="img/contacto.jpg" data-natural-width="1400" data-natural-height="470">
@@ -32,8 +29,8 @@
 	<!-- End section -->
 	<!-- End SubHeader ============================================ -->
 
-	<section class="wrapper">
-		<div class="divider_border"></div>
+	<section class="wrapper add_bottom_30">
+	<div class="divider_border"></div>
 		<div class="container">
 			<div class="row">
 
@@ -136,34 +133,13 @@
 	</section>
 	<!-- End section -->
 
-	<!-- <div id="map_contact"></div> -->
-	<!-- end map-->
-
-    <footer><?php include("templates/footer.php"); ?></footer>
+	<footer><?php include("templates/footer.php"); ?></footer>
 	<!-- End footer -->
 
 	<div id="toTop"></div>
 	<!-- Back to top button -->
 
-	<!-- Search Menu -->
-	<div class="search-overlay-menu">
-		<span class="search-overlay-close"><i class="icon_close"></i></span>
-		<form role="search" id="searchform" method="get">
-			<input value="" name="q" type="search" placeholder="Search..." />
-			<button type="submit"><i class="icon-search-6"></i>
-			</button>
-		</form>
-	</div>
-	<!-- End Search Menu -->
-
-	<!-- COMMON SCRIPTS -->
 	<?php include("templates/js.php") ?>
-
-	<!-- SPECIFIC SCRIPTS -->
-	<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-	<script type="text/javascript" src="js/mapmarker.jquery.js"></script>
-	<script type="text/javascript" src="js/mapmarker_func.jquery.js"></script> -->
-
 </body>
 
 </html>

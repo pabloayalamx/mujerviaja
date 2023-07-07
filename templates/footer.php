@@ -13,7 +13,7 @@
                 <p><?php echo $nombreAfiliado; ?></p>
             <?php } ?>
         </div>
-        <div class="col-md-2 col-sm-3">
+        <div class="col-md-3 col-sm-3">
             <h3>Menú</h3>
             <ul>
                 <li><a href="nosotros">Nosotros</a></li>
@@ -24,7 +24,7 @@
                 <li><a href="aviso-privacidad">Aviso de privacidad</a></li>
             </ul>
         </div>
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-3 col-sm-3">
             <h3>Dirección</h3>
             <p>
                 Dirección de la agencia de viajes
@@ -37,7 +37,7 @@
             </div> -->
         </div>
 
-        <div class="col-md-3 col-sm-12">
+        <div class="col-md-3 col-sm-3">
             <h3>Newsletter</h3>
             <div id="message-newsletter_2">
             </div>

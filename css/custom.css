@@ -22,7 +22,6 @@
 .logoDirecciones{
     position: relative;
     z-index: 999;	
-	margin-bottom: 20px;
 }
 
 .tituloIncluyes{
@@ -274,5 +273,8 @@
 	}
 	.nombreAfiliadoCel{
 		display: block;
+	}
+	.logoDirecciones{
+		margin-bottom: 20px;
 	}
 }

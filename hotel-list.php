@@ -292,17 +292,17 @@
 								<div class="short_info">
                                     <em>
                                         <?php if($stars > 1){ ?>
-                                            <i class="<?php echo $stars >= 1 ? 'fas' : 'far'; ?> fa-star estrellaHotel"></i>
-                                            <i class="<?php echo $stars >= 2 ? 'fas' : 'far'; ?> fa-star estrellaHotel"></i>
-                                            <i class="<?php echo $stars >= 3 ? 'fas' : 'far'; ?> fa-star estrellaHotel"></i>
-                                            <i class="<?php echo $stars >= 4 ? 'fas' : 'far'; ?> fa-star estrellaHotel"></i>
-                                            <i class="<?php echo $stars >= 5 ? 'fas' : 'far'; ?> fa-star estrellaHotel"></i>
+                                            <i class="<?php echo $stars >= 1 ? 'fas' : 'far'; ?> fa-star"></i>
+                                            <i class="<?php echo $stars >= 2 ? 'fas' : 'far'; ?> fa-star"></i>
+                                            <i class="<?php echo $stars >= 3 ? 'fas' : 'far'; ?> fa-star"></i>
+                                            <i class="<?php echo $stars >= 4 ? 'fas' : 'far'; ?> fa-star"></i>
+                                            <i class="<?php echo $stars >= 5 ? 'fas' : 'far'; ?> fa-star"></i>
                                         <?php }else{ ?>
-                                            <i class="fas fa-star estrellaHotel"></i>
-                                            <i class="fas fa-star estrellaHotel"></i>
-                                            <i class="fas fa-star estrellaHotel"></i>
-                                            <i class="<?php echo $stars >= 4 ? 'fas' : 'far'; ?> fa-star estrellaHotel"></i>
-                                            <i class="<?php echo $stars >= 5 ? 'fas' : 'far'; ?> fa-star estrellaHotel"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="<?php echo $stars >= 4 ? 'fas' : 'far'; ?> fa-star"></i>
+                                            <i class="<?php echo $stars >= 5 ? 'fas' : 'far'; ?> fa-star"></i>
                                         <?php } ?>
                                     </em>
 									<div class="score_wp">Tripadvisor

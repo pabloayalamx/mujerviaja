@@ -52,16 +52,23 @@
 	<!-- End Preload -->
 
 	<!-- Header================================================== -->
-	<div id="header_1"><?php include("templates/header.php"); ?></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-2 col-xs-2">
+                <div id="logo_home" class="logoDirecciones">
+                    <h1>
+                        <a href="/" title="Mujer Viaja" style="background-image: url(img/logo.png);">Mujer viaja</a>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>	
 	<!-- End Header 1-->
 
 	<section class="wrapper">
-		<div class="divider_border"></div>
-
 		<div class="container">
             <div class="row">
                 <br><br>
-                <br><br><br><br>
                 <div class="main_title">
                     <h2>Selecciona tu <span>agencia</span> más cercana</h2>
 			    </div>
@@ -138,7 +145,7 @@
 
 
     <!-- Footer -->
-	<footer><?php include("templates/footer.php"); ?></footer>
+	
 	<!-- End footer -->
 
 	<div id="toTop"></div>

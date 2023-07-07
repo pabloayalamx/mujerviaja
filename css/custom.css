@@ -19,6 +19,11 @@
 	border-bottom-color: rgba(0, 0, 0, .2);
 	border-radius: 100%;
 }
+.logoDirecciones{
+    position: relative;
+    z-index: 999;	
+	margin-bottom: 20px;
+}
 
 .tituloIncluyes{
     border: none;

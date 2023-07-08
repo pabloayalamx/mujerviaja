@@ -702,3 +702,45 @@ function formatoFecha(fecha, formato) {
 function mostrarWhats(){
     $("#whatsIcon").fadeIn("fast");
 }
+
+function muestraPrecios(tipoActividad){
+    $(".tipoCat").each(function(){
+        var id_cat = $(this).data("id");
+        var precio = $(`#precio_${tipoActividad}_${id_cat}`).val();
+        $(`#tipoCat_${id_cat} option[value=precio]`).text(`$ ${formatearMoneda(precio)} MXN`)
+        $('#tipoCat_'+id_cat).data('precio', precio)
+    });
+
+    $("#precios_cat_"+tipoActividad).addClass("catSeleccionada");
+    calculaPrecio();
+}
+
+function poneCantidad(elem, id){     
+    var cant   = $("#tipoCat_"+id+" option:selected").attr("rel");   
+    $("#cantidad_"+id).val(cant);
+}		
+
+function calculaPrecio(){
+    let suma = 0;
+    $(".tipoCat").each(function(){
+        var id_cat = $(this).data("id");
+        var precio = $(this).data("precio");
+        var cant   = $('option:selected', this).attr("rel");
+        
+        if(precio > 0 && cant > 0){
+            suma = suma + (cant * precio);
+        }else{
+            suma = suma + 0;
+        }
+    });
+
+    $("#total").val("$ "+formatearMoneda(suma.toFixed(2))+" <?php echo $monedaSeleccionada; ?>");
+    $("#precioTotal").val(suma.toFixed(2));
+}		
+
+function formatearMoneda(valor, options = {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+}) {
+    return Number(valor).toLocaleString('es-MX', options)
+}

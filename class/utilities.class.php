@@ -14,8 +14,7 @@ class funciones
         //Precio que bookingtrap le da a las agencias
         $precio = $tarifa / .99;
         return $precio;
-    }   
-        
+    }     
 
     public function tarifaPublicaAgenciasTours($tarifa, $markup){
         //Tarifa que le dara la agencia al cliente final
@@ -23,6 +22,13 @@ class funciones
         $precio = $tarifaAgencia / (1- ($markup/100) );
         return number_format($precio, 2, '.', ',');
     }
+
+    public function tarifaPublicaAgenciasToursSinFormato($tarifa, $markup){
+        //Tarifa que le dara la agencia al cliente final
+        $tarifaAgencia = $this->tarifaNetaAgenciasTours($tarifa);
+        $precio = $tarifaAgencia / (1- ($markup/100) );
+        return number_format($precio, 2, '.', '');
+    }    
 
     public function precioMinimo($precios){
         $sgl = min(array_column($precios, 'adulto_sencilla'));
@@ -59,6 +65,7 @@ class funciones
         return $minimo;
     }
 
+    //Sirve para los TOURS PROPIOS
     public function precio($precioBase, $monedaPrecio, $monedaSeleccionada, $monedaDefault, $monedas){
         if($monedaPrecio == $monedaSeleccionada){
             $precioReal = $precioBase;
@@ -218,7 +225,7 @@ class funciones
         return $month;
     }
 
-    function recortar_cadena($texto, $limite=100){
+    public function recortar_cadena($texto, $limite=100){
         $texto = trim($texto);
         $texto = strip_tags($texto);
         $tamano = strlen($texto);
@@ -233,4 +240,16 @@ class funciones
       }
         return $resultado;
       }  
+
+      public function datePickerFormat($fecha){
+        //Convierte yyyy-mm-dd a mm-dd-yy
+        $array = explode("-", $fecha);
+        $dia   = $array[2];
+        $mes   = $array[1];
+        $year  = $array[0];        
+        $nuevo = $mes."-".$dia."-".$year;
+
+        return $nuevo;
+
+    }      
 }

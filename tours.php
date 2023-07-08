@@ -104,8 +104,8 @@
                             <sup>$</sup> <?php echo $fn->tarifaPublicaAgenciasTours($actividad->minimumPrice, $markup); ?> <small><?php echo $actividad->currency; ?></small>
 						</div>
 						<div class="img_container">
-							<a href="tour/">
-								<img src="<?php echo $actividad->photos->gallery[0]->paths->thumbnail; ?>" width="800" height="533" class="img-responsive img-responsive-height" alt="Nombre de la actividad">
+							<a href="actividad/<?php echo $fn->stringToUrl($actividad->title)."/".$actividad->id; ?>" title="<?php echo $actividad->title; ?>">
+								<img src="<?php echo $actividad->photos->gallery[0]->paths->thumbnail; ?>" width="800" height="533" class="img-responsive img-responsive-height" alt="<?php echo $actividad->title; ?>">
 								<div class="short_info">
                                     <?php
                                         if($actividad->duration->duration/60 > 24){
@@ -129,7 +129,7 @@
 					<h3><?php echo $actividad->title; ?></h3>
 					<p><?php echo $actividad->raw_description; ?></p>
 					<p>
-						<a href="tour/" class="btn_1">Ver tour</a>
+						<a href="actividad/<?php echo $fn->stringToUrl($actividad->title)."/".$actividad->id; ?>" title="<?php echo $actividad->title; ?>" class="btn_1">Ver tour</a>
 					</p>
 				</div>
 			</div>

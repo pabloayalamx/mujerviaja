@@ -457,9 +457,24 @@
         $("#subcajita").addClass("d-none");
         $("#btnActiva").show();
     }
+	
+	function calculaPrecio(){
+		let suma = 0;
+		$(".tipoCat").each(function(){
+			var id_cat = $(this).data("id");
+			var precio = $(this).data("precio");
+			var cant   = $('option:selected', this).attr("rel");
+			
+			if(precio > 0 && cant > 0){
+				suma = suma + (cant * precio);
+			}else{
+				suma = suma + 0;
+			}
+		});
 
+		$("#total").val("$ "+formatearMoneda(suma.toFixed(2))+" <?php echo $monedaSeleccionada; ?>");
+		$("#precioTotal").val(suma.toFixed(2));
+	}		
 	</script>
-
 </body>
-
 </html>

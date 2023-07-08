@@ -21,30 +21,33 @@
     $message_contact     = $_POST['message_contact'];
     $email_afiliado      = $_POST["email_afiliado"];
     $nombre_afiliado     = $_POST["nombre_afiliado"];  
+    $destino             = $_POST["destino"];
     
-    $fecha     = $_POST["fecha"];  
-    $adultos     = $_POST["adultos"];  
-    $menores     = $_POST["menores"];  
-    $edades     = $_POST["edad"];   //Array
-    $vuelos     = $_POST["vuelos"];  
+    $fecha               = $_POST["fecha"];  
+    $adultos             = $_POST["adultos"];  
+    $menores             = $_POST["menores"];  
+    $edades              = $_POST["edad"];   //Array
+    $vuelos              = $_POST["vuelos"];  
+
     if($vuelos == 1){
         $vuelo = "Sí";
     }else{
         $vuelo = "No";
     }
-    $origenes     = $_POST["origenes"];  
+    
+    $origenes            = $_POST["origenes"];  
+    $hospedaje           = $_POST["hospedaje"];  
 
-    $hospedaje     = $_POST["hospedaje"];  
     if($hospedaje == 1){
         $hotel = "Sí";
     }else{
         $hotel = "No";
     }
-    $numeroHabitaciones     = $_POST["numeroHabitaciones"];  
+    $numeroHabitaciones  = $_POST["numeroHabitaciones"];  
 
-    $tipoHab     = $_POST["tipoHab"];   //Array
-    $adultosHab     = $_POST["adultosHab"];  //Array
-    $menoresHab     = $_POST["menoresHab"];  //Array
+    $tipoHab             = $_POST["tipoHab"];   //Array
+    $adultosHab          = $_POST["adultosHab"];  //Array
+    $menoresHab          = $_POST["menoresHab"];  //Array
  
 
     $bodyMail = '
@@ -70,6 +73,7 @@
 
             $bodyMail.='<br><hr><br>';
             $bodyMail.='<b>Fecha de viaje: </b>'.$fecha.'<br>
+            <b>Destino: </b>'.$destino.'<br>
             <b>Adultos: </b>'.$adultos.'<br>
             <b>Menores: </b>'.$menores.'<br>';
             

@@ -134,6 +134,15 @@
                                 </div>
 
                                 <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+										<div class="form-group">
+											<label>Destino del viaje:</label>
+											<input type="text" name="destino" id="destino" class="form-control">
+										</div>
+									</div> 
+                                </div>
+
+                                <div class="row">
                                     <?php for($i=1; $i<=30; $i++){ ?>
                                     <div class="col-4 col-sm-2 oculto" id="edad_<?php echo $i; ?>">
                                         <div class="form-group">

@@ -9,6 +9,9 @@
     <meta name="description" content="">
     <meta name="keywords" content="">	
     <?php include("templates/head.php"); ?>
+
+    <!-- JQUERY UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -267,6 +270,30 @@
 	<!-- Back to top button -->
 
 	<?php include("templates/js.php") ?>
+
+	<!-- SPECIFIC SCRIPTS -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            $("#fecha").datepicker({
+                changeMonth: true, 
+                changeYear: true,                 
+                dateFormat: 'yy-mm-dd',
+                minDate: 1,
+				maxDate: 365,
+				monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+				monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+				dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+				dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+				dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'], 			  				               
+                onSelect: function(dateText) {
+
+                }                 
+            });	            
+        });
+    </script>
 </body>
 
 </html>

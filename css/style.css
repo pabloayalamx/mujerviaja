@@ -3330,7 +3330,12 @@ ul.list_ok li:before {
 .mt-0{
 	margin-top: 0 !important;
 }
-
+.azul{
+	background-color: antiquewhite;
+}
+.tituloCotizacion{
+	color: #DE5871;
+}
 @media (max-width: 400px) {
 	.tabContent{
 		height: 130px	

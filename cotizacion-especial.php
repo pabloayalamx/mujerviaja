@@ -21,8 +21,8 @@
 	<section class="parallax_window_in" data-parallax="scroll" data-image-src="img/contacto.jpg" data-natural-width="1400" data-natural-height="470">
 		<div id="sub_content_in">
 			<div id="animate_intro">
-				<h1>Contáctanos</h1>
-				<p>"Estamos para asesorarte y resolver todas tus dudas"</p>
+				<h1>¿Deseas un itinerario especial?</h1>
+				<p>Completa el formulario y te contactaremos para buscar la mejor tarifa</p>
 			</div>
 		</div>
 	</section>
@@ -67,10 +67,9 @@
 
 				<div class="col-md-9">
 					<div id="paso1">
-						<h3>Contáctanos</h3>
-						<p>Completa el formulario y nos pondremos en contacto contigo lo más pronto posible</p>
+						<h3 class="tituloCotizacion">Cotización especial</h3>
 						<div>
-							<form method="post" action="gracias-email" id="contactform">
+							<form method="post" action="gracias-cotizacion" id="cotizacionEspecial" autocomplete="off">
 								<input type="hidden" name="email_afiliado" id="email_afiliado" value="<?php echo $afiliado > 0 ? $emailAfiliado : ''; ?>">
 								<input type="hidden" name="nombre_afiliado" id="nombre_afiliado" value="<?php echo $afiliado > 0 ? $nombreAfiliado : ''; ?>">
 								<div class="row">
@@ -101,22 +100,150 @@
 										</div>
 									</div>
 								</div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+										<div class="form-group">
+											<label>Fecha del viaje:</label>
+											<input type="text" required id="fecha" name="fecha" class="form-control styled" placeholder="Selecciona una fecha">
+										</div>
+									</div>
+									<div class="col-6 col-md-3 col-sm-3">
+                                        <div class="form-group">
+											<label>Adultos:</label>
+											<select name="adultos" id="adultos" class="form-control">
+                                                <?php for($i=1; $i<=30; $i++){ ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                <?php } ?>
+                                            </select>
+										</div>
+									</div> 
+                                    <div class="col-6 col-md-3 col-sm-3">
+										<div class="form-group">
+											<label>Menores:</label>
+											<select name="menores" id="menores" class="form-control" onchange="menoresEdadesForm(value)">
+                                                <?php for($i=0; $i<=30; $i++){ ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                <?php } ?>
+                                            </select>
+										</div>
+									</div>                                                                        
+                                </div>
+
+                                <div class="row">
+                                    <?php for($i=1; $i<=30; $i++){ ?>
+                                    <div class="col-4 col-sm-2 oculto" id="edad_<?php echo $i; ?>">
+                                        <div class="form-group">
+											<label>Edad:</label>
+											<select name="edad[]" class="form-control">
+                                                <?php for($e=0; $e<=17; $e++){ ?>
+                                                    <option value="<?php echo $e; ?>"><?php echo $e; ?></option>
+                                                <?php } ?>
+                                            </select>
+										</div>                                        
+                                    </div>
+                                    <?php } ?>
+                                </div>
+
+                                <h3 class="tituloCotizacion">Vuelos</h3>
+
+                                <div class="row">
+									<div class="col-md-6 col-sm-6">
+										<div class="form-group">
+											<label>¿Requiere vuelos?:</label>
+											<select name="vuelos" id="vuelos" class="form-control" onchange="mostrarDiv('vueloOrigen', '1', value)">
+                                                <option value="0" selected>No</option>
+                                                <option value="1">Sí</option>
+                                            </select>
+										</div>
+									</div>
+									<div class="col-md-6 col-sm-6 oculto" id="vueloOrigen">
+										<div class="form-group">
+											<label>Saliendo de:</label>
+                                            <input type="text" name="origenes" id="origenes" class="form-control" placeholder="Escriba origen y cantidad, ejemplo: CDMX: 1, Cancun: 2...">
+										</div>
+									</div>                                    
+                                </div>
+
+                                <h3 class="tituloCotizacion">Hospedaje</h3>                               
+
+                                <div class="row">
+									<div class="col-md-6 col-sm-6">
+										<div class="form-group">
+											<label>¿Requiere hospedaje?:</label>
+											<select name="hospedaje" id="hospedaje" class="form-control" onchange="mostrarHospedaje(value)">
+                                                <option value="0" selected>No</option>
+                                                <option value="1">Sí</option>
+                                            </select>
+										</div>
+									</div>
+									<div class="col-md-6 col-sm-6 oculto" id="numeroHabs">
+										<div class="form-group">
+											<label>Cantidad de habitaciones:</label>
+                                            <select name="numeroHabitaciones" id="numeroHabitaciones" class="form-control" onchange="muestraHabs(value)">
+                                            <option value="0" selected disabled>Seleccione...</option>
+                                                <?php for($i=1; $i<=30; $i++){ ?>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                <?php } ?>
+                                            </select>
+										</div>
+									</div>                                     
+                                </div>
+
+                                <?php for($i=1; $i<=30; $i++){ ?>
+                                <div class="row habitaciones oculto <?php echo $i % 2 == 0 ? 'azul' : '' ?>" id="hab_<?php echo $i; ?>">
+									<div class="col-md-4 col-sm-4">
+										<div class="form-group">
+											<label>Tipo de habitación:</label>
+											<select name="tipoHab[]" class="form-control">
+                                                <option value="0" disabled selected>Seleccione...</option>
+                                                <option value="1">Sencilla</option>
+                                                <option value="2">Doble</option>
+                                                <option value="3">Triple</option>
+                                                <option value="4">Cuadruple</option>
+                                            </select>
+										</div>
+									</div>    
+                                    
+									<div class="col-md-4 col-sm-4">
+										<div class="form-group">
+											<label>Adultos:</label>
+											<select name="adultosHab[]" class="form-control">
+                                                <option value="0" disabled selected>Seleccione...</option>
+                                                <?php for($a=1; $a<=4; $a++){ ?>
+                                                    <option value="<?php echo $a; ?>"><?php echo $a; ?></option>
+                                                <?php } ?>
+                                            </select>
+										</div>
+									</div> 
+                                    
+									<div class="col-md-4 col-sm-4">
+										<div class="form-group">
+											<label>Menores:</label>
+											<select name="menoresHab[]" class="form-control">
+                                                <option value="0" disabled selected>Seleccione...</option>
+                                                <?php for($m=1; $m<=4; $m++){ ?>
+                                                    <option value="<?php echo $m; ?>"><?php echo $m; ?></option>
+                                                <?php } ?>
+                                            </select>
+										</div>
+									</div>                                      
+                                </div>
+                                <?php } ?>
+
+
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
-											<label>Comentarios:</label>
+											<label>Peticiones especiales:</label>
 											<textarea rows="5" id="message_contact" name="message_contact" class="form-control styled" style="height:100px;" placeholder="Escribe tus comentarios"></textarea>
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-6">
-										<div class="form-group">
-											<label>¿Eres humano? 3 + 1 =</label>
-											<input type="text" id="verify_contact" name="verify_contact" required class=" form-control styled" placeholder="Escribe el resultado">
-										</div>
 										<p>
-											<input form="contactform" type="submit" value="Enviar" class="btn_1" id="submit-contact">
+											<input form="cotizacionEspecial" type="submit" value="Enviar" class="btn_1">
 											<div id="message-contact"></div>
 										</p>
 									</div>

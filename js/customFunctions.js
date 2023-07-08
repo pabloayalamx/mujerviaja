@@ -598,6 +598,50 @@ function menoresEdades(menores){
     }
 }
 
+function menoresEdadesForm(menores){
+    e = 0;
+    for(i=1; i<=30; i++){
+        if(i <= menores){
+            $("#edad_"+i).show();
+        }else{
+            $("#edad_"+i).hide();
+            $("#edad_"+i+" select option[value='0']").attr("selected",true);
+        }
+    }
+}
+
+function mostrarHospedaje(confirmacion){
+    if(parseInt(confirmacion) === 1){
+        $("#numeroHabs").show();
+        var habs = $("#numeroHabitaciones").val();
+        muestraHabs(habs)
+    }else{
+        $("#numeroHabs").hide();
+        $(".habitaciones").hide();
+    }    
+}
+
+function muestraHabs(habs){
+    e = 0;
+    for(i=1; i<=30; i++){
+        if(i <= habs){
+            $("#hab_"+i).show();
+        }else{
+            $("#hab_"+i).hide();
+            $("#hab_"+i+" select option[value='0']").attr("selected",true);
+        }
+    }
+}
+
+function mostrarDiv(id, valorConfirma, seleccion){
+    if(parseInt(seleccion) === parseInt(valorConfirma)){
+        $("#"+id).show();
+    }else{
+        $("#"+id).hide();
+    }
+        
+}
+
 function getLinkPay(){
     $("#btnPagar").val("Procesando, por favor espera...").attr("disabled", "disabled");
     var id          = $("#openpayID").val();

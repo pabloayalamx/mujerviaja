@@ -19,9 +19,33 @@
     $email_contact       = $_POST['email_contact'];
     $phone_contact       = $_POST['phone_contact'];
     $message_contact     = $_POST['message_contact'];
-    $verify_contact      = $_POST['verify_contact'];
     $email_afiliado      = $_POST["email_afiliado"];
-    $nombre_afiliado     = $_POST["nombre_afiliado"];    
+    $nombre_afiliado     = $_POST["nombre_afiliado"];  
+    
+    $fecha     = $_POST["fecha"];  
+    $adultos     = $_POST["adultos"];  
+    $menores     = $_POST["menores"];  
+    $edades     = $_POST["edad"];   //Array
+    $vuelos     = $_POST["vuelos"];  
+    if($vuelos == 1){
+        $vuelo = "Sí";
+    }else{
+        $vuelo = "No";
+    }
+    $origenes     = $_POST["origenes"];  
+
+    $hospedaje     = $_POST["hospedaje"];  
+    if($hospedaje == 1){
+        $hotel = "Sí";
+    }else{
+        $hotel = "No";
+    }
+    $numeroHabitaciones     = $_POST["numeroHabitaciones"];  
+
+    $tipoHab     = $_POST["tipoHab"];   //Array
+    $adultosHab     = $_POST["adultosHab"];  //Array
+    $menoresHab     = $_POST["menoresHab"];  //Array
+ 
 
     $bodyMail = '
     <!DOCTYPE html>
@@ -44,12 +68,45 @@
                 $bodyMail .='<b>Afiliado: </b>'.$nombre_afiliado.'<br>';
             }		
 
+            $bodyMail.='<br><hr><br>';
+            $bodyMail.='<b>Fecha de viaje: </b>'.$fecha.'<br>
+            <b>Adultos: </b>'.$adultos.'<br>
+            <b>Menores: </b>'.$menores.'<br>';
+            
+            if($menores > 0){
+                for($i=0; $i<$menores; $i++){
+                    $e = $i+1;
+                    $bodyMail.='<b>Menor '.$e.':</b>:'.$edades[$i]." años<br>";                    
+                }
+            }
+
+            $bodyMail.='<br><br><b>¿Requiere vuelos?: </b>'.$vuelo.'<br>';
+            
+            if($vuelos == 1){
+                $bodyMail.='<b>Origenes:</b>'.$origenes."<br>";
+            }
+
+
+            $bodyMail.='<br><br><b>¿Requiere hospedaje?: </b>'.$hotel.'<br>';
+
+            if($hospedaje == 1){
+                $bodyMail.='<b>Habitaciones: </b>'.$numeroHabitaciones.'<br>';
+                $bodyMail.='<b>Distribución: </b><br>';
+
+                foreach($tipoHab as $i => $tipohabitacion){
+                    $h = $i+1;
+                    $bodyMail.='<b>Habitación '.$h.': </b><br> Adultos: '.$adultosHab[$i]." Menores: ".$menoresHab[$i]."<br>";
+                }
+            }
+            
+
     $bodyMail .= '</p>
         <br><br>
         <h5>Éxito!</h5>
     </body>    
     </html>         
     ';
+
 
     $mail = new PHPMailer(true);
     try {
@@ -66,13 +123,14 @@
 
         //Recipients
         $mail->setFrom('notificaciones@bookingtrap.com', 'Notificaciones Mujer Viaja');
-        $mail->addAddress($myWebSite["email_form"]);     //Add a recipient
+        $mail->addAddress($myWebSite["email_form"]); 
+
         if($myWebSite["cc_email_form"] != ''){
             $mail->addAddress($myWebSite["cc_email_form"]);  
         }  
         if($email_afiliado != ''){
             $mail->addAddress($email_afiliado);  
-        }       
+        }        
 
         $mail->addReplyTo($email_contact, $name_contact.' '.$lastname_contact);
 

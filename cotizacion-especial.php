@@ -200,10 +200,10 @@
 											<label>Tipo de habitación:</label>
 											<select name="tipoHab[]" class="form-control">
                                                 <option value="0" disabled selected>Seleccione...</option>
-                                                <option value="1">Sencilla</option>
-                                                <option value="2">Doble</option>
-                                                <option value="3">Triple</option>
-                                                <option value="4">Cuadruple</option>
+                                                <option value="Sencilla">Sencilla</option>
+                                                <option value="Doble">Doble</option>
+                                                <option value="Triple">Triple</option>
+                                                <option value="Cuadruple">Cuadruple</option>
                                             </select>
 										</div>
 									</div>    

@@ -75,7 +75,7 @@
                             <a href="nosotros">Nosotros</a>
                         </li>
                         <li>
-                            <a href="#">Cotizaciones especiales</a>
+                            <a href="cotizacion-especial">Cotizaciones especiales</a>
                         </li>
                         <li>
                             <a href="contacto">Contáctanos</a>

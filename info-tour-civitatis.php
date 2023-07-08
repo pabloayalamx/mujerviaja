@@ -290,14 +290,17 @@
 					</div>
 					<div class="box_style_2">
 						<h3>Reserva tu tour<span>Confirmación inmediata</span></h3>
-						<form method="post" action="#" id="check_avail" autocomplete="off">
+						<form method="post" action="datos-compra-civi" autocomplete="off">
 							<input type="hidden" name="idactividad" value="<?php echo $actividad->id; ?>">
+							<input type="hidden" name="nombreActividad" value="<?php echo $actividad->title; ?>">
 							<input type="hidden" name="markup" value="<?php echo $markup; ?>">
 							<input type="hidden" name="currency" value="<?php echo $monedaSeleccionada; ?>">                
-							<input type="hidden" name="precioTotal" id="precioTotal" value="">							
+							<input type="hidden" name="imagen" value="<?php echo $actividad->photos->header[0]->paths->original; ?>">
+							<input type="hidden" name="precioTotal" id="precioTotal" value="">	
+
 							<div class="form-group">
 								<label>Tipo de actividad</label>
-								<select class="form-control" name="categoria" id="categoria" onchange="muestraPrecios(value)">
+								<select class="form-control" name="categoria" id="categoria" onchange="muestraPrecios(value)" required>
 									<option value="0" disabled selected>Selecciona una opción</option>
 									<?php foreach($categoriasTours as $c => $categoriaTour){ ?>
 										<option value="<?php echo $c; ?>"><?php echo $categoriaTour; ?></option>
@@ -322,13 +325,13 @@
 						
 							<div class="form-group">
 								<label>Fecha</label>
-								<input type="text" name="fecha" id="fecha" class="form-control">	
+								<input type="text" name="fecha" id="fecha" class="form-control" required>	
 							</div>
 							
 							<?php if($calendario->hasHours == 1){ ?>
 							<div class="form-group">
 								<label>Horario</label>
-								<select class="form-control" name="actividad" id="actividad">
+								<select class="form-control" name="horario" id="horario" required>
 									<option value="0" selected disabled>Selecciona un horario</option>
 									<?php foreach($calendario->schedule[0]->times as $horario){ 
                                                 if($horario->quotaAvailable == true){
@@ -354,7 +357,8 @@
 							</div>
 							
 							<div class="form-group">
-								<input type="submit" value="Reserva ahora" class="btn_full" id="submit-booking">
+								<button type="submit" class="btn_full">Reserva ahora</button>
+								<!-- <input type="submit" form="check_avail" value="Reserva ahora" class="btn_full" id="submit-booking"> -->
 							</div> 							
 						</form>
 						<hr>
@@ -381,17 +385,6 @@
 
 	<div id="toTop"></div>
 	<!-- Back to top button -->
-
-	<!-- Search Menu -->
-	<div class="search-overlay-menu">
-		<span class="search-overlay-close"><i class="icon_close"></i></span>
-		<form role="search" id="searchform" method="get">
-			<input value="" name="q" type="search" placeholder="Search..." />
-			<button type="submit"><i class="icon-search-6"></i>
-			</button>
-		</form>
-	</div>
-	<!-- End Search Menu -->
 
 	<!-- COMMON SCRIPTS -->
     <?php include("templates/js.php") ?>

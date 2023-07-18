@@ -106,7 +106,7 @@
 				</div>
 				<div class="col-md-7">
 					<h3><?php echo mb_strtoupper($data["nombre"]); ?></h3>
-					<p><?php echo $fn->recortar_cadena($data["descripcion"], 500); ?></p>
+					<p><?php echo $fn->recortar_cadena($data["descripcion"], 200); ?></p>
 					<p>
 						<a href="tour/<?php echo mb_strtolower($data["carpeta_seo"]); ?>/<?php echo $fn->stringToUrl($data["nombre"])."/".$data["id"]; ?>" class="btn_1">Ver tour</a>
 					</p>

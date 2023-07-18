@@ -7,12 +7,12 @@
     $info = new Paquetes();
     $fn = new funciones();
 
-    $nombre = $_GET["nombre"];
-    $apellido = $_GET["apellido"];
-    $telefono = $_GET["telefono"];
+    $nombre      = $_GET["nombre"];
+    $apellido    = $_GET["apellido"];
+    $telefono    = $_GET["telefono"];
     $descripcion = $_GET["descripcion"];
-    $total = $_GET["total"];
-    $email = $_GET["email"];
+    $total       = $_GET["total"];
+    $email       = $_GET["email"];
 
     $formData["nombre"]      = $nombre;
     $formData["apellido"]    = $apellido;

@@ -59,7 +59,7 @@
 				<h1>
                     <?php echo $estatus === 'completed' ? 'SU PAGO SE HA REALIZADO CON ÉXITO' : 'SU PAGO NO PUDO SER PROCESADO'; ?>
                 </h1>
-				<p>"<?php echo $estatus === 'completed' ? 'Felicidades! Prepárate para una experiencia inolvidable' : 'Comunícate con nostros para encontrar una solución'; ?>"</p>
+				<p><?php echo $estatus === 'completed' ? 'Felicidades! Prepárate para una experiencia inolvidable' : 'Comunícate con nostros para encontrar una solución'; ?></p>
 			</div>
 		</div>
 	</section>

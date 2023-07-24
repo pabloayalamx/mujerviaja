@@ -19,20 +19,20 @@
     $estatus                  = $respuesta["estatus"];
     $mensaje                  = $respuesta["mensaje"];
 
-    // if($estatus === 'completed'){
-    //     $formData["autorizacion"] = $autorizacion;
-    //     $formData["tipo"]         = $tipo;
-    //     $formData["monto"]        = $monto;
-    //     $formData["operacion"]    = $idoperacion;    
-    //     $update = $tours->updateReservation($formData);
+    
+    if($estatus === 'completed'){
+        $reservacion = json_decode($_SESSION["reservaCivi"]);
+        $form["idopenpay"] = $idoperacion;
+        $form["cartid"]    = $reservacion->cartid;
+        $update = $tours->confirmaPagoReservaCivitatis($form);
 
 
-    //     //Preparamos envio de correo:          
+        //Preparamos envio de correo:          
 
-    //     //Variables del sitio web
-    //     $cc_email_reservas_uno = $myWebSite["cc_email_reservas_uno"];
-    //     $cc_email_reservas_dos = $myWebSite["cc_email_reservas_dos"];     
-    // }
+        //Variables del sitio web
+        $cc_email_reservas_uno = $myWebSite["cc_email_reservas_uno"];
+        $cc_email_reservas_dos = $myWebSite["cc_email_reservas_dos"];     
+    }
 ?>
 
 <head>

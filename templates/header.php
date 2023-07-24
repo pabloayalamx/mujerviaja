@@ -90,7 +90,7 @@
                             <a href="nosotros">Nosotros</a>
                         </li>
                         <li>
-                            <a href="cotizacion-especial">Cotizaciones especiales</a>
+                            <a href="cotizacion-especial">Cotizaciones <br> especiales</a>
                         </li>
                         <li>
                             <a href="contacto">Contáctanos</a>

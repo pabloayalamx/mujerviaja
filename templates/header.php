@@ -89,7 +89,7 @@
                         <li>
                             <a href="nosotros">Nosotros</a>
                         </li>
-                        <li>
+                        <li class="text-center">
                             <a href="cotizacion-especial">Cotizaciones <br> especiales</a>
                         </li>
                         <li>

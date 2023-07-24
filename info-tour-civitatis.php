@@ -300,7 +300,7 @@
 
 							<div class="form-group">
 								<label>Tipo de actividad</label>
-								<select class="form-control" name="categoria" id="categoria" onchange="muestraPrecios(value)" required>
+								<select class="form-control" name="rate" id="rate" onchange="muestraPrecios(value)" required>
 									<option value="0" disabled selected>Selecciona una opción</option>
 									<?php foreach($categoriasTours as $c => $categoriaTour){ ?>
 										<option value="<?php echo $c; ?>"><?php echo $categoriaTour; ?></option>

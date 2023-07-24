@@ -8,12 +8,33 @@
     $markup      = $_POST["markup"];
     $currency    = $_POST["currency"];
     $precioTotal = $_POST["precioTotal"];
-    $categoria   = $_POST["categoria"];
+    $rateselect  = $_POST["rate"];
     $campo       = $_POST["campo"];
     $cantidad    = $_POST["cantidad"];
     $fecha       = $_POST["fecha"];
     $horario     = $_POST["horario"];  
     $nombreAct   = $_POST["nombreActividad"];
+
+    $form["activityId"] = $idactividad;
+    $form["date"] = $fecha;
+    $form["currency"] = $currency;
+    $form["time"] = $horario;
+
+
+    foreach($campo as $i => $categoria){
+        $categories[$i]["id"] = $categoria;
+        $categories[$i]["quantity"] = $cantidad[$i];
+    }
+    
+
+    $rate["categories"] = $categories;
+    $rate["id"]         = $rateselect;
+    $form["rate"]       = $rate;
+    
+    //Creamos el carrito
+    $response = $tours->addTourCart($form);
+    $cart     = $response->cart;
+    $fields   = $response->fields;
 ?> 
 
 <head>
@@ -51,7 +72,18 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8">
-                    <form id="frmCompra" action="save-data-openpay" method="post">
+                    <form id="frmCompra" action="save-data-openpay-civitatis" method="post">
+                        <input type="hidden" name="cartid" value="<?php echo $cart->cartId; ?>">   
+                        <input type="hidden" name="gtotal" id="gtotal" value="<?php echo $precioTotal; ?>">    
+                        <input type="hidden" name="openpayID" id="openpayID">
+                        <input type="hidden" name="openpayLINK" id="openpayLINK">    
+                        <input type="hidden" name="idformulario" value="<?php echo $fields->items[0]->id; ?>">        
+                        <input type="hidden" name="nombretour" id="nombretour" value="<?php echo $nombreAct; ?>">              
+
+                        <?php foreach($campo as $i => $tipoCampo){ ?>
+                            <input type="hidden" name="campo[]" value="<?php echo $tipoCampo; ?>">
+                            <input type="hidden" name="cantidad[]" value="<?php echo $cantidad[$i]; ?>">
+                        <?php } ?>
                         <h3 class="titulo tituloForm">DATOS DEL TITULAR</h3>
                         <small class="text-danger">TITULAR DE LA TARJETA CON LA QUE SE REALIZARÁ EL PAGO</small>
                         <div>
@@ -118,7 +150,21 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>                                               
+                        </div> 
+                        
+                        <div>
+                            <?php foreach($fields->items[0]->details->booking as $field){ ?>
+                            <div class="row">
+                                <div class="col-md-6">                        
+                                    <div class="form-group mb-5">
+                                        <label for="telefonoTitular"><?php echo $field->labelTranslated; ?></label>
+                                        <input name="valueField[]" id="<?php echo $field->id; ?>" type="<?php echo $field->type; ?>" class="form-control" placeholder="<?php echo $field->labelTranslated; ?>" <?php echo $field->required == true ? 'required' : ''; ?>>
+                                        <input type="hidden" class="campoSolicitado" name="idField[]" value="<?php echo $field->id; ?>">
+                                    </div>
+                                </div>                           
+                            </div>
+                            <?php } ?>                            
+                        </div>
 
                         <div>
                             <h2 class="text-center">¿A dónde enviamos la confirmación de tu reservación?</h2>
@@ -129,7 +175,7 @@
                                 </div>                       
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="button" value="Confirmar reservación" class="btn_full" onclick="getLinkPay()" id="btnPagar">
+                                        <input type="button" value="Confirmar reservación" class="btn_full" onclick="getLinkPayCivitatis()" id="btnPagar">
                                         <button id="btnPagarSend" type="submit" class="d-none">x</button>
                                     </div>
                                 </div>                        
@@ -137,87 +183,6 @@
                     </form>                    
 				</div>
 				<!-- End Col -->
-
-				<aside class="col-md-4">
-					<div class="box_style_2">
-						<form method="post" action="assets/check_avail.php" id="check_avail" autocomplete="off">
-							<input type="hidden" id="tour_name" name="tour_name" value="General Louvre Tour">
-							<div class="form-group">
-								<label>Fecha del viaje</label>
-                                <?php echo $fn->fechaAbreviada($fecha); ?>
-                                <input type="hidden" name="fecha" id="fecha_viaje_input" class="form-control" value="<?php echo $fecha; ?>" disabled>
-							</div>  
-     
-                                                                         
-							<table id="tickets" class="table">
-								<thead>
-									<tr>
-										<th>Tickets</th>
-										<th>Quantity</th>
-										<th class="text-center"><span class="subtotal">Subtotal</span></th>
-									</tr>
-								</thead>
-								<tfoot>
-									<tr class="total_row">
-										<td><strong>TOTAL</strong></td>
-										<td colspan="2" class="text-right">
-                                            <input name="total" class="text-right" id="total" value="10" disabled>                                              											
-										</td>
-									</tr>
-								</tfoot>
-								<tbody>
-									<tr>
-										<td>
-                                            <strong>Adultos</strong>
-                                            <a href="#" class="tooltip-1" data-placement="top" title="" data-original-title="A partir de 16 años">
-                                                <sup class="icon-info-4"></sup>
-                                            </a>
-											<span id="priceAdulto" class="price">$0</span>
-										</td>
-										<td>
-											<div class="styled-select">
-												<select class="form-control" name="adultos" id="adultos" disabled>
-                                                    <option value=""></option>
-												</select>
-											</div>
-										</td>
-										<td class="text-center"><span class="subtotal subtotalAdulto">10</span></td>
-									</tr>
-									<tr>
-										<td>
-                                            <strong>Menores</strong>
-                                            <a href="#" class="tooltip-1" data-placement="top" title="" data-original-title="Entre 3 y 15 años">
-                                                <sup class="icon-info-4"></sup>
-                                            </a>
-                                            <span id="priceMenor" class="price">$0</span>
-										</td>
-										<td>
-											<div class="styled-select">
-												<select class="form-control" name="menores" id="menores" disabled>
-                                                    <option value=""></option>
-												</select>
-											</div>
-										</td>
-										<td class="text-center"><span class="subtotal subtotalMenor">10</span>
-										</td>
-									</tr>
-									<tr>
-										<td><strong>Infantes</strong> <span id="priceInfante" class="price">$0</span> </td>
-										<td>
-											<div class="styled-select">
-												<select class="form-control" name="infantes" id="infantes" disabled>
-                                                    <option value=""></option>
-												</select>
-											</div>
-										</td>
-										<td class="text-center"><span class="subtotal subtotalInfante">10</span></td>
-									</tr>
-								</tbody>
-							</table>                            
-						</form>
-						<hr>
-					</div>
-				</aside>
 			</div>
 			<!-- End row -->
 		</div>

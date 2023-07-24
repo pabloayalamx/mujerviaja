@@ -680,10 +680,41 @@ function getLinkPay(){
         } 
     }else{
         sendFormCompra();
-    }
+    }  
+}
 
-    
-  
+function getLinkPayCivitatis(){
+    $("#btnPagar").val("Procesando, por favor espera...").attr("disabled", "disabled");
+    var id          = $("#openpayID").val();
+    var nombre      = $("#nombreTitular").val();
+    var apellido    = $("#apellidoTitular").val();
+    var telefono    = $("#telefonoTitular").val();
+    var descripcion = "Paquete de viaje a :"+$("#nombretour").val();
+    var email       = $("#email").val();
+    var total       = $("#gtotal").val();
+
+    if(nombre != '' && apellido != '' && telefono != '' && email != ''){
+        if(id === ''){
+            $.ajax({
+                data: {"nombre":nombre, "apellido":apellido, "telefono":telefono, "descripcion":descripcion, "total":total, "email":email},
+                type: "GET",
+                dataType: "json",
+                url: "getLinkOpenpayCivi",
+            })
+             .done(function(response) {
+                $("#openpayID").val(response.openpayID);
+                $("#openpayLINK").val(response.openpayLINK);
+                sendFormCompra(); //envio
+             })
+             .fail(function() {
+        
+            });  
+        }else{
+            sendFormCompra();
+        } 
+    }else{
+        sendFormCompra();
+    }  
 }
 
 function changeCurrency(monedaSeleccionada){

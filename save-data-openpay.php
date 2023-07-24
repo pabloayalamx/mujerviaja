@@ -167,7 +167,6 @@
     }   
 
     $reservacion = $tours->addReservation($formReserva);     
-    print_r($reservacion);
         
     if($aplicapromo == 1){
         if($descuento_frm == 1){

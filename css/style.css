@@ -3336,6 +3336,9 @@ ul.list_ok li:before {
 .tituloCotizacion{
 	color: #DE5871;
 }
+.text-center{
+	text-align: center;
+}
 @media (max-width: 400px) {
 	.tabContent{
 		height: 130px	

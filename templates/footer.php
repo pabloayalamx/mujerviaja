@@ -19,7 +19,6 @@
                 <li><a href="nosotros">Nosotros</a></li>
                 <li><a href="faqs">FAQ</a></li>
                 <li><a href="login">Login</a></li>
-                <li><a href="vende-con-nosotros">Vende con nosotros</a></li>
                 <li><a href="terminos-condiciones">Términos y condiciones</a></li>
                 <li><a href="aviso-privacidad">Aviso de privacidad</a></li>
             </ul>

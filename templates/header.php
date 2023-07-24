@@ -65,6 +65,21 @@
                                     <?php } ?>
                                 </ul>
                         </li>
+                        <li class="submenu">
+                            <a href="javascript:void(0);" class="show-submenu">Circuitos</a>
+                                <ul>
+                                    <li><a href="https://www.megatravel.com.mx/tools/vi.php?Dest=1" target="_blank">Europa</a></li>
+                                    <li><a href="https://www.megatravel.com.mx/tools/vi.php?Dest=5" target="_blank">África</a></li>
+                                    <li><a href="https://www.megatravel.com.mx/tools/vi.php?Dest=6" target="_blank">Pacífico</a></li>
+                                    <li><a href="https://www.megatravel.com.mx/tools/vi.php?Dest=7" target="_blank">Sudámerica</a></li>
+                                    <li><a href="https://www.megatravel.com.mx/tools/vi.php?Dest=2" target="_blank">Medio oriente</a></li>
+                                    <li><a href="https://www.megatravel.com.mx/tools/vi.php?Dest=9" target="_blank">Centro América</a></li>
+                                    <li><a href="https://www.megatravel.com.mx/tools/vi.php?Dest=10" target="_blank">Cuba y el Caribe</a></li>
+                                    <li><a href="https://www.megatravel.com.mx/tools/vi.php?Dest=13" target="_blank">Cruceros</a></li>
+                                    <li><a href="https://www.megatravel.com.mx/tools/vi.php?Dest=3" target="_blank">Canadá</a></li>
+                                    <li><a href="https://www.megatravel.com.mx/tools/vi.php?Dest=8" target="_blank">Estados Unidos</a></li>
+                                </ul>
+                        </li>                        
                         <li>
                             <a href="tours">Tours</a>
                         </li>

@@ -8,6 +8,6 @@ $openpayLINK = $_POST["openpayLINK"];
 $_SESSION["reservaCivi"] = $valoresCivi;
 
 $reserva = $tours->addReserva($_POST);
-// header('Location: '.$openpayLINK);
+header('Location: '.$openpayLINK);
 
 ?>

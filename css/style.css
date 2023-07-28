@@ -3330,14 +3330,46 @@ ul.list_ok li:before {
 .mt-0{
 	margin-top: 0 !important;
 }
+.mt-2{
+	margin-top: 20px;
+}
 .azul{
 	background-color: antiquewhite;
 }
 .tituloCotizacion{
 	color: #DE5871;
 }
-.text-center{
-	text-align: center;
+
+.tablePrecios .text-center{
+	text-align: center !important;
+}
+.tablePrecios thead td, .tablePrecios tfoot td{
+	background: #f1f1f1;
+}
+.tablePrecios tbody td{
+	text-align: left;
+	vertical-align: middle !important;
+}
+.tablePrecios h3{
+	color: #CC0066;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+.tablePrecios ul{
+    margin-left: 0px;
+    padding-left: 0;
+    margin-top: 15px;
+}
+.tablePrecios li{
+	list-style: none;
+}
+.tablePrecios tbody tr:nth-child(odd) {
+    background-color: lemonchiffon;
+}
+.tablePrecios button{
+    border: none;
+    padding: 5px 16px;
+    width: 100px;	
 }
 @media (max-width: 400px) {
 	.tabContent{

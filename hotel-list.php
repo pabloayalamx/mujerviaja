@@ -326,7 +326,7 @@
                     
                     <h5>Checkin: <?php echo $checkin; ?> | Checkout <?php echo $checkout; ?></h5>               
 					<p>
-						<a href="tour/" class="btn_1">Ver habitaciones</a>
+						<a href="hotel/<?php echo $fn->stringToUrl($hotelName)."/".$link; ?>" class="btn_1">Ver habitaciones</a>
 					</p>
 				</div>
 			</div>

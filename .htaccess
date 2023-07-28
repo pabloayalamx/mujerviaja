@@ -10,5 +10,6 @@ RewriteRule ^tour/(.+)/(.+)/(.+)$ info-tour.php?tour=$3
 RewriteRule ^actividad/(.+)/(.+)$ info-tour-civitatis.php?tour=$2
 RewriteRule ^experiencias/(.+)/(.+)$ list-experiences.php?categoria=$2
 RewriteRule ^agencia/(.+)/(.+)$ index.php?affiliate=$1
+RewriteRule ^hotel/(.+)/(.+)/(.+)/(.+)/(.+)/(.+)/(.+)/(.+)/(.+)$ hotel-details?nombrehotel=$1&idhotel=$2&checkin=$3&checkout=$4&adultos=$5&menores=$6&desde=$7&nacionalidad=$8&markup=$9
 
 #ErrorDocument 404 enlace...

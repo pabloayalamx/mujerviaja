@@ -251,5 +251,31 @@ class funciones
 
         return $nuevo;
 
-    }      
+    }  
+    
+    public function restaFechas($fecha, $dias){
+        $date_now = $fecha;
+        $date_past = strtotime('-'.$dias.' day', strtotime($date_now));
+        $date_past = date('Y-m-d', $date_past);
+        return $date_past;
+    }
+
+    public function sumaFechas($fecha, $dias){
+        $date_now = $fecha;
+        $date_past = strtotime('+'.$dias.' day', strtotime($date_now));
+        $date_past = date('Y-m-d', $date_past);
+        return $date_past;
+    }   
+    
+    public function fechaYearOut($fecha){
+        //YYYY-MM-DD
+        $fechas = explode('-', $fecha);
+        $y = $fechas[0];
+        $m = $fechas[1];
+        $d = $fechas[2];
+
+        $mes = $this->fnMes($m);
+        return $d."/".$mes["comp"];        
+    }
+    
 }

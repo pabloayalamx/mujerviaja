@@ -11,6 +11,6 @@
     $reserva = $hotels->addReservaHotelera($_POST);
     $_SESSION["reservaGuardada"] = $reserva;
 
-    // header('Location: '.$openpayLINK);    
+    header('Location: '.$openpayLINK);    
 
 ?>

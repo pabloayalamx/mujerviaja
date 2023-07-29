@@ -22,6 +22,7 @@
     $formRate["montopagado"]   = $respuesta["monto"];
 
     if($estatus === 'completed'){
+        echo "Si se completo";
         $reservafinal = $hotels->requestReservation($formRate);
     }
        

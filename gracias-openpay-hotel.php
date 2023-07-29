@@ -17,8 +17,12 @@
     $data["transaccion"] = $idoperacion;
     $respuesta = $tours->getStatusPay($data);   
     
-    print_r($respuesta);
+    $estatus                   = $respuesta["estatus"];
+    $formRate["autorizacion"]  = $respuesta["autorizacion"];
+    $formRate["montopagado"]   = $respuesta["monto"];
 
-    // $reservafinal = $hotels->requestReservation($formRate);
-
+    if($estatus === 'completed'){
+        $reservafinal = $hotels->requestReservation($formRate);
+    }
+       
 ?>

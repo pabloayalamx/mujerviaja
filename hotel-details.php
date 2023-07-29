@@ -228,11 +228,12 @@ $hotelAds     = $detHotel["hotelAds"];
 												$fx = $fn->restaFechas($fecha[0], 1);
 											}
 
-											$linkForm = "hash=".$data["book_hash"]."&id=".$reserva["id"]."&checkin=".$reserva["checkin"]."&checkout=".$reserva["checkout"];
+											$hotelID = $reserva["id"];
+											$linkForm = "hash=".$data["book_hash"]."&id=".$hotelID."&checkin=".$reserva["checkin"]."&checkout=".$reserva["checkout"];
 											$linkForm.= "&adults=".$reserva["guests"][0]["adults"]."&menores=".$menores."&fx=".$fx;
 											$linkForm.= "&room=".$data["room_data_trans"]["main_name"]."&pr=".$totalPrecio;   
 											$linkForm.= "&meal=".$data["meal"]."&cur=".$monedaSeleccionada."&hotbd=".$idhotelBD."&residency=".$reserva["residency"]."&lan=".$reserva["language"];
-											$linkForm.= "&hotelName=".$infoHotel["hotelName"]."&foto=".$imgPral;
+											$linkForm.= "&hotelName=".$infoHotel["hotelName"]."&foto=".$imgPral."&marte=".$comision;
 										?>											
 											<a href="datos-compra-hotel?<?php echo $linkForm; ?>">
 												<button type="button" class="btn-primary">ELEGIR</button>

@@ -287,7 +287,7 @@
                             <sup>$</sup><?php echo number_format($totalPublico, 2, '.', ','); ?> <small><?php echo $monedaSeleccionada; ?></small>
 						</div>
 						<div class="img_container">
-							<a href="tour/">
+							<a href="hotel/<?php echo $fn->stringToUrl($hotelName)."/".$link; ?>">
 								<img src="<?php echo $imgLink ?>" width="800" height="533" class="img-responsive img-responsive-height" alt="<?php echo $hotelName; ?>">
 								<div class="short_info">
                                     <em>

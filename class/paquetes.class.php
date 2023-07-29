@@ -685,6 +685,80 @@ class Paquetes
         } 
     }
 
+    public function addReservaHotelera($data){
+        $url = $_SERVER['HTTP_HOST'];
+        
+        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/saveReservation' : 'https://app.bookingtrap.com/api/saveReservation';
+        
+        $request = new HTTP_Request2();
+
+        $request->setUrl($path);
+        $request->setMethod(HTTP_Request2::METHOD_POST);
+
+        $request->setConfig(array(
+            'follow_redirects' => TRUE
+        ));
+        $request->setHeader(array(
+            'Content-Type' => 'application/json',
+            'Authorization' => $this->token,
+            'Cookie' => $this->cookie
+        ));   
+
+        $request->setBody(json_encode($data));
+        
+        try {
+            $response = $request->send();
+            if ($response->getStatus() == 200 || $response->getStatus() == 201) {
+                $respuesta =  (array) json_decode($response->getBody(), true);
+                return $respuesta;                             
+            }else {
+                echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+                $response->getReasonPhrase();
+            }
+        }
+        catch(HTTP_Request2_Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+        } 
+    }
+
+    public function requestReservation($data){
+        $url = $_SERVER['HTTP_HOST'];
+        
+        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/requestHotelReservation' : 'https://app.bookingtrap.com/api/requestHotelReservation';
+        
+        $request = new HTTP_Request2();
+
+        $request->setUrl($path);
+        $request->setMethod(HTTP_Request2::METHOD_POST);
+
+        $request->setConfig(array(
+            'follow_redirects' => TRUE
+        ));
+        $request->setHeader(array(
+            'Content-Type' => 'application/json',
+            'Authorization' => $this->token,
+            'Cookie' => $this->cookie
+        ));   
+
+        $request->setBody(json_encode($data));
+        
+        try {
+            $response = $request->send();
+            if ($response->getStatus() == 200 || $response->getStatus() == 201) {
+                // return $response->getBody();
+                $respuesta =  (array) json_decode($response->getBody(), true);
+                return $respuesta;                             
+            }else {
+                echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+                $response->getReasonPhrase();
+            }
+        }
+        catch(HTTP_Request2_Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+        } 
+    }
+    
+
     public function getHotelsByRegion($data){
         $url = $_SERVER['HTTP_HOST'];
         

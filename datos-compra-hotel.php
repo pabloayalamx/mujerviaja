@@ -18,7 +18,9 @@
     $lan       = $_GET["lan"];
     $hotelName = $_GET["hotelName"];
     $imagen    = $_GET["foto"];
-
+    $idhotelbd = $_GET["hotbd"];
+    $markup    = $_GET["marte"];
+    
 ?> 
 
 <head>
@@ -61,6 +63,25 @@
                         <input type="hidden" name="openpayID" id="openpayID">
                         <input type="hidden" name="openpayLINK" id="openpayLINK">
                         <input type="hidden" name="gtotal" id="gtotal" value="<?php echo $pr; ?>">
+
+                        <input type="hidden" name="marte" value="<?php echo $markup; ?>">
+                        <input type="hidden" name="hash" value="<?php echo $hash; ?>">
+                        <input type="hidden" name="idratehawk" value="<?php echo $id; ?>">
+                        <input type="hidden" name="checkin" value="<?php echo $checkin; ?>">
+                        <input type="hidden" name="checkout" value="<?php echo $checkout; ?>">
+                        <input type="hidden" name="adults" value="<?php echo $adults; ?>">
+                        <input type="hidden" name="menores" value="<?php echo $menores;?>">
+                        <input type="hidden" name="fx" value="<?php echo $fx; ?>">
+                        <input type="hidden" name="room" value="<?php echo $room;  ?>">
+                        <input type="hidden" name="pr" value="<?php echo $pr;  ?>">
+                        <input type="hidden" name="meal" value="<?php echo $meal;  ?>">
+                        <input type="hidden" name="cur" value="<?php echo $cur;  ?>">
+                        <input type="hidden" name="residency" value="<?php echo $residency;  ?>">
+                        <input type="hidden" name="lan" value="<?php echo $lan; ?>">
+                        <input type="hidden" name="hotelName" value="<?php echo $hotelName; ?>">
+                        <input type="hidden" name="hotelbd" value="<?php echo $idhotelbd; ?>">
+                        <input type="hidden" name="user_ip" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>">
+
                         <h3 class="titulo tituloForm">DATOS DEL TITULAR</h3>
                         <small class="text-danger">TITULAR DE LA TARJETA CON LA QUE SE REALIZARÁ EL PAGO</small>
                         <div>

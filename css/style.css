@@ -1247,6 +1247,11 @@ a#phone_2 {
 	font-size: 16px;
 }
 
+.feature-box-info small p{
+	margin-bottom: 0 !important;
+	padding-bottom: 0 !important;
+}
+
 .feature-box .feature-box-icon {
 	border: 3px double #ededed;
 	border-radius: 45px;

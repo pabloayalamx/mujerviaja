@@ -151,6 +151,14 @@
 													<?php echo $actividad->infoVoucher; ?>
 												</small>
 											</h4>
+
+											<h4>
+												Mínimo de personas para la actividad <br>
+												<small>
+													<?php echo $actividad->minimumPaxPerActivity; ?>
+													<?php echo $actividad->minimumPaxPerActivity > 1 ? ' personas, si no se completa la cantidad de personas nos comunicaremos contigo para ofrecerte otras alternativas' : 'Persona'; ?>
+												</small>											
+											</h4>
 										</div>
 									</div>
 								</div>		

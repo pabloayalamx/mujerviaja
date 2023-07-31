@@ -335,7 +335,7 @@
 									<option value="0" selected disabled>Selecciona un horario</option>
 									<?php foreach($calendario->schedule[0]->times as $horario){ 
                                                 if($horario->quotaAvailable == true){
-                                                    if($horario["quota"] > 0){
+                                                    if($horario->quota > 0){
                                                         $available = 1;
                                                     }else{
                                                         $available = 0;

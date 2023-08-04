@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include("class/paquetes.class.php");
     include("class/utilities.class.php");
 
@@ -7,13 +8,28 @@
     $info = new Paquetes();
     $fn = new funciones();
 
-    $idtour = $_GET["tour"];
-    $fecha = strval($_GET["fecha"]);
-    $dias = $_GET["dias"];
+    $tours = new Paquetes();
+    $hotels = new Paquetes();
+    $fn = new funciones(); 
+    
+    //Monedas
+    $monedas       = $tours->monedas();
+    $monedaDefault = $monedas["data"]["0"]["iso"];
+    $tipoCambio    = $monedas["data"]["0"]["tipo_cambio"];
+
+    if(isset($_SESSION["moneda"])){
+        $monedaSeleccionada = $_SESSION["moneda"];
+    }else{
+        $monedaSeleccionada = $monedas["data"]["0"]["iso"];
+    }
+
+    $idtour       = $_GET["tour"];
+    $fecha        = strval($_GET["fecha"]);
+    $dias         = $_GET["dias"];
     $mostrarpromo = $_GET["mostrar"];
-    $booking = $_GET["booking"];
-    $travel = $_GET["travel"];
-    $clase = $_GET["clase"];
+    $booking      = $_GET["booking"];
+    $travel       = $_GET["travel"];
+    $clase        = $_GET["clase"];
 
     if(isset($_GET["generales"])){
         $grales = 1;
@@ -65,7 +81,9 @@
             </tr>
         </thead>
         <tbody>
-            <?php if($promocion != 0 && $mostrarpromo == 1){ ?>  
+            <?php if($promocion != 0 && $mostrarpromo == 1){ 
+                //Tarifas promocionales
+                ?>  
                 <tr>
                     <td style="background-color: #c7dff2; color:black;">
                         <p class="text-center precios"> 
@@ -80,16 +98,20 @@
                                             $precioAdulto = $precios[0]["adulto_sencilla"] - $promocion[0]["valor_promocion"];
                                         }
 
-                                        echo '<span class="text-decoration-line-through text-danger">$ '.$fn->moneda($precios[0]["adulto_sencilla"]).' MXN</span><br>';
-                                        echo '<span class="">$ '.$fn->moneda($precioAdulto).' MXN</span><br>';
+                                        $precioAdultoNormal = $fn->precio($precios[0]["adulto_sencilla"], $precios[0]["iso"], $monedaSeleccionada, $monedaDefault, $monedas);                                            
+                                        $precioAdulto  = $fn->precio($precioAdulto, $precios[0]["iso"], $monedaSeleccionada, $monedaDefault, $monedas);                                            
+
+                                        echo '<span class="text-decoration-line-through text-danger">$ '.$precioAdultoNormal["precioformato"].' '.$precioAdultoNormal["iso"].'</span><br>';
+                                        echo '<span class="">$ '.$precioAdulto["precioformato"]." ".$precioAdulto["iso"].'</span><br>';
                                     }else{
-                                        echo '$ '.$fn->moneda($precios[0]["adulto_sencilla"]).' MXN';
+                                        echo "$ ".$precioAdulto["precioformato"]." ".$precioAdulto["iso"];
+                                        // echo '$ '.$fn->moneda($precios[0]["adulto_sencilla"]).' MXN';
                                     }
                                 ?>
                             </label>
                         </p>
-                        <input type="hidden" id="adulto_precio" value="<?php echo $precios[0]["adulto_sencilla"]; ?>">
-                        <input type="hidden" id="adulto_precio_promo" value="<?php echo $precioAdulto; ?>">
+                        <input type="hidden" id="adulto_precio" value="<?php echo $precioAdultoNormal["precioformato"]; ?>">
+                        <input type="hidden" id="adulto_precio_promo" value="<?php echo $precioAdulto["precioformato"]; ?>">
                     </td>
 
                     <td style="background-color: #c7dff2; color:black;">
@@ -105,15 +127,19 @@
                                         $precioMenor = $precios[0]["menor_sencilla"] - $promocion[0]["valor_promocion"];
                                     }
 
-                                    echo '<span class="text-decoration-line-through text-danger">$ '.$fn->moneda($precios[0]["menor_sencilla"]).' MXN</span><br>';
-                                    echo '<span class="">$ '.$fn->moneda($precioMenor).' MXN</span><br>';
+                                    $precioMenorNormal = $fn->precio($precios[0]["menor_sencilla"], $precios[0]["iso"], $monedaSeleccionada, $monedaDefault, $monedas);                                            
+                                    $precioMenor  = $fn->precio($precioMenor, $precios[0]["iso"], $monedaSeleccionada, $monedaDefault, $monedas);  
+
+                                    echo '<span class="text-decoration-line-through text-danger">$ '.$precioMenorNormal["precioformato"].' '.$precioMenorNormal["iso"].'</span><br>';
+                                    echo '<span class="">$ '.$precioMenor["precioformato"].' '.$precioMenor["iso"].'</span><br>';
                                 }else{
-                                    echo '$ '.$fn->moneda($precios[0]["menor_sencilla"]).' MXN';
+                                    $precioMenor  = $fn->precio($precios[0]["menor_sencilla"], $precios[0]["iso"], $monedaSeleccionada, $monedaDefault, $monedas);  
+                                    echo "$ ".$preciomenor["precioformato"]." ".$preciomenor["iso"];
                                 }
                             ?>
                         </label></p>
-                        <input type="hidden" id="menor_precio" value="<?php echo $precios[0]["menor_sencilla"]; ?>">
-                        <input type="hidden" id="menor_precio_promo" value="<?php echo $precioMenor; ?>">
+                        <input type="hidden" id="menor_precio" value="<?php echo $precioMenorNormal["preciosimple"] ?>">
+                        <input type="hidden" id="menor_precio_promo" value="<?php echo $precioMenor["preciosimple"]; ?>">
                     </td>
 
                     <td style="background-color: #c7dff2; color:black;">
@@ -129,15 +155,19 @@
                                         $precioInfante = $precios[0]["infante_sencilla"] - $promocion[0]["valor_promocion"];
                                     }
 
-                                    echo '<span class="text-decoration-line-through text-danger">$ '.$fn->moneda($precios[0]["infante_sencilla"]).' MXN</span><br>';
-                                    echo '<span class="">$ '.$fn->moneda($precioInfante).' MXN</span><br>';
+                                    $precioInfanteNormal = $fn->precio($precios[0]["infante_sencilla"], $precios[0]["iso"], $monedaSeleccionada, $monedaDefault, $monedas);                                            
+                                    $precioInfante  = $fn->precio($precioInfante, $precios[0]["iso"], $monedaSeleccionada, $monedaDefault, $monedas); 
+                                    
+                                    echo '<span class="text-decoration-line-through text-danger">$ '.$precioInfanteNormal["precioformato"].' '.$precioInfanteNormal["iso"].'</span><br>';
+                                    echo '<span class="">$ '.$precioInfante["precioformato"].' '.$precioInfante["iso"].'</span><br>';                                    
                                 }else{
-                                    echo '$ '.$fn->moneda($precios[0]["menor_sencilla"]).' MXN';
+                                    $precioInfante  = $fn->precio($precios[0]["infante_sencilla"], $precios[0]["iso"], $monedaSeleccionada, $monedaDefault, $monedas);  
+                                    echo "$ ".$precioInfante["precioformato"]." ".$precioInfante["iso"];
                                 }
                             ?>                                
                             </label></p>
-                        <input type="hidden" id="infante_precio" value="<?php echo $precios[0]["infante_sencilla"]; ?>">
-                        <input type="hidden" id="infante_precio_promo" value="<?php echo $precioInfante; ?>">
+                        <input type="hidden" id="infante_precio" value="<?php echo $precioInfanteNormal["preciosimple"]; ?>">
+                        <input type="hidden" id="infante_precio_promo" value="<?php echo $precioInfante["preciosimple"]; ?>">
                     </td>
                 </tr> 
                 <tr>
@@ -146,21 +176,26 @@
                         <?php echo "<br>".$txtFechaPromo; ?>
                     </td>
                 </tr>                                
-            <?php }else{ ?>   
+            <?php }else{ 
+                    //NO TIENE PROMOCION
+                    $precioAdulto  = $fn->precio($precios[0]["adulto_sencilla"], $precios[0]["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
+                    $precioMenor   = $fn->precio($precios[0]["menor_sencilla"], $precios[0]["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
+                    $precioInfante = $fn->precio($precios[0]["infante_sencilla"], $precios[0]["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
+                ?>   
                 <tr>
                     <td style="background-color: #c7dff2; color:black;">
-                        <p class="text-center precios">$ <label id="menorescostoscuadruple_1"><?php echo $fn->moneda($precios[0]["adulto_sencilla"]) ?></label> MXN</p>
-                        <input type="hidden" id="adulto_precio" value="<?php echo $precios[0]["adulto_sencilla"]; ?>">
+                        <p class="text-center precios">$ <label id="menorescostoscuadruple_1"><?php echo $precioAdulto["precioformato"]; ?></label><?php echo $precioAdulto["iso"]; ?></p>
+                        <input type="hidden" id="adulto_precio" value="<?php echo $precioAdulto["preciosimple"]; ?>">
                     </td>
 
                     <td style="background-color: #c7dff2; color:black;">
-                        <p class="text-center precios">$ <label id="menorescostostriple_1"><?php echo $fn->moneda($precios[0]["menor_sencilla"]) ?></label> MXN</p>
-                        <input type="hidden" id="menor_precio" value="<?php echo $precios[0]["menor_sencilla"]; ?>">
+                        <p class="text-center precios">$ <label id="menorescostostriple_1"><?php echo $precioMenor["precioformato"]; ?></label> <?php echo $precioMenor["iso"]; ?></p>
+                        <input type="hidden" id="menor_precio" value="<?php echo $precioMenor["preciosimple"]; ?>">
                     </td>
 
                     <td style="background-color: #c7dff2; color:black;">
-                        <p class="text-center precios">$ <label id="menorescostosdoble_1"><?php echo $fn->moneda($precios[0]["infante_sencilla"]) ?></label> MXN</p>
-                        <input type="hidden" id="infante_precio" value="<?php echo $precios[0]["infante_sencilla"]; ?>">
+                        <p class="text-center precios">$ <label id="menorescostosdoble_1"><?php echo $precioInfante["precioformato"]; ?></label> <?php echo $precioInfante["iso"]; ?></p>
+                        <input type="hidden" id="infante_precio" value="<?php echo $precioInfante["preciosimple"]; ?>">
                     </td>
                 </tr>                  
             <?php } ?>                                     

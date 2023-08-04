@@ -948,7 +948,6 @@
                 },                
                 onSelect: function(dateText) {
                     $("#contieneprecios").empty();
-                    $("#loadingPrices").removeClass("d-none");
                     $("#fechaviaje").val(dateText);
 
                     $("#adultos").val(0);

@@ -151,15 +151,14 @@
 
 			<hr>
 
-			<div class="main_title_2">
+			<!-- <div class="main_title_2">
 				<h3>Nuestro <span>equipo</span> esta para servirte</h3>
 				<p>
 					Sólo contáctanos y hagámos realidad tu viaje.
 				</p>
-			</div>
+			</div> -->
 
-			<!--Team Carousel -->
-			<div class="owl-carousel owl-theme team-carousel add_bottom_30">
+			<!-- <div class="owl-carousel owl-theme team-carousel add_bottom_30">
 
 				<div class="team-item">
 					<div class="team-item-img">
@@ -265,7 +264,7 @@
 					</div>
 				</div>
 
-			</div>
+			</div> -->
 			<!--End Team Carousel-->
 
 		</div>

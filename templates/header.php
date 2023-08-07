@@ -68,7 +68,7 @@
                         <li class="submenu">
                             <a href="javascript:void(0);" class="show-submenu">Circuitos</a>
                                 <ul>
-                                    <li><a href="https://www.megatravel.com.mx/tools/vi.php?Dest=1" target="_blank">Europa</a></li>
+                                    <li><a href="circuitos-europa" target="_blank">Europa</a></li>
                                     <li><a href="https://www.megatravel.com.mx/tools/vi.php?Dest=5" target="_blank">África</a></li>
                                     <li><a href="https://www.megatravel.com.mx/tools/vi.php?Dest=6" target="_blank">Pacífico</a></li>
                                     <li><a href="https://www.megatravel.com.mx/tools/vi.php?Dest=7" target="_blank">Sudámerica</a></li>

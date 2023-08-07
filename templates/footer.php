@@ -23,18 +23,12 @@
                 <li><a href="aviso-privacidad">Aviso de privacidad</a></li>
             </ul>
         </div>
-        <div class="col-md-4 col-sm-6">
+        <!-- <div class="col-md-4 col-sm-6">
             <h3>Dirección</h3>
             <p>
                 Dirección de la agencia de viajes
             </p>
-            <!-- <div class="latest-tweets" data-number="10" data-username="ansonika" data-mode="fade" data-pager="false" data-nextselector=".tweets-next" data-prevselector=".tweets-prev" data-adaptiveheight="true">
-            </div>
-            <div class="tweet-control">
-                <div class="tweets-prev"></div>
-                <div class="tweets-next"></div>
-            </div> -->
-        </div>
+        </div> -->
 
         <div class="col-md-3 col-sm-12">
             <h3>Newsletter</h3>

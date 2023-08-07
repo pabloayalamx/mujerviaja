@@ -42,8 +42,8 @@
 
 			<div id="bg_profile">
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-                        <iframe src="https://www.megatravel.com.mx/tools/vi.php?Dest=1" frameborder="0"></iframe>
+					<div class="col-md-12">
+                        <iframe src="https://www.megatravel.com.mx/tools/vi.php?Dest=1" frameborder="0" style="min-height: 1200px;"></iframe>
 					</div>
 					<!--end col -->
 				</div>

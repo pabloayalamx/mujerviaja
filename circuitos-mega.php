@@ -2,10 +2,13 @@
 <?php 
     include("templates/language.php"); 
     include("class/allclass.php"); 
+	$destino = $_GET["destino"];
+	$nombre  = $_GET["nombre"];
 ?>   
 
 <head>
-    <title>Demo 1 | BookingTrap</title>    
+	<base href="<?php echo $fn->baseMeta(); ?>">	
+    <title>Circuitos</title>    
     <meta name="description" content="">
     <meta name="keywords" content="">	
     <?php include("templates/head.php"); ?>
@@ -21,10 +24,10 @@
 	<!-- End Header 1-->
 
 	<!-- SubHeader =============================================== -->
-	<section class="parallax_window_in" data-parallax="scroll" data-image-src="img/sub_header_about.jpg" data-natural-width="1400" data-natural-height="470">
+	<section class="parallax_window_in" data-parallax="scroll" data-image-src="img/tours.jpg" data-natural-width="1400" data-natural-height="470">
 		<div id="sub_content_in">
 			<div id="animate_intro">
-				<h1>Circuitos en Europa</h1>
+				<h1>Circuitos en <?php echo $nombre; ?></h1>
 			</div>
 		</div>
 	</section>

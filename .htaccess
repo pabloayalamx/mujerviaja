@@ -6,6 +6,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)$ $1.php
 
+RewriteRule ^circuitos/(.+)/(.+)/(.+)$ circuitos-mega.php?destino=$3&nombre=$2
 RewriteRule ^tour/(.+)/(.+)/(.+)$ info-tour.php?tour=$3
 RewriteRule ^actividad/(.+)/(.+)$ info-tour-civitatis.php?tour=$2
 RewriteRule ^experiencias/(.+)/(.+)$ list-experiences.php?categoria=$2

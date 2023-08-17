@@ -548,6 +548,39 @@ class Paquetes
         }          
     }     
 
+    public function circuitosMegaTravel(){
+        $url = $_SERVER['HTTP_HOST'];
+        
+        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/megatravel' : 'https://app.bookingtrap.com/api/megatravel';
+        
+        $request = new HTTP_Request2();
+
+        $request->setUrl($path);
+        $request->setMethod(HTTP_Request2::METHOD_GET);
+
+        $request->setConfig(array(
+            'follow_redirects' => TRUE
+        ));
+        $request->setHeader(array(
+            'Authorization' => $this->token,
+            'Cookie' => $this->cookie
+        ));   
+        
+        try {
+            $response = $request->send();
+            if ($response->getStatus() == 200) {
+                $respuesta =  (array) json_decode($response->getBody(), true);  
+                return $respuesta;                 
+            }else {
+                echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+                $response->getReasonPhrase();
+            }
+        }
+        catch(HTTP_Request2_Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+        }          
+    }     
+
     public function galeria(){
         $url = $_SERVER['HTTP_HOST'];
         

@@ -61,7 +61,7 @@
                                 <a href="javascript:void(0);" class="show-submenu">Circuitos</a>
                                     <ul>
                                         <?php foreach($megatravel as $mega){ ?>
-                                            <li><a href="circuitos/<?php echo $fn->reemplaza_espacios($mega["nombre"]); ?>/<?php echo $mega["nombre"]; ?>/<?php echo $mega["id_destino"]; ?>"><?php echo $mega["nombre"]; ?></a></li>
+                                            <li><a href="circuitos/<?php echo $fn->reemplaza_espacios($mega["nombre"]); ?>/<?php echo urlencode($mega["nombre"]); ?>/<?php echo $mega["id_destino"]; ?>"><?php echo $mega["nombre"]; ?></a></li>
                                         <?php } ?>
                                     </ul>
                             </li>                            

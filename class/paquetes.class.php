@@ -108,6 +108,38 @@ class Paquetes
         }          
     }
 
+    public function agregarContacto($data){
+        $url = $_SERVER['HTTP_HOST'];
+        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/contactos/agregar' : 'https://app.bookingtrap.com/api/contactos/agregar';
+        
+        $request = new HTTP_Request2();
+        $request->setUrl($path);
+        $request->setMethod(HTTP_Request2::METHOD_POST);
+
+        $request->setConfig(array(
+            'follow_redirects' => TRUE
+        ));
+        $request->setHeader(array(
+            'Authorization' => $this->token
+        ));   
+
+        $request->setBody(json_encode($data));
+        
+        try {
+            $response = $request->send();            
+            if ($response->getStatus() == 200) {
+                $respuesta =  (array) json_decode($response->getBody(), true);  
+                return $respuesta;                 
+            }else {
+                echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+                $response->getReasonPhrase();
+            }
+        }
+        catch(HTTP_Request2_Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+        }         
+    }      
+
     public function getAffiliate($afiliado){
         $url = $_SERVER['HTTP_HOST'];
         $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/affiliate' : 'https://app.bookingtrap.com/api/affiliate';

@@ -3392,6 +3392,11 @@ ul.list_ok li:before {
 .bold{
 	font-weight: bold;
 }
+.select2-results__option:not(.select2-results__option--selectable):not(.select2-results__option--disabled) {
+    background: #343A40;
+    color: #fff;
+}
+
 @media (max-width: 400px) {
 	.tabContent{
 		height: 130px	

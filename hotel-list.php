@@ -35,7 +35,18 @@
     $formHotels["language"]  = $language;
     $formHotels["guests"][]  = $guests;
 
-    // echo json_encode($formHotels);
+    if(!is_numeric($idRegion)){
+        $link = 'hotel/'.$fn->stringToUrl($nombreDestino);
+        $link .= "/".$idRegion; 
+        $link .= "/".$checkinDate;
+        $link .= "/".$checkoutDate;
+        $link .= "/".$adultos;
+        $link .= "/".$menoresTxt;
+        $link .= "/0";
+        $link .= "/".$residency;
+        $link .= "/".$myWebSite["comision_hoteleria"]; 
+        header('Location: '.$link);
+    }
 
     $dataHotels              = $hotels->getHotelsByRegion($formHotels);
     $markup                  = $dataHotels["comision"][0]["comision_hoteleria"];

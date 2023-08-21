@@ -73,6 +73,10 @@
 							<form method="post" action="gracias-email" id="contactform">
 								<input type="hidden" name="email_afiliado" id="email_afiliado" value="<?php echo $afiliado > 0 ? $emailAfiliado : ''; ?>">
 								<input type="hidden" name="nombre_afiliado" id="nombre_afiliado" value="<?php echo $afiliado > 0 ? $nombreAfiliado : ''; ?>">
+
+								<?php //ISAAC: NUEVOS CAMPOS OCULTOS ?>
+								<input type="hidden" name="id_usuario_asignado" value="<?php echo $id_usuario_afiliado; ?>">
+								<input type="hidden" name="id_afiliado" value="<?php echo $afiliado; ?>">
 								<div class="row">
 									<div class="col-md-6 col-sm-6">
 										<div class="form-group">

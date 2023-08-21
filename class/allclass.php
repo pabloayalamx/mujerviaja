@@ -35,6 +35,7 @@
             $telefono_oficina   = $_SESSION["telefono_oficina"];            
             $telefono_celular   = $_SESSION["telefono_celular"];            
             $img_afiliado       = $_SESSION["img_afiliado"];
+            $id_usuario_afiliado = $_SESSION["id_usuario_afiliado"]; //ISAAC: NUEVO VARIABLE
 
             $telefono_celular_codigo_pais  = $_SESSION["telefono_celular_codigo_pais"];
             $telefono_oficina_codigo_pais  = $_SESSION["telefono_oficina_codigo_pais"];
@@ -52,6 +53,7 @@
             $telefono_oficina  = $apiAfiliado["0"]["telefono_oficina"];
             $telefono_celular  = $apiAfiliado["0"]["telefono_celular"];
             $img_afiliado      = $apiAfiliado["0"]["img_afiliado"];
+            $id_usuario_afiliado = $apiAfiliado["0"]["id_usuario_asignado"]; //ISAAC: NUEVO VARIABLE
 
             $telefono_celular_codigo_pais      = $apiAfiliado["0"]["telefono_celular_codigo_pais"];
             $telefono_oficina_codigo_pais      = $apiAfiliado["0"]["telefono_oficina_codigo_pais"];
@@ -59,7 +61,8 @@
             $_SESSION["idafiliado"]          = $afiliado;
             $_SESSION["nombreafiliado"]      = $nombreAfiliado;
             $_SESSION["emailafiliado"]       = $emailAfiliado;
-            $_SESSION["afiliadoSession"]     = true;              
+            $_SESSION["afiliadoSession"]     = true;       
+            $_SESSION["id_usuario_afiliado"] = $id_usuario_afiliado;  //ISAAC: NUEVO VARIABLE     
             
             $_SESSION["direccion_comercial"] = $direccionAfiliado;
             $_SESSION["pais_comercial"]      = $pais_comercial;
@@ -85,6 +88,7 @@
             $telefono_oficina   = $_SESSION["telefono_oficina"];            
             $telefono_celular   = $_SESSION["telefono_celular"];            
             $img_afiliado       = $_SESSION["img_afiliado"];
+            $id_usuario_afiliado = $_SESSION["id_usuario_afiliado"]; //ISAAC: NUEVO VARIABLE
 
             $telefono_celular_codigo_pais  = $_SESSION["telefono_celular_codigo_pais"];
             $telefono_oficina_codigo_pais  = $_SESSION["telefono_oficina_codigo_pais"];            
@@ -100,6 +104,7 @@
             $telefono_oficina   = '';            
             $telefono_celular   = '';            
             $img_afiliado       = '';
+            $id_usuario_afiliado = ''; //ISAAC: NUEVO VARIABLE
 
             $telefono_celular_codigo_pais  = '';
             $telefono_oficina_codigo_pais  = '';             

@@ -21,8 +21,15 @@
     $message_contact     = $_POST['message_contact'];
     $verify_contact      = $_POST['verify_contact'];
     $email_afiliado      = $_POST["email_afiliado"];
-    $nombre_afiliado     = $_POST["nombre_afiliado"];    
+    $nombre_afiliado     = $_POST["nombre_afiliado"]; 
 
+    /* ISAAC: CODIGO NUEVO PARA SUBIR DATOS A LA PLATAFORMA */    
+    $id_usuario_asignado = $_POST["id_usuario_asignado"];    
+
+    //Enviar datos a la API
+    $frmContact = $tours->agregarContacto($_POST);
+    // TERMINA CODIGO NUEVO
+    
     $bodyMail = '
     <!DOCTYPE html>
     <html lang="es">            
@@ -80,7 +87,7 @@
         $mail->Subject = 'Nuevo prospecto generado desde el sitio web';
         $mail->Body    = $bodyMail;
         $mail->AltBody = 'ALT del cuerpo del correo';    
-        $mail->send();
+        // $mail->send();
         } catch (Exception $e) {
             echo "Error";
         }      

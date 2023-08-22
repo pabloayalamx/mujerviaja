@@ -3,21 +3,21 @@
     include("templates/language.php"); 
     include("class/allclass.php"); 
 
-    $idRegion                = filter_input(INPUT_POST, "destino_tours", FILTER_DEFAULT);
-    $nombreDestino           = filter_input(INPUT_POST, "nombreDestino", FILTER_DEFAULT);
-    $adultos                 = intval(filter_input(INPUT_POST, "adultos", FILTER_SANITIZE_NUMBER_INT));
-    $menoresInput            = filter_input(INPUT_POST, "menores", FILTER_SANITIZE_NUMBER_INT); //Sirve para contabilizar la cantidad de huespedes 
-    $menoresTxt              = $menoresInput > 0 ? implode(",", $_POST["edad"]) : '0';
+    $idRegion                = filter_input(INPUT_GET, "destino_tours", FILTER_DEFAULT);
+    $nombreDestino           = filter_input(INPUT_GET, "nombreDestino", FILTER_DEFAULT);
+    $adultos                 = intval(filter_input(INPUT_GET, "adultos", FILTER_SANITIZE_NUMBER_INT));
+    $menoresInput            = filter_input(INPUT_GET, "menores", FILTER_SANITIZE_NUMBER_INT); //Sirve para contabilizar la cantidad de huespedes 
+    $menoresTxt              = $menoresInput > 0 ? implode(",", $_GET["edad"]) : '0';
 
-    $checkinDate             = filter_input(INPUT_POST, "checkin", FILTER_DEFAULT);
-    $checkoutDate            = filter_input(INPUT_POST, "checkout", FILTER_DEFAULT);
+    $checkinDate             = filter_input(INPUT_GET, "checkin", FILTER_DEFAULT);
+    $checkoutDate            = filter_input(INPUT_GET, "checkout", FILTER_DEFAULT);
     // echo "checkin: ".$checkinDate." - checkout: ".$checkoutDate;
     $residency               = "MX";
     $currency                = $monedaSeleccionada;
     $language                = "es";
 
-    if(isset($_POST["edad"])){
-        foreach($_POST["edad"] as $i => $edad){
+    if(isset($_GET["edad"])){
+        foreach($_GET["edad"] as $i => $edad){
             $menoresarray[$i] = intval($edad);
         }
     }else{
@@ -52,7 +52,7 @@
     $markup                  = $dataHotels["comision"][0]["comision_hoteleria"];
     $hoteles                 = $dataHotels["hoteles"]["data"]["hotels"];
     $hotelsBDs               = $dataHotels["hotelesBD"];
-    $hotelAds                = $dataHotels["hotelAds"];    
+    $hotelAds                = $dataHotels["hotelAds"];  
 ?>   
 
 <head>
@@ -108,16 +108,16 @@
             <div class="row borderMotor">
                 <div class="col-12">
                     <!-- INICIA MOTOR -->
-                    <form id="form-buscar" action="tours" method="GET">
+                    <form id="formbuscador" action="hotel-list" method="get">
                         <div class="row">
                             <h3 class="tituloMotor">¿A dónde quieres ir?</h3>                        
                             <div class="col-12 col-sm-5 text-left cajamotor">
                                 <div class="form-group">
-                                    <input type="hidden" name="nombreDestino" id="nombreDestino" value="<?php if(isset($_POST["nombreDestino"])){ echo $_POST["nombreDestino"]; } ?>">
+                                    <input type="hidden" name="nombreDestino" id="nombreDestino" value="">
                                     <input type="hidden" name="lang" id="lang" value="es">
                                     <label for="">Busca tu destino</label>
-                                    <select name="destino_tours" id="destino_tours" class="form-control">
-                                    <?php if(isset($_POST["nombreDestino"])){ ?> <option value="<?php echo $_POST["destino_tours"]; ?>"><?php echo $_POST["nombreDestino"]; ?></option>  <?php } ?>
+                                    <select name="destino_tours" id="destino_tours" class="form-control" required>
+                                      <option value="<?php echo $_GET["destino_tours"]; ?>"><?php echo $_GET["nombreDestino"]; ?></option> 
                                     </select>
                                 </div>                             
                             </div>
@@ -125,15 +125,17 @@
                             <div class="col-12 col-sm-3 text-left cajamotor">
                                 <div class="form-group">
                                     <label for="">Checkin / Checkout</label>
-                                    <input type="text" id="fechas" name="fechas" class="form-control" >
+                                    <input type="hidden" name="checkin" id="date_start" value="">
+                                    <input type="hidden" name="checkout" id="date_end" value="">
+                                    <input type="text" id="fechas" name="fechas" class="form-control" readonly>
                                 </div>                             
                             </div> 
                             
                             <div class="col-12 col-sm-2 text-left cajamotor">
                                 <div class="form-group">
                                     <label for="">Adultos</label>
-                                    <select name="adultos" id="adultos" class="form-control">
-                                        <?php for($i=0; $i<=10; $i++){ ?>
+                                    <select name="adultos" id="adultos" class="form-control" required>
+                                        <?php for($i=1; $i<=10; $i++){ ?>
                                             <option value="<?php echo $i; ?>" <?php echo $adultos == $i ? 'selected' : ''; ?>><?php echo $i; ?></option>
                                         <?php } ?>
                                     </select>
@@ -143,7 +145,7 @@
                             <div class="col-12 col-sm-2 text-left cajamotor">
                                 <div class="form-group">
                                     <label for="">Menores</label>
-                                    <select name="menores" id="menores" class="form-control" onchange="menoresEdades(value)">
+                                    <select name="menores" id="menores" class="form-control" onchange="menoresEdadesPedrito(value)">
                                         <?php for($i=0; $i<=4; $i++){ ?>
                                             <option value="<?php echo $i; ?>" <?php echo $menoresInput == $i ? 'selected' : ''; ?>><?php echo $i; ?></option>
                                         <?php } ?>
@@ -153,49 +155,53 @@
                         </div> 
                         
                         <div class="row">
-                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad_1">
+                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad1">
                                 <div class="form-group">
                                     <label for="">Edad</label>
-                                    <select name="edad[]" class="form-control">
-                                        <option value="seleccione" disabled selected>Seleccione</option>
-                                        <?php for($i=0; $i<=16; $i++){ ?>
-                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                    <select disabled required name="edad[]" class="form-control">
+                                        <option value="" disabled selected>Seleccione</option>
+                                        <?php for($i=1; $i<=16; $i++){ ?>
+                                            <?php $supercomparativa =  $menoresarray[0] ?? null ?>
+                                            <option value="<?php echo $i; ?>" <?php echo $supercomparativa == $i ? "selected" : "" ?>  ><?php echo $i; ?></option>
                                         <?php } ?>
                                     </select>                                            
                                 </div>                                          
                             </div>
 
-                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad_2">
+                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad2">
                                 <div class="form-group">
                                     <label for="">Edad</label>
-                                    <select name="edad[]" class="form-control">
-                                        <option value="seleccione" disabled selected>Seleccione</option>
-                                        <?php for($i=0; $i<=16; $i++){ ?>
-                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                    <select disabled required name="edad[]" class="form-control">
+                                        <option value="" disabled selected>Seleccione</option>
+                                        <?php for($i=1; $i<=16; $i++){ ?>
+                                            <?php $supercomparativa =  $menoresarray[1] ?? null ?>
+                                            <option value="<?php echo $i; ?>" <?php echo $supercomparativa == $i ? "selected" : "" ?>><?php echo $i; ?></option>
                                         <?php } ?>
                                     </select>                                            
                                 </div>                                          
                             </div>
                             
-                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad_3">
+                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad3">
                                 <div class="form-group">
                                     <label for="">Edad</label>
-                                    <select name="edad[]" class="form-control">
-                                        <option value="seleccione" disabled selected>Seleccione</option>
-                                        <?php for($i=0; $i<=16; $i++){ ?>
-                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                    <select disabled required name="edad[]" class="form-control">
+                                        <option value="" disabled selected>Seleccione</option>
+                                        <?php for($i=1; $i<=16; $i++){ ?>
+                                            <?php $supercomparativa =  $menoresarray[2] ?? null ?>
+                                            <option value="<?php echo $i; ?>" <?php echo $supercomparativa == $i ? "selected" : "" ?>><?php echo $i; ?></option>
                                         <?php } ?>
                                     </select>                                            
                                 </div>                                          
                             </div>
                             
-                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad_4">
+                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad4">
                                 <div class="form-group">
                                     <label for="">Edad</label>
-                                    <select name="edad[]" class="form-control">
-                                        <option value="seleccione" disabled selected>Seleccione</option>
-                                        <?php for($i=0; $i<=16; $i++){ ?>
-                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                    <select disabled required name="edad[]" class="form-control">
+                                        <option value="" disabled selected>Seleccione</option>
+                                        <?php for($i=1; $i<=16; $i++){ ?>
+                                            <?php $supercomparativa =  $menoresarray[3] ?? null ?>
+                                            <option value="<?php echo $i; ?>" <?php echo $supercomparativa == $i ? "selected" : "" ?>><?php echo $i; ?></option>
                                         <?php } ?>
                                     </select>                                            
                                 </div>                                          
@@ -203,12 +209,12 @@
 
                             <div class="col-12 col-sm-3 cajamotor">
                                 <label for="">&nbsp;</label>
-                                <button for="formbuscador" id="btnBuscahotel" onclick="buscarHotel()" class="btn btn-primary w-100 btnMotor" type="button">
+                                <button id="btnBuscahotel" class="btn btn-primary w-100 btnMotor" type="submit">
                                     BUSCAR HOTELES
                                 </button>                                                    
                             </div>                            
                         </div>
-                    </form>               
+                    </form>                
                     <!-- TERMINA MOTOR -->
                 </div>
             </div>            
@@ -383,6 +389,7 @@
 
  <!-- Scripts -->  
  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/i18n/es.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
@@ -391,13 +398,18 @@
 	<!-- SPECIFIC SCRIPTS -->
 	<script src="js/jquery.selectbox-0.2.js"></script>
     <script>
-        $(document).ready(function(){    
-            
-            // $checkinDate             = filter_input(INPUT_POST, "checkin", FILTER_DEFAULT);
-            // $checkoutDate            = filter_input(INPUT_POST, "checkout", FILTER_DEFAULT);
+        $(document).ready(function(){          
 
-            let today  = moment().add(2, 'days').format("YYYY/MM/DD")
+            let today  = moment().add(5, 'days').format("YYYY/MM/DD")
             let maxday = moment().add(730, 'days').format("YYYY/MM/DD")
+
+
+            $("#date_start").val('<?php echo $checkinDate ?>');
+            $("#date_end").val('<?php echo $checkoutDate ?>');
+            $("#nombreDestino").val('<?php echo $_GET["nombreDestino"]; ?>');
+            menoresEdadesPedrito(<?php echo count($menoresarray) ?>)
+            
+
             $('#fechas').daterangepicker({
                 autoApply: true,
                 opens: 'left',
@@ -406,8 +418,8 @@
                 maxSpan:{
                     "days":30
                 },
-                startDate: moment('<?php echo $checkinDate; ?>').format("YYYY/MM/DD"),
-                endDate: moment('<?php echo $checkoutDate; ?>').format("YYYY/MM/DD"),
+                startDate: '<?php echo $checkinDate ?>',
+                endDate: '<?php echo $checkoutDate ?>',
                 locale: {
                     applyLabel: "Aplicar",
                     format: 'YYYY-MM-DD'
@@ -416,11 +428,6 @@
                 $("#date_start").val(start.format('YYYY-MM-DD'));
                 $("#date_end").val(end.format('YYYY-MM-DD'));
             });            
-
-            $('#fechas').on('apply.daterangepicker', function(ev, picker) {
-                console.log(picker.startDate.format('YYYY/MM/DD'));
-                $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD'));
-            });
 
             $('#fechas').on('cancel.daterangepicker', function(ev, picker) {
                 $(this).val('');
@@ -447,19 +454,8 @@
                             
                     }                            
                 },
-				  templateResult: function (data) {
-					var $result = $("<span class='optgroup'></span>");
-                    var $list = $("<span></span>");
-
-                    if(data.text === 'Regiones' || data.text === 'Hoteles'){
-                        $result.text(data.text);
-                        return $result;
-                    }else{
-                        $list.text(data.text);
-                        return $list;
-                    }
-				  }                      
-            });  
+                      
+            }); 
             
             $('#destino_tours').on('select2:select', function (e) {
                 var data = e.params.data;
@@ -471,14 +467,20 @@
             });                
         });
 
-        function buscarHotel(){
-            // formbuscador
-            if($("#formbuscador").submit()){
-                $("#btnBuscahotel").html("BUSCANDO HOTELES....");
-            }
-            
+
+        function menoresEdadesPedrito(menores) {
+      for (i = 1; i <= 4; i++) {
+        if (i <= menores) {
+          $("#edad" + i).show();
+          $(`#edad${i} select`).removeAttr('disabled')
+        } else {
+          $("#edad" + i).hide();
+          $(`#edad${i} select`).prop("disabled", true);
         }
-    </script>    
+      }
+    }
+        
+    </script>   
 
 </body>
 

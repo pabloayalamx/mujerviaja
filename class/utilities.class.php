@@ -138,6 +138,13 @@ class funciones
         return $res;
     }
 
+    public function precioMinimoLista($precios){
+        $temporal1 = array_map('intval', $precios);
+        $temporal2 = array_diff($temporal1, array(0));
+        $arrayFinal = empty($temporal2) ? $temporal1 : $temporal2;
+        return min($arrayFinal);
+    }
+
     public function letraCapital($string){
         $string = $this->minusculas($string);
         $string = ucfirst($string);

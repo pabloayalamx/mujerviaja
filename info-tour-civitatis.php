@@ -298,7 +298,7 @@
 					</div>
 					<div class="box_style_2">
 						<h3>Reserva tu tour<span>Confirmación inmediata</span></h3>
-						<form method="post" action="datos-compra-civi" autocomplete="off">
+						<form id="check_avail_pedrito" method="post" action="datos-compra-civi" autocomplete="off">
 							<input type="hidden" name="idactividad" value="<?php echo $actividad->id; ?>">
 							<input type="hidden" name="nombreActividad" value="<?php echo $actividad->title; ?>">
 							<input type="hidden" name="markup" value="<?php echo $markup; ?>">
@@ -309,7 +309,7 @@
 							<div class="form-group">
 								<label>Tipo de actividad</label>
 								<select class="form-control" name="rate" id="rate" onchange="muestraPrecios(value)" required>
-									<option value="0" disabled selected>Selecciona una opción</option>
+									<option value="" disabled selected>Selecciona una opción</option>
 									<?php foreach($categoriasTours as $c => $categoriaTour){ ?>
 										<option value="<?php echo $c; ?>"><?php echo $categoriaTour; ?></option>
 									<?php } ?>
@@ -340,7 +340,7 @@
 							<div class="form-group">
 								<label>Horario</label>
 								<select class="form-control" name="horario" id="horario" required>
-									<option value="0" selected disabled>Selecciona un horario</option>
+									<option value="" selected disabled>Selecciona un horario</option>
 									<?php foreach($calendario->schedule[0]->times as $horario){ 
                                                 if($horario->quotaAvailable == true){
                                                     if($horario->quota > 0){
@@ -405,6 +405,20 @@
 	<script src="https://maps.googleapis.com/maps/api/js"></script>
 	<script src="js/map.js"></script>
 	<script src="js/infobox.js"></script>
+
+
+	<script>
+    //Script pedrito 2
+    document.querySelector("#check_avail_pedrito").addEventListener("submit", function(e) {
+      const sel = document.forms.check_avail_pedrito.tipoCat_0;
+      const adultos = sel.options[sel.selectedIndex].text;
+      if (adultos == "Seleccione..." || adultos == "0") {
+        alert("Favor de seleccionar un adulto")
+        e.preventDefault()
+        return
+      }
+    })
+  </script>
 
 	<script>
 		$(document).ready(function(){

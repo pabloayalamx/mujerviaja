@@ -43,7 +43,7 @@
                 <div class="col-12">
 
                     <!-- INICIA MOTOR -->
-                    <form id="formbuscador" action="hotel-list" method="post">
+                    <form id="formbuscador" action="hotel-list" method="get">
                         <div class="row">
                             <h3 class="tituloMotor">¿A dónde quieres ir?</h3>                        
                             <div class="col-12 col-sm-5 text-left cajamotor">
@@ -51,7 +51,7 @@
                                     <input type="hidden" name="nombreDestino" id="nombreDestino" value="">
                                     <input type="hidden" name="lang" id="lang" value="es">
                                     <label for="">Busca tu destino</label>
-                                    <select name="destino_tours" id="destino_tours" class="form-control"></select>
+                                    <select name="destino_tours" id="destino_tours" class="form-control" required></select>
                                 </div>                             
                             </div>
 
@@ -60,7 +60,7 @@
                                     <label for="">Checkin / Checkout</label>
                                     <input type="hidden" name="checkin" id="date_start" value="">
                                     <input type="hidden" name="checkout" id="date_end" value="">
-                                    <input type="text" id="fechas" name="fechas" class="form-control" required>
+                                    <input type="text" id="fechas" name="fechas" class="form-control" readonly>
                                 </div>                             
                             </div> 
                             
@@ -68,7 +68,6 @@
                                 <div class="form-group">
                                     <label for="">Adultos</label>
                                     <select name="adultos" id="adultos" class="form-control" required>
-                                        <option value="0" disabled selected>Selecciona</option>
                                         <?php for($i=1; $i<=10; $i++){ ?>
                                             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                         <?php } ?>
@@ -79,7 +78,7 @@
                             <div class="col-12 col-sm-2 text-left cajamotor">
                                 <div class="form-group">
                                     <label for="">Menores</label>
-                                    <select name="menores" id="menores" class="form-control" onchange="menoresEdades(value)">
+                                    <select name="menores" id="menores" class="form-control" onchange="menoresEdadesPedrito(value)">
                                         <?php for($i=0; $i<=4; $i++){ ?>
                                             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                         <?php } ?>
@@ -89,48 +88,48 @@
                         </div> 
                         
                         <div class="row">
-                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad_1">
+                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad1">
                                 <div class="form-group">
                                     <label for="">Edad</label>
-                                    <select name="edad[]" class="form-control">
-                                        <option value="seleccione" disabled selected>Seleccione</option>
-                                        <?php for($i=0; $i<=16; $i++){ ?>
+                                    <select disabled required name="edad[]" class="form-control">
+                                        <option value="" disabled selected>Seleccione</option>
+                                        <?php for($i=1; $i<=16; $i++){ ?>
                                             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                         <?php } ?>
                                     </select>                                            
                                 </div>                                          
                             </div>
 
-                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad_2">
+                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad2">
                                 <div class="form-group">
                                     <label for="">Edad</label>
-                                    <select name="edad[]" class="form-control">
-                                        <option value="seleccione" disabled selected>Seleccione</option>
-                                        <?php for($i=0; $i<=16; $i++){ ?>
+                                    <select disabled required name="edad[]" class="form-control">
+                                        <option value="" disabled selected>Seleccione</option>
+                                        <?php for($i=1; $i<=16; $i++){ ?>
                                             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                         <?php } ?>
                                     </select>                                            
                                 </div>                                          
                             </div>
                             
-                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad_3">
+                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad3">
                                 <div class="form-group">
                                     <label for="">Edad</label>
-                                    <select name="edad[]" class="form-control">
-                                        <option value="seleccione" disabled selected>Seleccione</option>
-                                        <?php for($i=0; $i<=16; $i++){ ?>
+                                    <select disabled required name="edad[]" class="form-control">
+                                        <option value="" disabled selected>Seleccione</option>
+                                        <?php for($i=1; $i<=16; $i++){ ?>
                                             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                         <?php } ?>
                                     </select>                                            
                                 </div>                                          
                             </div>
                             
-                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad_4">
+                            <div class="col-12 col-sm-2 text-left cajaEdad oculto" id="edad4">
                                 <div class="form-group">
                                     <label for="">Edad</label>
-                                    <select name="edad[]" class="form-control">
-                                        <option value="seleccione" disabled selected>Seleccione</option>
-                                        <?php for($i=0; $i<=16; $i++){ ?>
+                                    <select disabled required name="edad[]" class="form-control">
+                                        <option value="" disabled selected>Seleccione</option>
+                                        <?php for($i=1; $i<=16; $i++){ ?>
                                             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                         <?php } ?>
                                     </select>                                            
@@ -139,7 +138,7 @@
 
                             <div class="col-12 col-sm-3 cajamotor">
                                 <label for="">&nbsp;</label>
-                                <button for="formbuscador" id="btnBuscahotel" onclick="buscarHotel()" class="btn btn-primary w-100 btnMotor" type="button">
+                                <button id="btnBuscahotel" class="btn btn-primary w-100 btnMotor" type="submit">
                                     BUSCAR HOTELES
                                 </button>                                                    
                             </div>                            
@@ -189,6 +188,7 @@
 
     <!-- Scripts -->  
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/i18n/es.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
@@ -199,8 +199,12 @@
     <script>
         $(document).ready(function(){          
 
-            let today  = moment().add(2, 'days').format("YYYY/MM/DD")
+            let today  = moment().add(5, 'days').format("YYYY/MM/DD")
             let maxday = moment().add(730, 'days').format("YYYY/MM/DD")
+
+            $("#date_start").val(moment().add(5, 'days').format("YYYY-MM-DD"));
+            $("#date_end").val(moment().add(6, 'days').format("YYYY-MM-DD"));
+
             $('#fechas').daterangepicker({
                 autoApply: true,
                 opens: 'left',
@@ -209,8 +213,8 @@
                 maxSpan:{
                     "days":30
                 },
-                startDate: moment().add(1, 'days').format("YYYY/MM/DD"),
-                endDate: moment().add(2, 'days').format("YYYY/MM/DD"),
+                startDate: today,
+                endDate: moment().add(6, 'days').format("YYYY/MM/DD"),
                 locale: {
                     applyLabel: "Aplicar",
                     format: 'YYYY-MM-DD'
@@ -219,11 +223,6 @@
                 $("#date_start").val(start.format('YYYY-MM-DD'));
                 $("#date_end").val(end.format('YYYY-MM-DD'));
             });            
-
-            $('#fechas').on('apply.daterangepicker', function(ev, picker) {
-                console.log(picker.startDate.format('YYYY/MM/DD'));
-                $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD'));
-            });
 
             $('#fechas').on('cancel.daterangepicker', function(ev, picker) {
                 $(this).val('');
@@ -250,19 +249,8 @@
                             
                     }                            
                 },
-				  templateResult: function (data) {
-					var $result = $("<span class='optgroup'></span>");
-                    var $list = $("<span></span>");
-
-                    if(data.text === 'Regiones' || data.text === 'Hoteles'){
-                        $result.text(data.text);
-                        return $result;
-                    }else{
-                        $list.text(data.text);
-                        return $list;
-                    }
-				  }                      
-            });  
+                      
+            }); 
             
             $('#destino_tours').on('select2:select', function (e) {
                 var data = e.params.data;
@@ -274,13 +262,19 @@
             });                
         });
 
-        function buscarHotel(){
-            // formbuscador
-            if($("#formbuscador").submit()){
-                $("#btnBuscahotel").html("BUSCANDO HOTELES....");
-            }
-            
+
+        function menoresEdadesPedrito(menores) {
+      for (i = 1; i <= 4; i++) {
+        if (i <= menores) {
+          $("#edad" + i).show();
+          $(`#edad${i} select`).removeAttr('disabled')
+        } else {
+          $("#edad" + i).hide();
+          $(`#edad${i} select`).prop("disabled", true);
         }
+      }
+    }
+        
     </script>    
 
 </body>

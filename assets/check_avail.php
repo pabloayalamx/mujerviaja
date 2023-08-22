@@ -20,23 +20,24 @@ if(isset($_POST['fecha_viaje_input'])){
 	$date_pick     = $_POST['fecha_viaje'];
 }
 
+if($date_pick == "") {
+	echo '<div class="error_message">Selecciona una fecha</div>';
+	exit();
+} 
+
 if(trim($adults) == 0) {
 	echo '<div class="error_message">Selecciona al menos 1 adulto.</div>';
 	exit();
-} else if(trim($senior ) == '') {
-	echo '<div class="error_message">Enter senior number.</div>';
+} 
+
+if($total == "NaN" || $total == "") {
+	echo '<div class="error_message">Seleccione un producto válido.</div>';
 	exit();
-} else if(trim($student ) == '') {
-	echo '<div class="error_message">Enter student number.</div>';
-	exit();
-} else if(trim($date_pick ) == '') {
-	echo '<div class="error_message">Selecciona una fecha.</div>';
-	exit();
-}else {
+}
+
 	echo "<div id='success_page' style='padding:10px 20px 30px 20px; text-align:center; font-size:14px;'>";
 	echo "<div style='font-size:60px; font-weight:normal;color:#acd373;'><i class='icon_set_1_icon-76'></i></div>";
 	echo "<strong >DATOS CORRECTOS!</strong><br>";
 	echo "Redireccionando....";
 	echo "</div>";
-}
 

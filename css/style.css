@@ -3393,7 +3393,7 @@ ul.list_ok li:before {
 	font-weight: bold;
 }
 .select2-results__option:not(.select2-results__option--selectable):not(.select2-results__option--disabled) {
-    background: #343A40;
+    background: #cc0066;
     color: #fff;
 }
 

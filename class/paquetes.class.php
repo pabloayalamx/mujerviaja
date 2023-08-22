@@ -19,7 +19,7 @@ class Paquetes
     public function getCategories(){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/categories' : 'https://app.bookingtrap.com/api/categories';
+        $path = 'https://app.bookingtrap.com/api/categories';
         
         $request = new HTTP_Request2();
         $request->setUrl($path);
@@ -49,7 +49,7 @@ class Paquetes
 
     public function getPrices($tour, $dias, $fecha, $clase){
         $url = $_SERVER['HTTP_HOST'];
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/prices' : 'https://app.bookingtrap.com/api/prices';
+        $path = 'https://app.bookingtrap.com/api/prices';
         $path = $path."?tour=".$tour."&dias=".$dias."&fecha=".$fecha."&clase=".$clase;
         
         $request = new HTTP_Request2();
@@ -80,7 +80,7 @@ class Paquetes
 
     public function getAddress(){
         $url = $_SERVER['HTTP_HOST'];
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/affiliateAddress' : 'https://app.bookingtrap.com/api/affiliateAddress';
+        $path = 'https://app.bookingtrap.com/api/affiliateAddress';
         
         $request = new HTTP_Request2();
         $request->setUrl($path);
@@ -110,7 +110,7 @@ class Paquetes
 
     public function agregarContacto($data){
         $url = $_SERVER['HTTP_HOST'];
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/contactos/agregar' : 'https://app.bookingtrap.com/api/contactos/agregar';
+        $path = 'https://app.bookingtrap.com/api/contactos/agregar';
         
         $request = new HTTP_Request2();
         $request->setUrl($path);
@@ -142,7 +142,7 @@ class Paquetes
 
     public function getAffiliate($afiliado){
         $url = $_SERVER['HTTP_HOST'];
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/affiliate' : 'https://app.bookingtrap.com/api/affiliate';
+        $path = 'https://app.bookingtrap.com/api/affiliate';
         $path = $path."?id=".$afiliado;
         
         $request = new HTTP_Request2();
@@ -174,7 +174,7 @@ class Paquetes
     public function getList($tour = 0){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/tours' : 'https://app.bookingtrap.com/api/tours';
+        $path = 'https://app.bookingtrap.com/api/tours';
         
         $request = new HTTP_Request2();
         $path = $tour > 0 ? $path.'?tour='.$tour : $path;
@@ -207,7 +207,7 @@ class Paquetes
     public function getToursCategories($categoria){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/tours-categories' : 'https://app.bookingtrap.com/api/tours-categories';
+        $path = 'https://app.bookingtrap.com/api/tours-categories';
         
         $request = new HTTP_Request2();
         $path .= "?id=".$categoria;
@@ -239,7 +239,7 @@ class Paquetes
 
     public function myWebSite(){
         $url = $_SERVER['HTTP_HOST'];        
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/mywebsite' : 'https://app.bookingtrap.com/api/mywebsite';        
+        $path = 'https://app.bookingtrap.com/api/mywebsite';        
         $request = new HTTP_Request2();
 
         $request->setUrl($path);
@@ -271,7 +271,7 @@ class Paquetes
     public function monedas(){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/monedas' : 'https://app.bookingtrap.com/api/monedas';
+        $path = 'https://app.bookingtrap.com/api/monedas';
         
         $request = new HTTP_Request2();
 
@@ -304,7 +304,7 @@ class Paquetes
     public function homeTours(){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/toursHome' : 'https://app.bookingtrap.com/api/toursHome';
+        $path = 'https://app.bookingtrap.com/api/toursHome';
         
         $request = new HTTP_Request2();
 
@@ -337,7 +337,7 @@ class Paquetes
     public function toursOthers($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/toursOthers' : 'https://app.bookingtrap.com/api/toursOthers';
+        $path = 'https://app.bookingtrap.com/api/toursOthers';
         
         $request = new HTTP_Request2();
 
@@ -372,7 +372,7 @@ class Paquetes
     public function updateReservation($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/updateReservation' : 'https://app.bookingtrap.com/api/updateReservation';
+        $path = 'https://app.bookingtrap.com/api/updateReservation';
         
         $request = new HTTP_Request2();
 
@@ -408,7 +408,7 @@ class Paquetes
     public function getStatusPay($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/getStatusPay' : 'https://app.bookingtrap.com/api/getStatusPay';
+        $path = 'https://app.bookingtrap.com/api/getStatusPay';
         
         $request = new HTTP_Request2();
 
@@ -444,7 +444,7 @@ class Paquetes
     public function linkPayGenerator($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/linkPayGenerator' : 'https://app.bookingtrap.com/api/linkPayGenerator';
+        $path = 'https://app.bookingtrap.com/api/linkPayGenerator';
         
         $request = new HTTP_Request2();
 
@@ -480,7 +480,7 @@ class Paquetes
     public function relatedTours($categories){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/relatedTours' : 'https://app.bookingtrap.com/api/relatedTours';
+        $path = 'https://app.bookingtrap.com/api/relatedTours';
         
         $request = new HTTP_Request2();
 
@@ -517,7 +517,7 @@ class Paquetes
     public function distintivos(){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/apiDistinctives' : 'https://app.bookingtrap.com/api/apiDistinctives';
+        $path = 'https://app.bookingtrap.com/api/apiDistinctives';
         
         $request = new HTTP_Request2();
 
@@ -550,7 +550,7 @@ class Paquetes
     public function slider(){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/apiSlider' : 'https://app.bookingtrap.com/api/apiSlider';
+        $path = 'https://app.bookingtrap.com/api/apiSlider';
         
         $request = new HTTP_Request2();
 
@@ -583,7 +583,7 @@ class Paquetes
     public function circuitosMegaTravel(){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/megatravel' : 'https://app.bookingtrap.com/api/megatravel';
+        $path = 'https://app.bookingtrap.com/api/megatravel';
         
         $request = new HTTP_Request2();
 
@@ -616,7 +616,7 @@ class Paquetes
     public function galeria(){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/apiGallery' : 'https://app.bookingtrap.com/api/apiGallery';
+        $path = 'https://app.bookingtrap.com/api/apiGallery';
         
         $request = new HTTP_Request2();
 
@@ -650,7 +650,7 @@ class Paquetes
     public function addReservation($reservacion){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/reservations/add' : 'https://app.bookingtrap.com/api/reservations/add';
+        $path = 'https://app.bookingtrap.com/api/reservations/add';
         
         $request = new HTTP_Request2();
 
@@ -717,7 +717,7 @@ class Paquetes
     public function getHotelInfo($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/getHotel' : 'https://app.bookingtrap.com/api/getHotel';
+        $path = 'https://app.bookingtrap.com/api/getHotel';
         
         $request = new HTTP_Request2();
 
@@ -753,7 +753,7 @@ class Paquetes
     public function addReservaHotelera($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/saveReservation' : 'https://app.bookingtrap.com/api/saveReservation';
+        $path = 'https://app.bookingtrap.com/api/saveReservation';
         
         $request = new HTTP_Request2();
 
@@ -789,7 +789,7 @@ class Paquetes
     public function requestReservation($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/requestHotelReservation' : 'https://app.bookingtrap.com/api/requestHotelReservation';
+        $path = 'https://app.bookingtrap.com/api/requestHotelReservation';
         
         $request = new HTTP_Request2();
 
@@ -827,7 +827,7 @@ class Paquetes
     public function getHotelsByRegion($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/getHotelByRegion' : 'https://app.bookingtrap.com/api/getHotelByRegion';
+        $path = 'https://app.bookingtrap.com/api/getHotelByRegion';
         
         $request = new HTTP_Request2();
 
@@ -863,7 +863,7 @@ class Paquetes
     public function keywordDestinationSearch($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/keywordDestinationSearch' : 'https://app.bookingtrap.com/api/keywordDestinationSearch';
+        $path = 'https://app.bookingtrap.com/api/keywordDestinationSearch';
         
         $request = new HTTP_Request2();
 
@@ -900,7 +900,7 @@ class Paquetes
     public function civitatisDestinations($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/getCivitatisDestinations' : 'https://app.bookingtrap.com/api/getCivitatisDestinations';
+        $path = 'https://app.bookingtrap.com/api/getCivitatisDestinations';
         
         $request = new HTTP_Request2();
 
@@ -935,7 +935,7 @@ class Paquetes
     public function getActivitiesCivitatis($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/getActivitiesCivitatis' : 'https://app.bookingtrap.com/api/getActivitiesCivitatis';
+        $path = 'https://app.bookingtrap.com/api/getActivitiesCivitatis';
         
         $request = new HTTP_Request2();
 
@@ -970,7 +970,7 @@ class Paquetes
     public function getCivitatisTour($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/getCivitatisTour' : 'https://app.bookingtrap.com/api/getCivitatisTour';
+        $path = 'https://app.bookingtrap.com/api/getCivitatisTour';
         
         $request = new HTTP_Request2();
 
@@ -1005,7 +1005,7 @@ class Paquetes
     public function addTourCart($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/reservation/tour/addCart' : 'https://app.bookingtrap.com/api/reservation/tour/addCart';
+        $path = 'https://app.bookingtrap.com/api/reservation/tour/addCart';
         
         $request = new HTTP_Request2();
 
@@ -1041,7 +1041,7 @@ class Paquetes
     public function addReserva($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/reservation/tour/addBooking' : 'https://app.bookingtrap.com/api/reservation/tour/addBooking';
+        $path = 'https://app.bookingtrap.com/api/reservation/tour/addBooking';
         
         $request = new HTTP_Request2();
 
@@ -1076,7 +1076,7 @@ class Paquetes
     public function finalizaReservaCivitatis($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/reservation/tour/addCart' : 'https://app.bookingtrap.com/api/reservation/tour/addCart';
+        $path =  'https://app.bookingtrap.com/api/reservation/tour/addCart';
         
         $request = new HTTP_Request2();
 
@@ -1111,7 +1111,7 @@ class Paquetes
     public function confirmaPagoReservaCivitatis($data){
         $url = $_SERVER['HTTP_HOST'];
         
-        $path = $url=='localhost' ? 'http://localhost/bookingtrapcrm/api/reservation/tour/finishBooking' : 'https://app.bookingtrap.com/api/reservation/tour/finishBooking';
+        $path = 'https://app.bookingtrap.com/api/reservation/tour/finishBooking';
         
         $request = new HTTP_Request2();
 

@@ -7,8 +7,16 @@
     $tour            = $tours->getList($idtour); 
 	$categorias      = $tour["categorias"];	
 	$isotour         = $tour["paquete"][0]["iso"];
+	$clases          = $tour["clases"];
 
-	$precioMinimoB   = $fn->precioMinimo($tour["fechas"]);
+	if (count($tour["fechas"]) > 0) {
+		$precioMinimoB   = $fn->precioMinimo($tour["fechas"]);
+	} else if (count($tour["precios"]) > 0) {
+		$precioMinimoB   = $fn->precioMinimo($tour["precios"]);
+	} else {
+		$precioMinimoB = 0;
+	}
+	//$precioMinimoB   = $fn->precioMinimo($tour["fechas"]);
 	$precioMinimo    = $fn->precio($precioMinimoB, $tour["paquete"][0]["iso"], $monedaSeleccionada, $monedaDefault, $monedas);
 
 	foreach($categorias as $i => $categoria){
@@ -536,7 +544,7 @@
 									<?php if(count($clases) > 1){ ?>
 									<div class="">
 										<label for="">Selecciona el servicio</label>
-										<select name="clase" id="clase" class="selectBook" onchange="buscaPrecios()">
+										<select name="clase" id="clase" class="selectBook form-control" onchange="buscaPrecios()">
 											<option value="0" disabled selected>Selecciona una opción</option>
 											<?php foreach($clases as $clase){ ?>
 												<option value="<?php echo $clase["id"]; ?>"><?php echo $clase["nombre"]; ?></option>
@@ -831,166 +839,158 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
 
-	<script>
-        $(document).ready(function(){
-            $("#tip_habitacion_1").change(function(){
-                valor = $(this).val();
-                $("#tipohabitacion").val(valor);
-            });
+		<script>
+    var objeto;
+    var generales;
 
-            if(("#fecha_viaje_input").length > 0){
-            var objeto  = {};
-            var generales = [];
-            <?php $promociones = $tour["promociones"]; ?>
-            <?php $cpromos =  count($promociones) > 0 ? count($promociones) : 0; ?>
-            
-            var promos = '<?php  if(count($promociones)==0) {echo '0';}else{count($promociones);} ?>';
-            var booking = '<?php echo $cpromos > 0 ? $promociones[0]["booking_window_inicio"]: ''; ?>';
-            var travel = '<?php echo $cpromos > 0 ? $promociones[0]["travel_window_inicio"]: ''; ?>';
 
-            var nombreDescuento = '<?php echo $cpromos > 0 ? $promociones[0]["nombre"] : ''; ?>';
-            var descuento = '<?php echo $cpromos > 0 ? $promociones[0]["descuento"] : ''; ?>';
-            var mensaje = '<?php echo $cpromos > 0 ? $promociones[0]["descripcion"] : ''; ?>';
-            var tipo_descuento = '<?php echo $cpromos > 0 ? $promociones[0]["tipo_descuento"] : ''; ?>';
-            var valor_promocion = '<?php echo $cpromos > 0 ? $promociones[0]["valor_promocion"] : ''; ?>';
-            var paxes_promocion = '<?php echo $cpromos > 0 ? $promociones[0]["paxes_promocion"] : ''; ?>';
-            var limitado = '<?php echo $cpromos > 0 ? $promociones[0]["limitado"] : ''; ?>';
-            var limite = '<?php echo $cpromos > 0 ? $promociones[0]["limite"] : ''; ?>';
-            var id = '<?php echo $cpromos > 0 ? $promociones[0]["id"] : ''; ?>'; //id de la promocion
-            var idexpromo = '<?php echo $cpromos > 0 ? $promociones[0]["idexpromo"] : ''; ?>'; //id de la fecha promovida  
+    var promos;
+    var booking;
+    var travel;
 
-            var booking_window_inicio = '<?php echo $cpromos > 0 ? $promociones[0]["booking_window_inicio"] : ''; ?>';
-            var booking_window_fin = '<?php echo $cpromos > 0 ? $promociones[0]["booking_window_fin"] : ''; ?>';
-            var travel_window_inicio = '<?php echo $cpromos > 0 ? $promociones[0]["travel_window_inicio"] : ''; ?>';
-            var travel_window_fin = '<?php echo $cpromos > 0 ? $promociones[0]["travel_window_fin"] : ''; ?>';         
+    var nombreDescuento;
+    var descuento;
+    var mensaje;
+    var tipo_descuento;
+    var valor_promocion;
+    var paxes_promocion;
+    var limitado;
+    var limite;
+    var id; //id de la promocion
+    var idexpromo; //id de la fecha promovida  
 
-            objeto["nombreDescuento"] = nombreDescuento;
-            objeto["descuento"] = descuento;
-            objeto["mensaje"] = mensaje;
-            objeto["tipo_descuento"] = tipo_descuento;
-            objeto["valor_promocion"] = valor_promocion;
-            objeto["paxes_promocion"] = paxes_promocion;
-            objeto["limitado"] = limitado;
-            objeto["limite"] = limite;
-            objeto["id"] = id;
-            objeto["idexpromo"] = idexpromo; 
-            
-            objeto["booking_window_inicio"] = booking_window_inicio; 
-            objeto["booking_window_fin"] = booking_window_fin; 
-            objeto["travel_window_inicio"] = travel_window_inicio; 
-            objeto["travel_window_fin"] = travel_window_fin; 
+    var booking_window_inicio;
+    var booking_window_fin;
+    var travel_window_inicio;
+    var travel_window_fin;
+    var travelinicio;
+    var travelfin;
+    var bookingInicio;
+    var bookingFin;
 
-            $("#tipo_descuento_frm").val(tipo_descuento);
-            $("#valor_promocion_frm").val(valor_promocion);
-            $("#descuento_frm").val(descuento);
-            $("#idpromo_frm").val(id);
-            $("#idexpromo_frm").val(idexpromo);
 
-            <?php if(count($promociones) > 0){ ?>
-            generales.push(objeto);    
-            if(booking === null || booking === '' || booking === '0000-00-00'){
-                booking = 0;
-                if(travel === null || travel === '' || travel === '0000-00-00'){
-                    travel = 0;
-                }else{
-                    travel = 1;
-                    var travelinicio = updateFecha('<?php echo $promociones[0]["travel_window_inicio"]; ?>');
-                    var travelfin = updateFecha('<?php echo $promociones[0]["travel_window_fin"]; ?>');            
-                }
 
-            }else{
-                booking = 1;
-                var bookingInicio = updateFecha('<?php echo $promociones[0]["booking_window_inicio"]; ?>');
-                var bookingFin = updateFecha('<?php echo $promociones[0]["booking_window_fin"]; ?>');  
-                
-                if(travel === null || travel === '' || travel === '0000-00-00'){
-                    travel = 0;
-                }else{
-                    travel = 1;
-                    var travelinicio = updateFecha('<?php echo $promociones[0]["travel_window_inicio"]; ?>');
-                    var travelfin = updateFecha('<?php echo $promociones[0]["travel_window_fin"]; ?>');            
-                }
+    $(document).ready(function() {
+      $("#tip_habitacion_1").change(function() {
+        valor = $(this).val();
+        $("#tipohabitacion").val(valor);
+      });
+
+      if (("#fecha_viaje_input").length > 0) {
+        objeto = {};
+        generales = [];
+        <?php $promociones = $tour["promociones"]; ?>
+        <?php $cpromos =  count($promociones) > 0 ? count($promociones) : 0; ?>
+
+        promos = '<?php if (count($promociones) == 0) {
+                    echo '0';
+                  } else {
+                    count($promociones);
+                  } ?>';
+        booking = '<?php echo $cpromos > 0 ? $promociones[0]["booking_window_inicio"] : ''; ?>';
+        travel = '<?php echo $cpromos > 0 ? $promociones[0]["travel_window_inicio"] : ''; ?>';
+
+        nombreDescuento = '<?php echo $cpromos > 0 ? $promociones[0]["nombre"] : ''; ?>';
+        descuento = '<?php echo $cpromos > 0 ? $promociones[0]["descuento"] : ''; ?>';
+        mensaje = '<?php echo $cpromos > 0 ? $promociones[0]["descripcion"] : ''; ?>';
+        tipo_descuento = '<?php echo $cpromos > 0 ? $promociones[0]["tipo_descuento"] : ''; ?>';
+        valor_promocion = '<?php echo $cpromos > 0 ? $promociones[0]["valor_promocion"] : ''; ?>';
+        paxes_promocion = '<?php echo $cpromos > 0 ? $promociones[0]["paxes_promocion"] : ''; ?>';
+        limitado = '<?php echo $cpromos > 0 ? $promociones[0]["limitado"] : ''; ?>';
+        limite = '<?php echo $cpromos > 0 ? $promociones[0]["limite"] : ''; ?>';
+        id = '<?php echo $cpromos > 0 ? $promociones[0]["id"] : ''; ?>'; //id de la promocion
+        idexpromo = '<?php echo $cpromos > 0 ? $promociones[0]["idexpromo"] : ''; ?>'; //id de la fecha promovida  
+
+        booking_window_inicio = '<?php echo $cpromos > 0 ? $promociones[0]["booking_window_inicio"] : ''; ?>';
+        booking_window_fin = '<?php echo $cpromos > 0 ? $promociones[0]["booking_window_fin"] : ''; ?>';
+        travel_window_inicio = '<?php echo $cpromos > 0 ? $promociones[0]["travel_window_inicio"] : ''; ?>';
+        travel_window_fin = '<?php echo $cpromos > 0 ? $promociones[0]["travel_window_fin"] : ''; ?>';
+
+        objeto["nombreDescuento"] = nombreDescuento;
+        objeto["descuento"] = descuento;
+        objeto["mensaje"] = mensaje;
+        objeto["tipo_descuento"] = tipo_descuento;
+        objeto["valor_promocion"] = valor_promocion;
+        objeto["paxes_promocion"] = paxes_promocion;
+        objeto["limitado"] = limitado;
+        objeto["limite"] = limite;
+        objeto["id"] = id;
+        objeto["idexpromo"] = idexpromo;
+
+        objeto["booking_window_inicio"] = booking_window_inicio;
+        objeto["booking_window_fin"] = booking_window_fin;
+        objeto["travel_window_inicio"] = travel_window_inicio;
+        objeto["travel_window_fin"] = travel_window_fin;
+
+        $("#tipo_descuento_frm").val(tipo_descuento);
+        $("#valor_promocion_frm").val(valor_promocion);
+        $("#descuento_frm").val(descuento);
+        $("#idpromo_frm").val(id);
+        $("#idexpromo_frm").val(idexpromo);
+
+        <?php if (count($promociones) > 0) { ?>
+          generales.push(objeto);
+          if (booking === null || booking === '' || booking === '0000-00-00') {
+            booking = 0;
+            if (travel === null || travel === '' || travel === '0000-00-00') {
+              travel = 0;
+            } else {
+              travel = 1;
+              travelinicio = updateFecha('<?php echo $promociones[0]["travel_window_inicio"]; ?>');
+              travelfin = updateFecha('<?php echo $promociones[0]["travel_window_fin"]; ?>');
             }
-            <?php }else{ ?>
-                var travel = 0;
-                var booking = 0;
-            <?php } ?>    
+
+          } else {
+            booking = 1;
+            bookingInicio = updateFecha('<?php echo $promociones[0]["booking_window_inicio"]; ?>');
+            bookingFin = updateFecha('<?php echo $promociones[0]["booking_window_fin"]; ?>');
+
+            if (travel === null || travel === '' || travel === '0000-00-00') {
+              travel = 0;
+            } else {
+              travel = 1;
+              travelinicio = updateFecha('<?php echo $promociones[0]["travel_window_inicio"]; ?>');
+              travelfin = updateFecha('<?php echo $promociones[0]["travel_window_fin"]; ?>');
+            }
+          }
+        <?php } else { ?>
+          travel = 0;
+          booking = 0;
+        <?php } ?>
 
 
-            $("#fecha_viaje_input").datepicker({
-                changeMonth: true, 
-                changeYear: true,                 
-                dateFormat: 'yy-mm-dd',
-                minDate: 1,
-                beforeShowDay: function( date ) {                    
-                    var fecha = $.datepicker.formatDate('mm/dd/yy', date);
-                    if(booking === 1){  
-                        if(validaFecha(bookingInicio, bookingFin, fecha) === 1){
-                            if(travel === 1){
-                                return [true, "eventBooking", 'Reserva esta fecha y obtén: '+nombreDescuento+' para viajar del '+travelinicio+' al '+travelfin];
-                            }else{
-                                return [true, "eventBooking", 'Reserva esta fecha y obtén: '+nombreDescuento+' para viajar en la fecha que desees'];
-                            }                            
-                        }else{
-                            return [true, '', ''];
-                        } 
-                    }else{
-                        if(travel === 1){
-                            if(validaFecha(travelinicio, travelfin, fecha) === 1){
-                                return [true, "event", 'Promoción disponible: '+nombreDescuento];
-                            }else{
-                                return [true, '', ''];
-                            } 
-                        }else{
-                            return [true, '', ''];
-                        } 
-                    }                                   
-                },                
-                onSelect: function(dateText) {
-                    $("#contieneprecios").empty();
-                    $("#fechaviaje").val(dateText);
-
-                    $("#adultos").val(0);
-                    $("#menores").val(0);
-                    $("#infantes").val(0);
-
-                    $(".subtotal").text("$0");
-
-                    var fecha = updateFecha(dateText);                    
-                    var hoy = formatoFecha(new Date(), 'mm/dd/yyyy')
-
-                    var mostrarpromo = 0;
-                    if(booking === 1){  
-                        if(validaFecha(bookingInicio, bookingFin, hoy) === 1){
-                            mostrarpromo = 1;                           
-                        }else{
-                            mostrarpromo = 0;
-                        } 
-                    }else{
-                        if(travel === 1){
-                            if(validaFecha(travelinicio, travelfin, fecha) === 1){
-                                mostrarpromo = 1;
-                            }else{
-                                mostrarpromo = 0;
-                            } 
-                        }else{
-                            mostrarpromo = 0;
-                        } 
-                    }
-                    var clase = $("#clase").val();
-                    if(clase > 0){
-                        $("#loadingPrices").removeClass("d-none");
-                        cargaPrecios('<?php echo $idtour; ?>', '<?php echo $tour["paquete"][0]["cantidad_dias"] ?>', dateText, generales, mostrarpromo, booking, travel, clase);
-                    }
-                }                 
-            });
-        }            
-
-            
-        });
-
-        function buscaPrecios(){
+        $("#fecha_viaje_input").datepicker({
+          changeMonth: true,
+          changeYear: true,
+          dateFormat: 'yy-mm-dd',
+          minDate: 1,
+          beforeShowDay: function(date) {
+            var fecha = $.datepicker.formatDate('mm/dd/yy', date);
+            if (booking === 1) {
+              if (validaFecha(bookingInicio, bookingFin, fecha) === 1) {
+                if (travel === 1) {
+                  return [true, "eventBooking", 'Reserva esta fecha y obtén: ' + nombreDescuento + ' para viajar del ' + travelinicio + ' al ' + travelfin];
+                } else {
+                  return [true, "eventBooking", 'Reserva esta fecha y obtén: ' + nombreDescuento + ' para viajar en la fecha que desees'];
+                }
+              } else {
+                return [true, '', ''];
+              }
+            } else {
+              if (travel === 1) {
+                if (validaFecha(travelinicio, travelfin, fecha) === 1) {
+                  return [true, "event", 'Promoción disponible: ' + nombreDescuento];
+                } else {
+                  return [true, '', ''];
+                }
+              } else {
+                return [true, '', ''];
+              }
+            }
+          },
+          onSelect: function(dateText) {
             $("#contieneprecios").empty();
+            $("#fechaviaje").val(dateText);
 
             $("#adultos").val(0);
             $("#menores").val(0);
@@ -998,37 +998,80 @@
 
             $(".subtotal").text("$0");
 
-            var dateText = $("#fechaviaje").val(); 
-            var idtour   = '<?php echo $idtour; ?>';
-            var dias     = '<?php echo $tour["paquete"][0]["cantidad_dias"] ?>';
+            var fecha = updateFecha(dateText);
+            var hoy = formatoFecha(new Date(), 'mm/dd/yyyy')
 
-            var fecha = updateFecha(dateText);                    
-            var hoy = formatoFecha(new Date(), 'mm/dd/yyyy')            
             var mostrarpromo = 0;
-            if(booking === 1){  
-                if(validaFecha(bookingInicio, bookingFin, hoy) === 1){
-                    mostrarpromo = 1;                           
-                }else{
-                    mostrarpromo = 0;
-                } 
-            }else{
-                if(travel === 1){
-                    if(validaFecha(travelinicio, travelfin, fecha) === 1){
-                        mostrarpromo = 1;
-                    }else{
-                        mostrarpromo = 0;
-                    } 
-                }else{
-                    mostrarpromo = 0;
-                } 
-            }       
-            var clase = $("#clase").val();    
-            if(dateText != ''){
-                $("#loadingPrices").removeClass("d-none");
-                cargaPrecios(idtour, dias, dateText, generales, mostrarpromo, booking, travel, clase);
+            if (booking === 1) {
+              if (validaFecha(bookingInicio, bookingFin, hoy) === 1) {
+                mostrarpromo = 1;
+              } else {
+                mostrarpromo = 0;
+              }
+            } else {
+              if (travel === 1) {
+                if (validaFecha(travelinicio, travelfin, fecha) === 1) {
+                  mostrarpromo = 1;
+                } else {
+                  mostrarpromo = 0;
+                }
+              } else {
+                mostrarpromo = 0;
+              }
             }
-        }		
-	</script>
+            var clase = $("#clase").val();
+            if (clase > 0) {
+              $("#loadingPrices").removeClass("d-none");
+              cargaPrecios('<?php echo $idtour; ?>', '<?php echo $tour["paquete"][0]["cantidad_dias"] ?>', dateText, generales, mostrarpromo, booking, travel, clase);
+            }
+          }
+        });
+      }
+
+
+    });
+
+    function buscaPrecios() {
+      $("#contieneprecios").empty();
+
+      $("#adultos").val(0);
+      $("#menores").val(0);
+      $("#infantes").val(0);
+
+      $(".subtotal").text("$0");
+
+      var dateText = $("#fechaviaje").val();
+      var idtour = '<?php echo $idtour; ?>';
+      var dias = '<?php echo $tour["paquete"][0]["cantidad_dias"] ?>';
+
+      var fecha = updateFecha(dateText);
+      var hoy = formatoFecha(new Date(), 'mm/dd/yyyy')
+      var mostrarpromo = 0;
+      if (booking === 1) {
+        if (validaFecha(bookingInicio, bookingFin, hoy) === 1) {
+          mostrarpromo = 1;
+        } else {
+          mostrarpromo = 0;
+        }
+      } else {
+        if (travel === 1) {
+          if (validaFecha(travelinicio, travelfin, fecha) === 1) {
+            mostrarpromo = 1;
+          } else {
+            mostrarpromo = 0;
+          }
+        } else {
+          mostrarpromo = 0;
+        }
+      }
+      var clase = $("#clase").val();
+      console.log("clase: "+clase);
+      if (dateText != '' && (clase != '' && clase != 0)) {
+        $("#loadingPrices").removeClass("d-none");
+        cargaPrecios(idtour, dias, dateText, generales, mostrarpromo, booking, travel, clase);
+      }
+    }
+  </script>
 	<script src="js/sidebar_carousel_detail_page_func.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js"></script>
 	<script src="js/map.js"></script>

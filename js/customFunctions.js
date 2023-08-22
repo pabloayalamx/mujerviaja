@@ -341,7 +341,7 @@ function calculaPrecios(){
     }
 
     if(fecha === ''){
-        $("#total").html("Seleccione una fecha");
+        $("#total").val("Seleccione una fecha");
     }else{
         var total = parseFloat(tAdultos) + parseFloat(tMenores) + parseFloat(tInfantes);
         var totalFormat = total.toLocaleString('es-MX')
@@ -385,7 +385,7 @@ function calculaPrecios(){
             $(".subtotalMenor").html(tMenores.toLocaleString('es-MX'));
             $(".subtotalInfante").html(tInfantes.toLocaleString('es-MX'));
 
-            $("#total").html(totalFormat);
+            $("#total").val(totalFormat);
             $("#resumenDescuentos").addClass("d-none");
             $("#aplicapromo").val(0);
         }
@@ -643,6 +643,10 @@ function mostrarDiv(id, valorConfirma, seleccion){
 }
 
 function getLinkPay(){
+    if(document.forms.frmCompra.checkValidity() == false){
+        document.forms.frmCompra.reportValidity()
+        return
+    }
     $("#btnPagar").val("Procesando, por favor espera...").attr("disabled", "disabled");
     var id          = $("#openpayID").val();
     var nombre      = $("#nombreTitular").val();
@@ -684,6 +688,10 @@ function getLinkPay(){
 }
 
 function getLinkPayCivitatis(){
+    if(document.forms.frmCompra.checkValidity() == false){
+        document.forms.frmCompra.reportValidity()
+        return
+    }
     $("#btnPagar").val("Procesando, por favor espera...").attr("disabled", "disabled");
     var id          = $("#openpayID").val();
     var nombre      = $("#nombreTitular").val();
@@ -719,6 +727,10 @@ function getLinkPayCivitatis(){
 
 
 function getLinkPayHotel(){
+    if(document.forms.frmCompra.checkValidity() == false){
+        document.forms.frmCompra.reportValidity()
+        return
+    }
     $("#btnPagar").val("Procesando, por favor espera...").attr("disabled", "disabled");
     var id          = $("#openpayID").val();
     var nombre      = $("#nombreTitular").val();

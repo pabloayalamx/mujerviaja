@@ -73,7 +73,7 @@
                                 <div class="form-group">
                                     <input type="hidden" name="nombreDestino" id="nombreDestino" value="<?php if(isset($_GET["nombreDestino"])){ echo $_GET["nombreDestino"]; } ?>">
                                     <input type="hidden" name="lang" id="lang" value="es">
-                                    <select name="destino_tours" id="destino_tours" class="form-control">
+                                    <select name="destino_tours" id="destino_tours" class="form-control" required>
                                     <?php if(isset($_GET["nombreDestino"])){ ?> <option value="<?php echo $_GET["destino_tours"]; ?>"><?php echo $_GET["nombreDestino"]; ?></option>  <?php } ?>
                                     </select>
                                 </div>
@@ -174,6 +174,7 @@
 
     <!-- Scripts -->  
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/i18n/es.js"></script>
  
 
 	<!-- SPECIFIC SCRIPTS -->
@@ -201,19 +202,7 @@
                             return query;
                             
                     }                            
-                },
-				  templateResult: function (data) {
-					var $result = $("<span class='optgroup'></span>");
-                    var $list = $("<span></span>");
-
-                    if(data.text === 'Regiones' || data.text === 'Tours'){
-                        $result.text(data.text);
-                        return $result;
-                    }else{
-                        $list.text(data.text);
-                        return $list;
-                    }
-				  }                      
+                },                      
             });  
             
             $('#destino_tours').on('select2:select', function (e) {

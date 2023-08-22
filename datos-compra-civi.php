@@ -106,7 +106,7 @@
                                 <div class="col-md-6">                        
                                     <label for="sexoTitular">Sexo</label>
                                     <select required class="form-control" id="sexoTitular" name="sexoTitular">
-                                        <option value="0" selected disabled>Selecciona una opción</option>
+                                        <option value="" selected disabled>Selecciona una opción</option>
                                         <option value="M">Masculino</option>
                                         <option value="F">Femenino</option>                                            
                                     </select>
@@ -117,7 +117,7 @@
                                 <div class="row">
                                     <div class="col-xs-4 col-sm-4">
                                         <select required class="form-control" id="dianacTitular" name="dianacTitular">
-                                            <option value="0" disabled selected>Día</option>
+                                            <option value="" disabled selected>Día</option>
                                             <?php for($i=1; $i<=31; $i++){?>
                                                 <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                             <?php } ?>
@@ -125,7 +125,7 @@
                                     </div>
                                     <div class="col-xs-4 col-sm-4">
                                         <select required class="form-control" id="mesnacTitular" name="mesnacTitular">
-                                            <option value="0" disabled selected>Mes</option>
+                                            <option value="" disabled selected>Mes</option>
                                             <option value="1">Enero</option>
                                             <option value="2">Febrero</option>
                                             <option value="3">Marzo</option>
@@ -142,7 +142,7 @@
                                     </div>
                                     <div class="col-xs-4 col-sm-4">
                                         <select required class="form-control" id="yearTitular" name="yearTitular">
-                                            <option value="0" disabled selected>Año</option>
+                                            <option value="" disabled selected>Año</option>
                                             <?php for($i=1960; $i<=date('Y'); $i++){?>
                                                 <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                             <?php } ?>

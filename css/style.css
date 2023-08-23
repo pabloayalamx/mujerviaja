@@ -3408,3 +3408,26 @@ ul.list_ok li:before {
 		margin-right: 70px !important;
 	}	
 }
+
+
+.displayflex-popularidad-pedrito {
+	display: flex;
+	flex-direction: column;
+}
+
+#cantEstrellas .text-yellow {
+	color: #E28413;
+}
+
+
+#cantEstrellas, #planAlimentos {
+	list-style-type: none;
+}
+
+#cantEstrellas input, #planAlimentos input {
+	margin-right: 3px;
+}
+
+.borde-pedrito .panel-default, .borde-pedrito .panel-heading {
+	border-bottom: 2px dotted #ddd;
+}

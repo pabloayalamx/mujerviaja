@@ -63,6 +63,29 @@ $hotelAds                = $dataHotels["hotelAds"];
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/bootstrap4utilities.css" />
+    <style>
+        .active-nav {
+            transform: translateX(0%) !important;
+        }
+
+        @media screen and (max-width: 768px) {
+            #filtros-nav {
+                top: 0;
+                left: 0;
+                height: 100%;
+                position: fixed !important;
+                transform: translateX(-100%);
+                z-index: 5000;
+                overflow-x: hidden;
+                transition: 0.5s;
+            }
+
+            #close-nav {
+                display: block !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -120,7 +143,7 @@ $hotelAds                = $dataHotels["hotelAds"];
                                     <input type="hidden" name="nombreDestino" id="nombreDestino" value="">
                                     <input type="hidden" name="lang" id="lang" value="es">
                                     <label for="">Busca tu destino</label>
-                                    <select name="destino_tours" id="destino_tours" class="form-control" required>
+                                    <select name="destino_tours" id="destino_tours" class="form-control" required style="width: 100%;">
                                         <option value="<?php echo $_GET["destino_tours"]; ?>"><?php echo $_GET["nombreDestino"]; ?></option>
                                     </select>
                                 </div>
@@ -225,7 +248,11 @@ $hotelAds                = $dataHotels["hotelAds"];
             <!-- TERMINA MOTOR -->
 
             <div class="row">
-                <div class="col-sm-4 borde-pedrito">
+                <button onclick="openCloseNav()" type="button" class="btn btn-primary p-fixed d-block d-md-none" style="position: fixed; top: 90%;left: 50%; transform: translateX(-50%); z-index: 5001">
+                    Filtros
+                </button>
+                <div id="filtros-nav" class="col-sm-4 borde-pedrito" style="background-color: white;">
+
 
                     <div class="panel panel-default">
                         <div class="panel-heading">Búsqueda de hoteles</div>
@@ -549,6 +576,13 @@ $hotelAds                = $dataHotels["hotelAds"];
                     $(`#edad${i} select`).prop("disabled", true);
                 }
             }
+        }
+
+        var headerOpen = false;
+        function openCloseNav() {
+            if(headerOpen == false){headerOpen = true;} else {headerOpen = false;}
+            if(headerOpen == true){ document.querySelector("#header_1").style.display = 'none'} else {document.querySelector("#header_1").style.display = 'block'}
+            document.getElementById("filtros-nav").classList.toggle("active-nav");
         }
     </script>
 

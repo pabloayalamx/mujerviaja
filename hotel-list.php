@@ -248,7 +248,7 @@ $hotelAds                = $dataHotels["hotelAds"];
             <!-- TERMINA MOTOR -->
 
             <div class="row">
-                <button onclick="openCloseNav()" type="button" class="btn btn-primary p-fixed d-block d-md-none" style="position: fixed; top: 85%;left: 81%; transform: translateX(-50%); z-index: 5001; border-radius: 100%; padding: 25px 15px;">
+                <button onclick="openCloseNav()" type="button" class="btn btn-primary p-fixed d-block d-md-none" style="position: fixed; top: 83%;left: 81%; transform: translateX(-50%); z-index: 5001; border-radius: 100%; padding: 25px 15px;">
                     Filtros
                 </button>
                 <div id="filtros-nav" class="col-sm-4 borde-pedrito" style="background-color: white;">

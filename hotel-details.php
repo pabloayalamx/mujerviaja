@@ -217,7 +217,7 @@ $hotelAds     = $detHotel["hotelAds"];
 										</td>
 										<td class="text-center">
 											<p class="text-primary">
-												<?php echo "$".number_format($totalPrecio, 2, '.', ',')." ".$monedaSeleccionada; ?>
+												<?php echo "$".number_format($totalPrecioPublico, 2, '.', ',')." ".$monedaSeleccionada; ?>
 											</p>
 										</td>
 										<td class="text-center">
@@ -231,7 +231,7 @@ $hotelAds     = $detHotel["hotelAds"];
 											$hotelID = $reserva["id"];
 											$linkForm = "hash=".$data["book_hash"]."&id=".$hotelID."&checkin=".$reserva["checkin"]."&checkout=".$reserva["checkout"];
 											$linkForm.= "&adults=".$reserva["guests"][0]["adults"]."&menores=".$menores."&fx=".$fx;
-											$linkForm.= "&room=".$data["room_data_trans"]["main_name"]."&pr=".$totalPrecio;   
+											$linkForm.= "&room=".$data["room_data_trans"]["main_name"]."&pr=".$totalPrecioPublico;   
 											$linkForm.= "&meal=".$data["meal"]."&cur=".$monedaSeleccionada."&hotbd=".$idhotelBD."&residency=".$reserva["residency"]."&lan=".$reserva["language"];
 											$linkForm.= "&hotelName=".$infoHotel["hotelName"]."&foto=".$imgPral."&marte=".$comision;
 										?>											

@@ -43,7 +43,7 @@
                 <div class="col-12">
 
                     <!-- INICIA MOTOR -->
-                    <form id="formbuscador" action="hotel-list" method="get">
+                    <form id="formbuscador" action="hotel-list" method="get" class="container-fluid">
                         <div class="row">
                             <h3 class="tituloMotor">¿A dónde quieres ir?</h3>                        
                             <div class="col-12 col-sm-5 text-left cajamotor">
@@ -51,7 +51,7 @@
                                     <input type="hidden" name="nombreDestino" id="nombreDestino" value="">
                                     <input type="hidden" name="lang" id="lang" value="es">
                                     <label for="">Busca tu destino</label>
-                                    <select name="destino_tours" id="destino_tours" class="form-control" required></select>
+                                    <select style="width: 100%;" name="destino_tours" id="destino_tours" class="form-control" required></select>
                                 </div>                             
                             </div>
 

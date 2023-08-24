@@ -63,7 +63,7 @@
 		<div class="container">
             <!-- INICIA MOTOR -->
             <div class="row borderMotor">
-                <div class="col-12">
+                <div class="col-12 container-fluid">
 
                     <!-- INICIA MOTOR -->
                     <div class="row">
@@ -73,7 +73,7 @@
                                 <div class="form-group">
                                     <input type="hidden" name="nombreDestino" id="nombreDestino" value="<?php if(isset($_GET["nombreDestino"])){ echo $_GET["nombreDestino"]; } ?>">
                                     <input type="hidden" name="lang" id="lang" value="es">
-                                    <select name="destino_tours" id="destino_tours" class="form-control" required>
+                                    <select name="destino_tours" id="destino_tours" class="form-control" style="width: 100%;" required>
                                     <?php if(isset($_GET["nombreDestino"])){ ?> <option value="<?php echo $_GET["destino_tours"]; ?>"><?php echo $_GET["nombreDestino"]; ?></option>  <?php } ?>
                                     </select>
                                 </div>

@@ -83,7 +83,7 @@ $hotelAds     = $detHotel["hotelAds"];
 						<?php } ?>
 					</div>
 
-					<div class="row listaHabitaciones mt-2">
+					<div class="row listaHabitaciones mt-2 table-responsive">
 						<table class="table table-bordered text-center tablePrecios">
 							<thead>
 								<tr>

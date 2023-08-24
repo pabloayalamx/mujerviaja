@@ -21,7 +21,7 @@
 	<!-- End Header 1-->
 
 	<!-- SubHeader =============================================== -->
-	<section class="parallax_window_in" data-parallax="scroll" data-image-src="img/sub_header_about.jpg" data-natural-width="1400" data-natural-height="470">
+	<section class="parallax_window_in" data-parallax="scroll" data-image-src="img/superterminos.jpg" data-natural-width="1400" data-natural-height="470">
 		<div id="sub_content_in">
 			<div id="animate_intro">
 				<h1>Términos y condiciones</h1>

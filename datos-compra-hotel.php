@@ -56,7 +56,7 @@
 		<div class="divider_border"></div>
 
 		<div class="container">
-			<div class="row">
+			<div class="row" style="display: flex; justify-content: center">
 				<div class="col-md-8">
                     <form id="frmCompra" action="save-data-openpay-hotel" method="post">
                         <input type="hidden" name="nombrehotel" id="nombrehotel" value="<?php echo $hotelName; ?>">
@@ -157,7 +157,7 @@
                                     <label for="exampleInputEmail1">E-mail donde recibirás la confirmación de tu reservación</label>
                                     <input required="" type="email" class="form-control" name="email" id="email" placeholder="Escriba su email" required autocomplete="off">
                                 </div>                       
-                                <div class="row">
+                                <div class="row" style="display: flex; justify-content: center; margin-bottom: 17px;">
                                     <div class="col-md-6">
                                         <input type="button" value="Confirmar reservación" class="btn_full" onclick="getLinkPayHotel()" id="btnPagar">
                                         <button id="btnPagarSend" type="submit" class="d-none">x</button>

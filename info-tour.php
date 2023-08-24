@@ -560,7 +560,7 @@
 							
 
                             <div id="precios" class="mleft10 mright10">
-                                <div id="contieneprecios">
+                                <div class="table-responsive" id="contieneprecios">
                                     <table class="table table-bordered text-center">
                                         <thead>
                                             <tr>
@@ -607,8 +607,11 @@
 									<?php } ?> 
 								</select>
                             </div>
-                     	   <?php } ?> 								
+                     	   <?php } ?> 							
 
+												 <div class="table-responsive">
+
+												 
 							<table id="tickets" class="table">
 								<thead>
 									<tr>
@@ -692,6 +695,8 @@
 									</tr>
 								</tbody>
 							</table>
+
+							</div>
 
                             <div id="message-booking"></div>
 							<div class="form-group">

@@ -321,7 +321,7 @@
                                     <label for="exampleInputEmail1">E-mail donde recibirás la confirmación de tu reservación</label>
                                     <input required="" type="email" class="form-control" name="email" id="email" placeholder="Escriba su email" required autocomplete="off">
                                 </div>                       
-                                <div class="row">
+                                <div class="row" style="display: flex; justify-content: center; margin-bottom: 17px;">
                                     <div class="col-md-6">
                                         <input type="button" value="Confirmar reservación" class="btn_full" onclick="getLinkPay()" id="btnPagar">
                                         <button id="btnPagarSend" type="submit" class="d-none">x</button>
@@ -366,7 +366,8 @@
                                         $pinfante = $pinfante - $valor_promocion_frm;
                                     }            
                                 }
-                            ?>                                                                          
+                            ?> 
+                            <div class="table-responsive">                                                                      
 							<table id="tickets" class="table">
 								<thead>
 									<tr>
@@ -442,7 +443,8 @@
 										<td class="text-center"><span class="subtotal subtotalInfante"><?php echo "$ ".$fn->moneda($pinfante*$cinfantes); ?></span></td>
 									</tr>
 								</tbody>
-							</table>                            
+							</table> 
+                            </div>                              
 						</form>
 						<hr>
 					</div>

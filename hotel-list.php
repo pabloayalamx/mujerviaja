@@ -135,7 +135,7 @@ $hotelAds                = $dataHotels["hotelAds"];
             <div class="row borderMotor">
                 <div class="col-12">
                     <!-- INICIA MOTOR -->
-                    <form id="formbuscador" action="hotel-list" method="get">
+                    <form id="formbuscador" action="hotel-list" method="get" class="container-fluid">
                         <div class="row">
                             <h3 class="tituloMotor">¿A dónde quieres ir?</h3>
                             <div class="col-12 col-sm-5 text-left cajamotor">

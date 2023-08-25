@@ -63,10 +63,10 @@
         //Server settings
         $mail->SMTPDebug = false;
         $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'mail.smtp2go.com';                     //Set the SMTP server to send through
+        $mail->Host       = 'bookingtech.mx';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'bookingtrap.com';                     //SMTP username
-        $mail->Password   = 'NJ3YvJVJvNKZ83ih';                               //SMTP password
+        $mail->Username   = 'notificaciones@bookingtech.mx';                     //SMTP username
+        $mail->Password   = 'Fe!fg8949';                               //SMTP password
         $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         $mail->SMTPSecure = "tls";
         $mail->CharSet = 'UTF-8';

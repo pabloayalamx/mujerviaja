@@ -22,8 +22,13 @@
     $formRate["autorizacion"]  = $respuesta["autorizacion"];
     $formRate["montopagado"]   = $respuesta["monto"];
     $formRate["montopagado"]   = $respuesta["monto"];
+
+    //Nuevos cambios
     $formRate["emailAfiliado"] = $emailAfiliado; //Isac: nuevo cambio
     $formRate["estatus"]       = $estatus; //Isac: nuevo cambio
+    $formRate["email"]         = $reservaBD["email"];
+    $formRate["cc_email_reservas_uno"]         = $website["cc_email_reservas_uno"];
+    $formRate["cc_email_reservas_dos"]         = $website["cc_email_reservas_dos"];
 
     $reservafinal = $hotels->requestReservation($formRate);  //Isac: nuevo cambio, antes se usaba if
        

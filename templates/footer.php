@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-3 col-sm-3">
+        <div class="col-md-4">
             <h3>¿Necesitas ayuda?</h3>
             <?php if($afiliado == 0){ ?>
                 <a href="tel:<?php echo $myWebSite["telefono"]; ?>" id="phone"><?php echo $myWebSite["telefono"]; ?></a>
@@ -13,10 +13,13 @@
                 <p><?php echo $nombreAfiliado; ?></p>
             <?php } ?>
         </div>
-        <div class="col-md-2 col-sm-3">
+        <div class="col-md-4">
             <h3>Menú</h3>
             <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="experiencias">Experiencias</a></li>
                 <li><a href="nosotros">Nosotros</a></li>
+                <li><a href="contacto">Contáctanos</a></li>
                 <li><a href="login">Login</a></li>
                 <li><a href="terminos-condiciones">Términos y condiciones</a></li>
                 <li><a href="aviso-privacidad">Aviso de privacidad</a></li>
@@ -29,7 +32,7 @@
             </p>
         </div> -->
 
-        <div class="col-md-3 col-sm-12">
+        <div class="col-md-4" style="display: none;">
             <h3>Newsletter</h3>
             <div id="message-newsletter_2">
             </div>
@@ -97,6 +100,18 @@
     <!-- End row -->
 </div>
 <!-- End container -->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <div class="superfooter-copyright">
+               Copyright © <?php echo ($myWebSite["footer_copyright"] !== "") ? $myWebSite["footer_copyright"] : "2023 Mujer Viaja";  ?>
+               <div>Powered by <b><a href="https://bookingtech.mx/" target="_blank" style="color:white">booking <span style="color: #088de7">tech</span></a></b></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php if($myWebSite["whatsapp"] != ''){ 
     if($afiliado > 0){

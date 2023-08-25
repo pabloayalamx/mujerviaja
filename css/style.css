@@ -3432,3 +3432,8 @@ ul.list_ok li:before {
 .borde-pedrito .panel-default, .borde-pedrito .panel-heading {
 	border-bottom: 2px dotted #ddd;
 }
+
+.superfooter-copyright {
+	display: inline-flex;
+	gap: 7px;
+}

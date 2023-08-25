@@ -73,7 +73,7 @@
 	<section class="wrapper">
 		<div class="divider_border"></div>
 
-		<div class="container">
+		<div class="container" style="display: flex;">
 			<div class="row">
 				<div class="col-md-8">
                     <form id="frmCompra" action="save-data-openpay" method="post">

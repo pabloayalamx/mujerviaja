@@ -59,12 +59,14 @@
     
             //Enviar copia al correo 2 de reservas?
             if($myWebSite["cc_email_reservas_dos"] != ''){
-                $mail->addAddress($myWebSite["cc_email_reservas_dos"]);  
+                 $mail->addAddress('pabloayaladeveloper@gmail.com');  
+                // $mail->addAddress($myWebSite["cc_email_reservas_dos"]);  
             }  
     
             //Enviar correo al afiliado?
             if($emailAfiliado != ''){
-                $mail->addAddress($emailAfiliado);  
+                // $mail->addAddress($emailAfiliado);  
+                $mail->addAddress('pabloayaladev@gmail.com');  
             }       
     
             $mail->AddAttachment($pdf); 
@@ -120,17 +122,19 @@
     
             //Correos de la agencia para notificarle el error:
             if($myWebSite["cc_email_reservas_uno"] != ''){
-                $mail->addAddress($myWebSite["cc_email_reservas_uno"]);  
+                // $mail->addAddress($myWebSite["cc_email_reservas_uno"]);  
+                $mail->addAddress('pabloayaladev@gmail.com');  
             }  
     
             //Enviar copia al correo 2 de reservas?
             if($myWebSite["cc_email_reservas_dos"] != ''){
-                $mail->addAddress($myWebSite["cc_email_reservas_dos"]);  
+                // $mail->addAddress($myWebSite["cc_email_reservas_dos"]);                  
             }            
     
             //Enviar correo al afiliado?
             if($emailAfiliado != ''){
                 $mail->addAddress($emailAfiliado);  
+                $mail->addAddress('pabloayaladeveloper@gmail.com');  
             }       
     
             $mail->addReplyTo($myWebSite["cc_email_reservas_uno"], "Mujer Viaja");  //Poner nombre de la agencia de viajes 

@@ -87,7 +87,7 @@
         $mail->Subject = 'Nuevo prospecto generado desde el sitio web';
         $mail->Body    = $bodyMail;
         $mail->AltBody = 'ALT del cuerpo del correo';    
-        // $mail->send();
+        $mail->send();
         } catch (Exception $e) {
             echo "Error";
         }      

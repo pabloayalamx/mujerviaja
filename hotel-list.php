@@ -84,6 +84,10 @@ $hotelAds                = $dataHotels["hotelAds"];
             #close-nav {
                 display: block !important;
             }
+
+            .ui-autocomplete {
+                z-index: 8000;
+            }
         }
     </style>
 </head>

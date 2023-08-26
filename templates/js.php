@@ -3,3 +3,5 @@
 <script src="assets/validate.js"></script>
 <script src="js/functions.js"></script>
 <script src="js/customFunctions.js"></script>
+
+<?php echo $myWebSite["snippet_footer"]; ?>

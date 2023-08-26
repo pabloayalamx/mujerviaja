@@ -128,5 +128,3 @@
     </a>    
 </div>
 <?php } ?>
-
-<?php echo $myWebSite["snippet_footer"]; ?>

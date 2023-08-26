@@ -26,7 +26,7 @@
     //Nuevos cambios
     $formRate["emailAfiliado"] = $emailAfiliado; //Isac: nuevo cambio
     $formRate["estatus"]       = $estatus; //Isac: nuevo cambio
-    $formRate["email"]         = $valoresHotel["email"];
+    $formRate["email"]         = $valoresHotel->email;
     $formRate["cc_email_reservas_uno"]         = $myWebSite["cc_email_reservas_uno"];
     $formRate["cc_email_reservas_dos"]         = $myWebSite["cc_email_reservas_dos"];
 

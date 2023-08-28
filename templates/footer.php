@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row">
+    <div class="row fix-footer-pedrito-2">
         <div class="col-md-4">
             <h3>¿Necesitas ayuda?</h3>
             <?php if($afiliado == 0){ ?>
@@ -13,14 +13,14 @@
                 <p><?php echo $nombreAfiliado; ?></p>
             <?php } ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <h3>Menú</h3>
             <ul>
                 <li><a href="/">Inicio</a></li>
                 <li><a href="experiencias">Experiencias</a></li>
                 <li><a href="nosotros">Nosotros</a></li>
                 <li><a href="contacto">Contáctanos</a></li>
-                <li><a href="login">Login</a></li>
+                <li style="display: none;"><a href="login">Login</a></li>
                 <li><a href="terminos-condiciones">Términos y condiciones</a></li>
                 <li><a href="aviso-privacidad">Aviso de privacidad</a></li>
             </ul>
@@ -107,7 +107,7 @@
         <div class="col-sm-12 text-center">
             <div class="superfooter-copyright">
                Copyright © <?php echo ($myWebSite["footer_copyright"] !== "") ? $myWebSite["footer_copyright"] : "2023 Mujer Viaja";  ?>
-               <div>Powered by <b><a href="https://bookingtech.mx/" target="_blank" style="color:white">booking <span style="color: #088de7">tech</span></a></b></div>
+               <div>Powered by <b><a href="https://bookingtech.mx/" target="_blank" style="color:white">booking<span style="color: #088de7">tech</span></a></b></div>
             </div>
         </div>
     </div>

@@ -5,7 +5,7 @@
 ?>   
 
 <head>
-    <title>Demo 1 | BookingTrap</title>    
+    <title>Aviso de privacidad - Mujer Viaja</title>    
     <meta name="description" content="">
     <meta name="keywords" content="">	
     <?php include("templates/head.php"); ?>

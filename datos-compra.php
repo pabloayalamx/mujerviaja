@@ -47,6 +47,16 @@
     <meta name="description" content="<?php echo $tour["paquete"][0]["descripcion_sitio"]; ?><">
     <meta name="keywords" content="<?php echo $tour["paquete"][0]["keywords_sitio"]; ?><">
     <?php include("templates/head.php"); ?>
+    <style>
+        @media (max-width: 576px) { 
+            .superflex-fix-pedrito {
+                display: block !important;
+            }
+         }
+         .superflex-fix-pedrito {
+                display: flex;
+            }
+    </style>
 </head>
 
 <body>
@@ -73,7 +83,7 @@
 	<section class="wrapper">
 		<div class="divider_border"></div>
 
-		<div class="container" style="display: flex;">
+		<div class="container superflex-fix-pedrito">
 			<div class="row">
 				<div class="col-md-8">
                     <form id="frmCompra" action="save-data-openpay" method="post">

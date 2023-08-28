@@ -110,8 +110,8 @@
                                 ?>
                             </label>
                         </p>
-                        <input type="hidden" id="adulto_precio" value="<?php echo $precioAdultoNormal["precioformato"]; ?>">
-                        <input type="hidden" id="adulto_precio_promo" value="<?php echo $precioAdulto["precioformato"]; ?>">
+                        <input type="hidden" id="adulto_precio" value="<?php echo $precioAdultoNormal["preciosimple"]; ?>">
+                        <input type="hidden" id="adulto_precio_promo" value="<?php echo $precioAdulto["preciosimple"]; ?>">
                     </td>
 
                     <td style="background-color: #c7dff2; color:black;">

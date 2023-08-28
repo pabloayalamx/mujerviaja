@@ -5,7 +5,7 @@
 ?>   
 
 <head>
-    <title>Contáctanos</title>    
+    <title>Contáctanos - Mujer Viaja</title>
     <meta name="description" content="">
     <meta name="keywords" content="">	
     <?php include("templates/head.php"); ?>

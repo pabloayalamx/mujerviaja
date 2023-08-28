@@ -3437,3 +3437,22 @@ ul.list_ok li:before {
 	display: inline-flex;
 	gap: 7px;
 }
+
+
+.fix-footer-pedrito-2 {
+	display: flex;
+	justify-content: center;
+}
+
+@media (max-width: 768px) { 
+	.fix-footer-pedrito-2 {
+		display: block;
+		text-align: center;
+	}
+
+	.fix-footer-pedrito-2 a#phone, .fix-footer-pedrito-2 a#email_footer {
+    width: 220px;
+    margin: 20px auto;
+}
+
+}

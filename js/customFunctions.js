@@ -578,6 +578,11 @@ function calculaPreciosCircuito(){
         $("#infantes").removeAttr("disabled");    
     }    
 
+    tadultos = isNaN(tadultos) ? 0 : tadultos
+    tmenores = isNaN(tmenores) ? 0 : tmenores
+    tinfantes = isNaN(tinfantes) ? 0 : tmenores
+    grantotal = isNaN(grantotal) ? 0 : grantotal
+
     $(".subtotalAdulto").html(tadultos.toLocaleString('es-MX'));
     $(".subtotalMenor").html(tmenores.toLocaleString('es-MX'));
     $(".subtotalInfante").html(tinfantes.toLocaleString('es-MX')); 

@@ -132,6 +132,11 @@ if (isset($_GET["nombreDestino"])) {
                     </button>
                     <div id="filtros-nav" class="col-sm-4 borde-pedrito" style="background-color: white;">
 
+                    <div class="panel panel-default">
+                            <div class="panel-body">
+                            <div id="toursEncontrados" data-total="<?php echo count($civitatis->actividades); ?>"><?php echo count($civitatis->actividades); ?> actividades encontradas</div>
+                            </div>
+                    </div>
 
                         <div class="panel panel-default">
                             <div class="panel-heading">Búsqueda de hoteles</div>

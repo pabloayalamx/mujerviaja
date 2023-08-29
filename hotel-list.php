@@ -257,6 +257,11 @@ $hotelAds                = $dataHotels["hotelAds"];
                 </button>
                 <div id="filtros-nav" class="col-sm-4 borde-pedrito" style="background-color: white;">
 
+                <div class="panel panel-default">
+                            <div class="panel-body">
+                            <div id="hotelesEncontrados" data-total="<?php echo count($hoteles); ?>"><?php echo count($hoteles); ?> hoteles encontrados</div>
+                            </div>
+                    </div>
 
                     <div class="panel panel-default">
                         <div class="panel-heading">Búsqueda de hoteles</div>

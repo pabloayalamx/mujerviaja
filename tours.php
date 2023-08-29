@@ -98,8 +98,8 @@ if (isset($_GET["nombreDestino"])) {
 
                     <!-- INICIA MOTOR -->
                     <div class="row">
-                        <h3 class="tituloMotor">¿A dónde quieres ir?</h3>
-                        <form id="form-buscar" action="tours" method="GET">
+                        <h3 class="tituloMotor text-center">¿A dónde quieres ir?</h3>
+                        <form id="form-buscar" action="tours" method="GET" class="responsive-motor-tours">
                             <div class="col-12 col-sm-5 text-left cajamotor">
                                 <div class="form-group">
                                     <input type="hidden" name="nombreDestino" id="nombreDestino" value="<?php if (isset($_GET["nombreDestino"])) {

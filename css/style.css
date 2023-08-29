@@ -3457,3 +3457,14 @@ ul.list_ok li:before {
 }
 
 }
+
+.responsive-motor-tours{
+	display: flex;
+	justify-content: center;
+}
+
+@media (max-width: 768px) { 
+	.responsive-motor-tours{
+		display: block;
+	}
+}

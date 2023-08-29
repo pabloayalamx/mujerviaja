@@ -12,7 +12,6 @@
     $formRate["reservaBD"] = $reservaBD["id"];
     $formRate["nombre"]    = $valoresHotel->nombre;
     $formRate["apellido"]  = $valoresHotel->apellido;
-    $emailCliente = $valoresHotel->email;
 
     $idoperacion = $_GET["id"];
     $data["transaccion"] = $idoperacion;

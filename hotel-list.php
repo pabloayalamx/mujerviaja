@@ -350,7 +350,7 @@ $hotelAds                = $dataHotels["hotelAds"];
                                 if (is_array($imagenes)) {
                                     if (count($imagenes) > 0) {
                                         $imagen = $imagenes[0];
-                                        $imgLink = str_replace("{size}", "1024x768", $imagen);
+                                        $imgLink = str_replace("{size}", "240x240", $imagen);
                                     }
                                 }
 

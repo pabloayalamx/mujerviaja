@@ -418,9 +418,9 @@ $hotelAds                = $dataHotels["hotelAds"];
                                                     <i class="<?php echo $stars >= 5 ? 'fas' : 'far'; ?> fa-star"></i>
 
                                                 </em>
-                                                <div class="score_wp">Tripadvisor
+                                                <!-- <div class="score_wp">Tripadvisor
                                                     <div class="score">8.5</div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </a>
                                     </div>

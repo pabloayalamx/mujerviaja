@@ -853,3 +853,8 @@ function formatearMoneda(valor, options = {
 }) {
     return Number(valor).toLocaleString('es-MX', options)
 }
+
+$(window).on("beforeunload",function() {
+    $("#preloader").fadeIn(120)
+    $("#preloader :first-child").fadeIn(120)
+});

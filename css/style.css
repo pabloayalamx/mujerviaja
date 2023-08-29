@@ -3421,11 +3421,12 @@ ul.list_ok li:before {
 }
 
 
-#cantEstrellas, #planAlimentos {
+#cantEstrellas, #planAlimentos, #tipoTour {
 	list-style-type: none;
 }
 
-#cantEstrellas input, #planAlimentos input {
+#cantEstrellas input, #planAlimentos input,
+#tipoTour input {
 	margin-right: 3px;
 }
 

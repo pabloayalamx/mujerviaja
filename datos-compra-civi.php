@@ -85,7 +85,6 @@
                             <input type="hidden" name="cantidad[]" value="<?php echo $cantidad[$i]; ?>">
                         <?php } ?>
                         <h3 class="titulo tituloForm">DATOS DEL TITULAR</h3>
-                        <small class="text-danger">TITULAR DE LA TARJETA CON LA QUE SE REALIZARÁ EL PAGO</small>
                         <div>
                             <div class="form-group mb-5">
                                 <label for="nombreTitular">Nombres</label>

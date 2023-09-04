@@ -62,25 +62,13 @@
                 }
                 
                 foreach($respuesta["data"]["tours"] as $x => $data){        
-					$precio = 0;
-							
-					if($data["adulto_sencilla"] > 0){
-						$precio = $data["adulto_sencilla"];
-					}
-
-					if($data["adulto_doble"] > 0){
-						$precio = $data["adulto_doble"];
-					}
-					
-					if($data["adulto_triple"] > 0){
-						$precio = $data["adulto_triple"];
-					}
-					
-					if($data["adulto_cuadruple"] > 0){
-						$precio = $data["adulto_cuadruple"];
-					}	
-					
-					$precioReal    = $fn->precio($precio, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);							         				
+									$arrayPrecios["adulto_sencilla"]  = $data["adulto_sencilla"];
+                  $arrayPrecios["adulto_doble"]     = $data["adulto_doble"];
+                  $arrayPrecios["adulto_triple"]    = $data["adulto_triple"];
+                  $arrayPrecios["adulto_cuadruple"] = $data["adulto_cuadruple"];
+                  
+                  $precioMinimo = $fn->precioMinimoLista($arrayPrecios);                  
+                  $precioReal    = $fn->precio($precioMinimo, $data["iso"], $monedaSeleccionada, $monedaDefault, $monedas);							         				
 			?>
 			<div class="row strip_list wow fadeIn animated" data-wow-delay="0.2s">
 				<div class="col-md-5">

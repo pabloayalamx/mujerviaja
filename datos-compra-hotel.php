@@ -83,7 +83,6 @@
                         <input type="hidden" name="user_ip" value="<?php echo $_SERVER['REMOTE_ADDR']; ?>">
 
                         <h3 class="titulo tituloForm">DATOS DEL TITULAR</h3>
-                        <small class="text-danger">TITULAR DE LA TARJETA CON LA QUE SE REALIZARÁ EL PAGO</small>
                         <div>
                             <div class="form-group mb-5">
                                 <label for="nombreTitular">Nombres</label>

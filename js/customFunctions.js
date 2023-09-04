@@ -372,6 +372,12 @@ function calculaPrecios(){
                 // $("#descuentoresumen").html(descuentototal);
                 $("#aplicapromo").val(1);
             }else{
+                tadultos = isNaN(tadultos) ? 0 : tadultos
+                tmenores = isNaN(tmenores) ? 0 : tmenores
+                tinfantes = isNaN(tinfantes) ? 0 : tmenores
+                grantotal = isNaN(grantotal) ? 0 : grantotal
+
+
                 $(".subtotalAdulto").html(tAdultos.toLocaleString('es-MX'));
                 $(".subtotalMenor").html(tMenores.toLocaleString('es-MX'));
                 $(".subtotalInfante").html(tInfantes.toLocaleString('es-MX'));
@@ -381,6 +387,11 @@ function calculaPrecios(){
                 $("#aplicapromo").val(0);
             }
         }else{
+            tadultos = isNaN(tadultos) ? 0 : tadultos
+            tmenores = isNaN(tmenores) ? 0 : tmenores
+            tinfantes = isNaN(tinfantes) ? 0 : tmenores
+            grantotal = isNaN(grantotal) ? 0 : grantotal
+
             $(".subtotalAdulto").html(tAdultos.toLocaleString('es-MX'));
             $(".subtotalMenor").html(tMenores.toLocaleString('es-MX'));
             $(".subtotalInfante").html(tInfantes.toLocaleString('es-MX'));

@@ -344,6 +344,11 @@ function calculaPrecios(){
         $("#total").val("Seleccione una fecha");
     }else{
         var total = parseFloat(tAdultos) + parseFloat(tMenores) + parseFloat(tInfantes);
+        tAdultos = isNaN(tAdultos) ? 0 : tAdultos
+        tMenores = isNaN(tMenores) ? 0 : tMenores
+        tInfantes = isNaN(tInfantes) ? 0 : tInfantes
+        total = isNaN(total) ? 0 : total
+
         var totalFormat = total.toLocaleString('es-MX')
 
         var promototal = parseFloat(tpAdultos) + parseFloat(tpMenores) + parseFloat(tpInfantes);
@@ -372,12 +377,6 @@ function calculaPrecios(){
                 // $("#descuentoresumen").html(descuentototal);
                 $("#aplicapromo").val(1);
             }else{
-                tAdultos = isNaN(tAdultos) ? 0 : tAdultos
-                tMenores = isNaN(tMenores) ? 0 : tMenores
-                tInfantes = isNaN(tInfantes) ? 0 : tInfantes
-                totalFormat = isNaN(totalFormat) ? 0 : totalFormat
-
-
 
                 $(".subtotalAdulto").html(tAdultos.toLocaleString('es-MX'));
                 $(".subtotalMenor").html(tMenores.toLocaleString('es-MX'));
@@ -388,10 +387,6 @@ function calculaPrecios(){
                 $("#aplicapromo").val(0);
             }
         }else{
-            tAdultos = isNaN(tAdultos) ? 0 : tAdultos
-            tMenores = isNaN(tMenores) ? 0 : tMenores
-            tInfantes = isNaN(tInfantes) ? 0 : tInfantes
-            totalFormat = isNaN(totalFormat) ? 0 : totalFormat
 
 
             $(".subtotalAdulto").html(tAdultos.toLocaleString('es-MX'));

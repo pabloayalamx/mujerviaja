@@ -3,6 +3,12 @@
 include("templates/language.php");
 include("class/allclass.php");
 
+$idtourArray = explode("_", $_GET["destino_tours"]);
+if(count($idtourArray) == 2){
+  $link = 'actividad/actividades/'.$idtourArray[0];
+  header('Location: '.$link);
+}
+
 if (isset($_GET["nombreDestino"])) {
     $form["lang"]     = $_GET["lang"];
     $form["currency"] = $monedaSeleccionada;
@@ -570,6 +576,7 @@ if (isset($_GET["nombreDestino"])) {
                 width: 'resolve',
                 placeholder: 'Escribe un destino',
                 language: "es",
+                templateResult: formatState,
                 ajax: {
                     url: 'destination-tours',
                     delay: 150,
@@ -583,6 +590,17 @@ if (isset($_GET["nombreDestino"])) {
                     }
                 },
             });
+
+            function formatState(state) {
+        if (!state.id) {
+            return state.text;
+        }
+        var baseUrl = "/user/pages/images/flags";
+        var $state = $(
+            '<span><i class="fa ' + state.icono + '"></i> ' + state.text + '</span>'
+        );
+        return $state;
+    };
 
             $('#destino_tours').on('select2:select', function(e) {
                 var data = e.params.data;

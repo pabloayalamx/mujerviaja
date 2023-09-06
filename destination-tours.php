@@ -7,8 +7,47 @@
     $info = new Paquetes();
     $fn = new funciones();
 
-
     $form["search"] = $_GET["search"];
-    $precios = $info->civitatisDestinations($form);
-    echo $precios;
+    $form["sandbox"] = true;
+    $destinosJson = $info->civitatisSearch($form);    
+    $resultado = json_decode($destinosJson);   
+
+    $destinos = $resultado->destinos->results;
+    if(count($destinos) > 0){        
+        foreach($destinos as $i => $destino){
+            if($destino->text != 'Destinos'){
+                $formList[$i]["icono"] = 'fa-map-marker';
+                $formList[$i]["text"]  = $destino->text;
+                $formList[$i]["id"]    = $destino->id;
+            }            
+        }
+
+        $acumulado = $i;
+    }else{
+        $acumulado = 0;
+    }
+
+    $actividades = $resultado->tours->results;
+    if(count($actividades) > 0){        
+        foreach($actividades as $a => $actividad){
+            if($actividad->text != 'Actividades'){
+                $indice = $acumulado + $a;
+                $formList[$indice]["icono"] = 'fa-minus-square';
+                $formList[$indice]["text"]  = $actividad->text;
+                $formList[$indice]["id"]    = $actividad->id;                
+            }            
+        }
+    }    
+
+    $grandote = [];
+    foreach ($formList as $lista){
+        array_push($grandote, $lista);
+    }
+
+    $results = [
+        "results" => $grandote
+    ];
+
+    echo json_encode($results);
+
 ?>

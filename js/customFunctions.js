@@ -842,12 +842,24 @@ function muestraPrecios(tipoActividad){
     $(".tipoCat").each(function(){
         var id_cat = $(this).data("id");
         var precio = $(`#precio_${tipoActividad}_${id_cat}`).val();
-        $(`#tipoCat_${id_cat} option[value=precio]`).text(`$ ${formatearMoneda(precio)} MXN`)
+        
+        $(`#tipoCat_${id_cat} option[value=precio]`).text(`$ ${formatearMoneda(precio)} `+$("#currencyHeader").val())
         $('#tipoCat_'+id_cat).data('precio', precio)
     });
 
-    $("#precios_cat_"+tipoActividad).addClass("catSeleccionada");
     calculaPrecio();
+}
+
+function tarifaNetaAgenciasTours(tarifa){
+    precio = tarifa / .99;
+    return precio;
+}
+
+function tarifaPublicaAgenciasTours(tarifa, markup){
+    //Tarifa que le dara la agencia al cliente final
+    tarifaAgencia = tarifa / .99;
+    precio = tarifaAgencia / (1- (markup/100) );
+    return precio;
 }
 
 function poneCantidad(elem, id){     

@@ -16,6 +16,42 @@ class Paquetes
         $this->cookie = "XSRF-TOKEN=".uniqid('bt_');
     }
 
+    public function civitatisSearch($data){
+        $url = $_SERVER['HTTP_HOST'];
+        
+        $path = $url=='https://app.bookingtrap.com/' ? 'http://localhost/bookingtrapcrm/api/civitatis/buscar' : 'https://app.bookingtrap.com/api/civitatis/buscar';
+        // $path = 'http://localhost/bookingtrapcrm/api/civitatis/buscar';
+
+        $request = new HTTP_Request2();
+
+        $request->setUrl($path);
+        $request->setMethod(HTTP_Request2::METHOD_GET);
+
+        $request->setConfig(array(
+            'follow_redirects' => TRUE
+        ));
+        $request->setHeader(array(
+            'Content-Type' => 'application/json',
+            'Authorization' => $this->token,
+            'Cookie' => $this->cookie
+        ));   
+
+        $request->setBody(json_encode($data));
+        
+        try {
+            $response = $request->send();
+            if ($response->getStatus() == 200) {
+                return $response->getBody();                            
+            }else {
+                echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+                $response->getReasonPhrase();
+            }
+        }
+        catch(HTTP_Request2_Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+        }        
+    }
+
     public function getCategories(){
         $url = $_SERVER['HTTP_HOST'];
         

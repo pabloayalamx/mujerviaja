@@ -7,6 +7,7 @@ if (isset($_GET["nombreDestino"])) {
     $form["lang"]     = $_GET["lang"];
     $form["currency"] = $monedaSeleccionada;
     $form["id"]       = $_GET["destino_tours"];
+    $form["sandbox"]  = true;
     $civitatis        = $tours->getActivitiesCivitatis($form);
     $markup           = $civitatis->empresa[0]->comision_tours;
 }

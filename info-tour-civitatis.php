@@ -35,6 +35,12 @@
     
     <!-- JQUERY UI -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<style>
+			.campoReserva, .campoReservaHorario{
+				display: none;
+			}
+
+		</style>
 </head>
 
 <body>
@@ -299,80 +305,62 @@
 					</div>
 					<div class="box_style_2">
 						<h3>Reserva tu tour<span>Confirmación inmediata</span></h3>
-						<form id="check_avail_pedrito" method="post" action="datos-compra-civi" autocomplete="off">
-							<input type="hidden" name="idactividad" value="<?php echo $actividad->id; ?>">
-							<input type="hidden" name="nombreActividad" value="<?php echo $actividad->title; ?>">
-							<input type="hidden" name="markup" value="<?php echo $markup; ?>">
-							<input type="hidden" name="currency" value="<?php echo $monedaSeleccionada; ?>">                
-							<input type="hidden" name="imagen" value="<?php echo $actividad->photos->header[0]->paths->original; ?>">
-							<input type="hidden" name="precioTotal" id="precioTotal" value="">	
+						<form id="check_avails" method="post" action="datos-compra-civi" autocomplete="off">
+                                            <input type="hidden" name="idactividad" value="<?php echo $actividad->id; ?>">
+                                            <input type="hidden" name="nombreActividad" value="<?php echo $actividad->title; ?>">
+                                            <input type="hidden" name="markup" value="<?php echo $markup; ?>">
+                                            <input type="hidden" name="currency" value="<?php echo $monedaSeleccionada; ?>">                
+                                            <input type="hidden" name="imagen" value="<?php echo $actividad->photos->header[0]->paths->original; ?>">
+                                            <input type="hidden" name="precioTotal" id="precioTotal" value="">
 
-							<div class="form-group">
-								<label>Tipo de actividad</label>
-								<select class="form-control" name="rate" id="rate" onchange="muestraPrecios(value)" required>
-									<option value="" disabled selected>Selecciona una opción</option>
-									<?php foreach($categoriasTours as $c => $categoriaTour){ ?>
-										<option value="<?php echo $c; ?>"><?php echo $categoriaTour; ?></option>
-									<?php } ?>
-								</select>
-							</div>
-
-							<?php foreach($tipos as $t => $tipoCat){ ?>
-							<div class="form-group">
-								<label><?php echo $tipoCat; ?></label>
-								<select class="form-control tipoCat" name="campo[]" id="tipoCat_<?php echo $t; ?>" data-id="<?php echo $t; ?>" data-precio="" onchange="calculaPrecio(); poneCantidad(this, '<?php echo $t; ?>');">
-								<option value="0" disabled selected>Seleccione...</option>
-								<option value="precio" disabled>$ --- <?php echo $monedaSeleccionada; ?></option>						
-									<?php for($i=0; $i<=10; $i++){ ?>
-										<option value="<?php echo $t; ?>" rel="<?php echo $i; ?>"><?php echo $i; ?></option>
-									<?php } ?>
-								</select>	
-								<input type="hidden" name="cantidad[<?php echo $t; ?>]" id="cantidad_<?php echo $t; ?>">
-							</div>								
-							<?php } ?>
-							
-						
-							<div class="form-group">
-								<label>Fecha</label>
-								<input type="text" name="fecha" id="fecha" class="form-control" required>	
-							</div>
-							
-							<?php if($calendario->hasHours == 1){ ?>
-							<div class="form-group">
-								<label>Horario</label>
-								<select class="form-control" name="horario" id="horario" required>
-									<option value="" selected disabled>Selecciona un horario</option>
-									<?php foreach($calendario->schedule[0]->times as $horario){ 
-                                                if($horario->quotaAvailable == true){
-                                                    if($horario->quota > 0){
-                                                        $available = 1;
-                                                    }else{
-                                                        $available = 0;
-                                                    }
-                                                }else{
-                                                    $available = 1;
-                                                }										
-										
-										?>
-										<option value="<?php echo $horario->time; ?>" <?php echo $available == 1 ? '' : 'disabled' ?>><?php echo $horario->time; ?></option>
-									<?php } ?>
-								</select>		
-							</div>		
-							<?php } ?>		
-							
-							<div class="form-group">
-								<label>Total a pagar</label>
-								<input type="text" readonly class="form-control" id="total">
-							</div>
-							
-							<div class="form-group">
-								<button type="submit" class="btn_full">Reserva ahora</button>
-								<!-- <input type="submit" form="check_avail" value="Reserva ahora" class="btn_full" id="submit-booking"> -->
-							</div> 							
-						</form>
-						<hr>
-						<a href="tel:<?php echo $myWebSite["telefono"]; ?>" class="btn_outline"> ó contáctanos</a>
-						<a href="tel:<?php echo $myWebSite["telefono"]; ?>" id="phone_2"><i class="icon_set_1_icon-91"></i><?php echo $myWebSite["telefono"]; ?></a>
+                                            <div class="fields">
+                                                <div class="form-group pl-0">
+                                                    <label>Fecha</label>
+                                                    <div class="field-inner">
+                                                        <input required type="text" name="fecha" id="fecha" class="form-control" placeholder="Fecha" autocomplete="off">
+                                                        <!-- <i class="alt-icon fa fa-calendar-alt"></i> -->
+                                                    </div>
+                                                </div>
+                                                <div class="form-group pl-0 campoReserva">
+                                                    <label>Tipo de actividad</label>
+                                                    <div class="field-inner">
+                                                        <select class="form-control" name="rate" id="rate" onchange="muestraPrecios(value)" required>
+                                                            <option value="" disabled selected>Selecciona una opción</option>
+                                                            <?php foreach($categoriasTours as $c => $categoriaTour){ ?>
+                                                                <option value="<?php echo $c; ?>"><?php echo $categoriaTour; ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <?php foreach($tipos as $t => $tipoCat){ ?>
+                                                    <div class="form-group pl-0 campoReserva">
+                                                        <label><?php echo $tipoCat; ?></label>
+                                                        <select class="<?php echo $actividad->rates[0]->categories[$t]->canBookAlone ? "adulto_canBook" : ""?> form-control tipoCat" name="campo[]" id="tipoCat_<?php echo $t; ?>" data-id="<?php echo $t; ?>" data-precio="" onchange="calculaPrecio(); poneCantidad(this, '<?php echo $t; ?>');">
+                                                        <option value="" selected>Seleccione...</option>
+                                                        <option value="precio" disabled>$ --- <?php echo $monedaSeleccionada; ?></option>
+                                                            <?php for($i=0; $i<=10; $i++){ ?>
+                                                                <option value="<?php echo $t; ?>" rel="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                            <?php } ?>
+                                                        </select>   
+                                                        <input type="hidden" name="cantidad[<?php echo $t; ?>]" id="cantidad_<?php echo $t; ?>">
+                                                    </div>                              
+                                                <?php } ?> 
+                                                
+                                                <div class="form-group pl-0 campoReservaHorario">
+                                                    <label>Horario</label>
+<select class="form-control" name="horario" id="horario" required>
+                                                        <option value="" selected disabled>Selecciona un horario</option>
+                                                    </select>       
+                                                </div>      
+                                                <div class="form-group pl-0 campoReserva">
+                                                    <label>Total a pagar</label>
+                                                    <input type="text" readonly class="form-control" id="total">
+                                                </div>
+                                                <div class="errores-adultos" style= "color: red; transition: all 0.5s ease;">
+                                                </div>
+                                            </div>
+                                            <div class="proceed-link"><button type="submit" class="theme-btn btn-style-two">Reserva ahora</button></div>
+                                        </form>
 					</div>
 				</aside>
 			</div>
@@ -407,90 +395,185 @@
 	<script src="js/map.js"></script>
 	<script src="js/infobox.js"></script>
 
-
 	<script>
-    //Script pedrito 2
-    document.querySelector("#check_avail_pedrito").addEventListener("submit", function(e) {
-      const sel = document.forms.check_avail_pedrito.tipoCat_0;
-      const adultos = sel.options[sel.selectedIndex].text;
-      if (adultos == "Seleccione..." || adultos == "0") {
-        alert("Favor de seleccionar un adulto")
-        e.preventDefault()
-        return
-      }
-    })
-  </script>
+        const arrayFechas = [];
+        const arrayRates  = [];            
 
-	<script>
-		$(document).ready(function(){
-			let availableDates = [
-				<?php foreach($calendario->schedule as $fechitas){ ?>
-					'<?php echo $fn->datePickerFormat($fechitas->date); ?>',
-				<?php } ?>       
-			];
+        let horarios    = [];
+        let rates       = [];
+        let ratesDetail = [];
 
+        $(document).ready(function(){
+            let availableDates = [
+                <?php foreach($calendario->schedule as $fechitas){ ?>
+                    '<?php echo $fn->datePickerFormat($fechitas->date); ?>',
+                <?php } ?>       
+            ];
+
+            <?php foreach($calendario->schedule as $fechitasB){  ?>
+                <?php foreach($fechitasB->times as $h => $horarios){ ?>
+                 horarios[<?php echo $h; ?>] = ['<?php echo $horarios->time; ?>', '<?php echo $horarios->quota; ?>', '<?php echo $horarios->quotaAvailable; ?>', '<?php echo $fechitasB->availability; ?>'];
+                <?php } ?> 
+
+                <?php foreach($fechitasB->rates as $t => $typeRate){ ?>
+                  <?php foreach($typeRate as $r => $rates) { ?>
+                            ratesDetail[<?php echo $r; ?>] = '<?php echo $rates->price; ?>';
+                        <?php } ?>      
+                        rates[<?php echo $t; ?>] = [...ratesDetail];
+                <?php } ?>      
+                       
+                arrayRates['<?php echo $fechitasB->date; ?>']  = [...rates];    
+                arrayFechas['<?php echo $fechitasB->date; ?>'] = [...horarios];                     
+            <?php } ?>         
+            
             $("#fecha").datepicker({
-                changeMonth: true, 
-                changeYear: true,                 
-                dateFormat: 'yy-mm-dd',
+                dateFormat: "yy-mm-dd",
                 minDate: 1,
-				maxDate: 365,
-				monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-				monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
-				dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-				dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
-				dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'], 
-				beforeShowDay: function(d) {
-					// console.log(d);
-					var dmy = (d.getMonth()+1); 
-					if(d.getMonth()<9) 
-						dmy="0"+dmy; 
-					dmy+= "-"; 
+                maxDate: 270,
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+                dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],            
+                beforeShowDay: function(d) {
+                    var dmy = (d.getMonth()+1); 
+                    if(d.getMonth()<9) 
+                        dmy="0"+dmy; 
+                    dmy+= "-"; 
 
-					if(d.getDate()<10) dmy+="0"; 
-						dmy+=d.getDate() + "-" + d.getFullYear(); 
+                    if(d.getDate()<10) dmy+="0"; 
+                        dmy+=d.getDate() + "-" + d.getFullYear(); 
 
-					// console.log(dmy+' : '+($.inArray(dmy, availableDates)));
+                    if ($.inArray(dmy, availableDates) != -1) {
+                        return [true, "","Available"]; 
+                    } else{
+                        return [false,"","unAvailable"]; 
+                    }              
+                },
+                onSelect: function(date) {
+                    var chorarios = arrayFechas[date].length;
+                    if(chorarios === 1){
+                        //Horarios
+                        if(hora !== ''){
+                            var hora           = arrayFechas[date][0][0];
+                            var quota          = arrayFechas[date][0][0];
+                            var quotaAvailable = arrayFechas[date][0][0];
+                            var availability   = arrayFechas[date][0][0]; 
 
-					if ($.inArray(dmy, availableDates) != -1) {
-						return [true, "","Available"]; 
-					} else{
-						return [false,"","unAvailable"]; 
-					}
-           		},				  				               
-                onSelect: function(dateText) {
+                            if(quotaAvailable === true){
+                                if(availability > 0){
+                                    $('#horario').append('<option rel="avail" value="'+hora+'">'+hora+'</option>');
+                                }else{
+                                    $('#horario').append('<option rel="notavail" value="'+hora+'" disabled>'+hora+' (no disponible)</option>');
+                                }    
+                                $(".campoReservaHorario").hide();                        
+                            }else{
+                                if(hora !== ''){
+                                    $(".campoReservaHorario").hide();
+                                    $('#horario').append('<option rel="noquota" value="'+hora+'">'+hora+'</option>');
+                                }                           
+                            } 
 
-                }                 
-            });			
-		});
+                        }else{
+                            $(".campoReservaHorario").hide();
+                        }
+                    }else{
+                        $(".campoReservaHorario").show();
+                        $("#horario").empty();
 
-    function mostrarCaja(){
-        $("#subcajita").removeClass("d-none");
-        $("#btnActiva").hide();
-    }   
-    
-    function cerrarCaja(){
-        $("#subcajita").addClass("d-none");
-        $("#btnActiva").show();
-    }
-	
-	function calculaPrecio(){
-		let suma = 0;
-		$(".tipoCat").each(function(){
-			var id_cat = $(this).data("id");
-			var precio = $(this).data("precio");
-			var cant   = $('option:selected', this).attr("rel");
-			
-			if(precio > 0 && cant > 0){
-				suma = suma + (cant * precio);
-			}else{
-				suma = suma + 0;
-			}
-		});
+                        $('#horario').append('<option value="0" selected disabled>Horario</option>');                    
+                        for(i=0;i<chorarios;i++){
+                            var hora           = arrayFechas[date][i][0];
+                            var quota          = arrayFechas[date][i][0];
+                            var quotaAvailable = arrayFechas[date][i][0];
+                            var availability   = arrayFechas[date][i][0];
 
-		$("#total").val("$ "+formatearMoneda(suma.toFixed(2))+" <?php echo $monedaSeleccionada; ?>");
-		$("#precioTotal").val(suma.toFixed(2));
-	}		
-	</script>
+                            if(quotaAvailable === true){
+                                if(availability > 0){
+                                    $('#horario').append('<option value="'+hora+'">'+hora+'</option>');
+                                }else{
+                                    $('#horario').append('<option value="'+hora+'" disabled>'+hora+' (no disponible)</option>');
+                                }
+                                
+                            }else{
+                              $('#horario').append('<option value="'+hora+'">'+hora+'</option>');
+                            }                        
+                        }
+                    }
+
+                    //Precios
+                    var cprecios = arrayRates[date].length;
+                    var lista = arrayRates[date];
+
+                    for(i=0; i<cprecios; i++){ //i=Tipo de actividad
+                        details  = lista[i];
+                        cdetails = details.length;
+
+                        for(d=0; d<cdetails;d++){//d=tipo de pax + precios
+                            //Actualizamos tarifas
+                            $("#precio_"+i+"_"+d).val(tarifaNetaAgenciasTours(details[d]));
+                        }                    
+                    }
+
+                    var tipoActividad = $("#rate").val();
+                    muestraPrecios(tipoActividad);              
+
+                    $(".campoReserva").show();
+                }                          
+            });   
+        });        
+
+        function mostrarCaja(){
+            $("#subcajita").removeClass("d-none");
+            $("#btnActiva").hide();
+        }   
+        
+        function cerrarCaja(){
+            $("#subcajita").addClass("d-none");
+            $("#btnActiva").show();
+        }
+        
+        function calculaPrecio(){
+            let suma = 0;
+            $(".tipoCat").each(function(){
+                var id_cat = $(this).data("id");
+                var precio = $(this).data("precio");
+                var cant   = $('option:selected', this).attr("rel");
+                
+                if(precio > 0 && cant > 0){
+                    suma = suma + (cant * precio);
+                  }else{
+                    suma = suma + 0;
+                }
+            });
+
+            $("#total").val("$ "+formatearMoneda(suma.toFixed(2))+" <?php echo $monedaSeleccionada; ?>");
+            $("#precioTotal").val(suma.toFixed(2));
+        }
+            
+             //Script pedrito 2
+            document.querySelector("#check_avails").addEventListener("submit", function(e) {
+                const sels = document.querySelectorAll(".adulto_canBook")
+                console.log(sels);
+                //const adultos = sel.options[sel.selectedIndex].text;
+                for(var i = 0; i<sels.length; i++){
+                    var empty = true;
+                    const adultos = sels[i].options[sels[i].selectedIndex].text;
+                    console.log(adultos)
+                    if (adultos != "Seleccione..." && adultos != "0") {
+                        empty = false;
+                        break
+                    }
+            }
+                if(empty){
+                    document.querySelector(".errores-adultos").innerHTML = "La actividad requiere adultos"
+                    e.preventDefault()
+                    return
+                }
+            })
+      
+    </script>
+
+
 </body>
 </html>

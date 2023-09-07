@@ -32,7 +32,7 @@
         foreach($actividades as $a => $actividad){
             if($actividad->text != 'Actividades'){
                 $indice = $acumulado + $a;
-                $formList[$indice]["icono"] = 'fa-minus-square';
+                $formList[$indice]["icono"] = 'fa fa-star-o';
                 $formList[$indice]["text"]  = $actividad->text;
                 $formList[$indice]["id"]    = $actividad->id;                
             }            

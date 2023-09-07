@@ -16,7 +16,7 @@
     if(count($destinos) > 0){        
         foreach($destinos as $i => $destino){
             if($destino->text != 'Destinos'){
-                $formList[$i]["icono"] = 'fa-map-marker';
+                $formList[$i]["icono"] = 'fa-map-marker-alt';
                 $formList[$i]["text"]  = $destino->text;
                 $formList[$i]["id"]    = $destino->id;
             }            
@@ -32,7 +32,7 @@
         foreach($actividades as $a => $actividad){
             if($actividad->text != 'Actividades'){
                 $indice = $acumulado + $a;
-                $formList[$indice]["icono"] = 'fa fa-star-o';
+                $formList[$indice]["icono"] = 'fa-hiking';
                 $formList[$indice]["text"]  = $actividad->text;
                 $formList[$indice]["id"]    = $actividad->id;                
             }            

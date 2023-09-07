@@ -426,10 +426,10 @@
                 arrayFechas['<?php echo $fechitasB->date; ?>'] = [...horarios];                     
             <?php } ?>         
             
-            $("#fecha").datepicker({
-                dateFormat: "yy-mm-dd",
+            $("#fecha").datepicker({                 
+                dateFormat: 'yy-mm-dd',
                 minDate: 1,
-                maxDate: 270,
+				maxDate: 270,
                 monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
                 monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
                 dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
@@ -453,35 +453,38 @@
                 onSelect: function(date) {
                     var chorarios = arrayFechas[date].length;
                     if(chorarios === 1){
+                        var hora           = arrayFechas[date][0][0];
                         //Horarios
                         if(hora !== ''){
-                            var hora           = arrayFechas[date][0][0];
                             var quota          = arrayFechas[date][0][0];
                             var quotaAvailable = arrayFechas[date][0][0];
-                            var availability   = arrayFechas[date][0][0]; 
-
+                            var availability   = arrayFechas[date][0][0];
                             if(quotaAvailable === true){
                                 if(availability > 0){
                                     $('#horario').append('<option rel="avail" value="'+hora+'">'+hora+'</option>');
                                 }else{
                                     $('#horario').append('<option rel="notavail" value="'+hora+'" disabled>'+hora+' (no disponible)</option>');
-                                }    
+                                }
                                 $(".campoReservaHorario").hide();                        
                             }else{
                                 if(hora !== ''){
                                     $(".campoReservaHorario").hide();
+                                    //console.log("asdfasdf")
+                                    $("#horario").prop("required", false)
                                     $('#horario').append('<option rel="noquota" value="'+hora+'">'+hora+'</option>');
                                 }                           
                             } 
-
-                        }else{
-                            $(".campoReservaHorario").hide();
                         }
+                        else{
+                            $(".campoReservaHorario").hide();
+                            $("#horario").prop("required", false)
+                        }
+
                     }else{
                         $(".campoReservaHorario").show();
                         $("#horario").empty();
 
-                        $('#horario').append('<option value="0" selected disabled>Horario</option>');                    
+                        $('#horario').append('<option value="" selected disabled>Horario</option>');                    
                         for(i=0;i<chorarios;i++){
                             var hora           = arrayFechas[date][i][0];
                             var quota          = arrayFechas[date][i][0];
@@ -494,9 +497,9 @@
                                 }else{
                                     $('#horario').append('<option value="'+hora+'" disabled>'+hora+' (no disponible)</option>');
                                 }
-                                
+
                             }else{
-                              $('#horario').append('<option value="'+hora+'">'+hora+'</option>');
+                                $('#horario').append('<option value="'+hora+'">'+hora+'</option>');
                             }                        
                         }
                     }
@@ -520,7 +523,8 @@
 
                     $(".campoReserva").show();
                 }                          
-            });   
+            });
+   
         });        
 
         function mostrarCaja(){

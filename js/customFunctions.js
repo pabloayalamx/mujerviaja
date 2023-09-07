@@ -842,9 +842,8 @@ function muestraPrecios(tipoActividad){
     $(".tipoCat").each(function(){
         var id_cat = $(this).data("id");
         var precio = $(`#precio_${tipoActividad}_${id_cat}`).val();
-        $(`#tipoCat_${id_cat} option[value=precio]`).text(`$ ${formatearMoneda(precio)} MXN`)
 
-        $(`#tipoCat_${id_cat} option[value=precio]`).text(`$ ${formatearMoneda(precio)} `+$("#currencyHeader").val())
+        $(`#tipoCat_${id_cat} option[value=precio]`).text(`$ ${formatearMoneda(precio)} `+$("#currency").val())
         $('#tipoCat_'+id_cat).data('precio', precio)
     });
 

@@ -511,7 +511,7 @@
 
                         for(d=0; d<cdetails;d++){//d=tipo de pax + precios
                             //Actualizamos tarifas
-                            $("#precio_"+i+"_"+d).val(tarifaNetaAgenciasTours(details[d]));
+                            $("#precio_"+i+"_"+d).val(tarifaPublicaAgenciasTours(details[d], '<?php echo $tour->empresa[0]->comision_tours; ?>'));
                         }                    
                     }
 

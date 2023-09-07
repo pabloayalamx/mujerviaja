@@ -349,7 +349,7 @@
                                                 <div class="form-group pl-0 campoReservaHorario">
                                                     <label>Horario</label>
 <select class="form-control" name="horario" id="horario" required>
-                                                        <option value="" selected disabled>Selecciona un horario</option>
+                                                        
                                                     </select>       
                                                 </div>      
                                                 <div class="form-group pl-0 campoReserva">

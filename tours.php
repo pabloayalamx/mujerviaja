@@ -305,6 +305,9 @@ if (isset($_GET["nombreDestino"])) {
             }
             document.getElementById("filtros-nav").classList.toggle("active-nav");
         }
+        $("#filtros-nav").add(document).scroll(function(){
+      document.querySelector("#ui-id-1").style.display = "none"
+    });
         (function($) {
             "use strict";
             $.fn.numericFlexboxSorting = function(options) {

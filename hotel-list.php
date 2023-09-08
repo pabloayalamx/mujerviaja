@@ -593,6 +593,9 @@ $hotelAds                = $dataHotels["hotelAds"];
             if(headerOpen == true){ document.querySelector("#header_1").style.display = 'none'} else {document.querySelector("#header_1").style.display = 'block'}
             document.getElementById("filtros-nav").classList.toggle("active-nav");
         }
+        $("#filtros-nav").add(document).scroll(function(){
+      document.querySelector("#ui-id-1").style.display = "none"
+    });
     </script>
 
 

@@ -110,6 +110,31 @@
 		}
 	});
 
+	const l = $('.carousel-pedrito-footer');
+	if (l.length > 0) {
+		$('.carousel-pedrito-footer').owlCarousel({
+			animateOut: 'fadeOut',
+			animateIn: 'fadeIn',
+			responsiveClass: true,
+			margin: 0,
+			items: 1,
+			responsiveClass: true,
+			nav: true,
+			dots: false
+		});
+	}
+
+	$('.carousel-pedrito-footer').owlCarousel({
+		animateOut: 'fadeOut',
+		animateIn: 'fadeIn',
+		responsiveClass: true,
+		margin: 0,
+		items: 1,
+		responsiveClass: true,
+		nav: true,
+		dots: false
+		});	
+
 	/* Twitter feed*/
 	$('.latest-tweets').each(function () {
 			$(this).tweet({

@@ -25,6 +25,24 @@
                 <li><a href="aviso-privacidad">Aviso de privacidad</a></li>
             </ul>
         </div>
+
+        <?php
+        $respuesta = $hotels->galeria();
+        if (!empty($respuesta)) {
+        ?>
+        <div class="col-md-3">
+            <div class="carousel-pedrito-footer owl-carousel owl-theme add_bottom_15">
+
+
+				<?php
+                foreach ($respuesta as $x => $data) {
+                ?>		
+				<div class="item"><img src="https://app.bookingtrap.com/public/storage/<?php echo $data['archivo'] ?>" alt=""></div>
+                <?php } ?>
+		    </div>
+        </div>
+        <?php } ?>
+
         <!-- <div class="col-md-4 col-sm-6">
             <h3>Dirección</h3>
             <p>

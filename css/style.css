@@ -3445,7 +3445,7 @@ ul.list_ok li:before {
 	justify-content: center;
 }
 
-@media (max-width: 768px) { 
+@media (max-width: 992px) { 
 	.fix-footer-pedrito-2 {
 		display: block;
 		text-align: center;
@@ -3467,4 +3467,9 @@ ul.list_ok li:before {
 	.responsive-motor-tours{
 		display: block;
 	}
+}
+
+.carousel-pedrito-footer img {
+	height: 175px;
+	object-fit: cover;
 }

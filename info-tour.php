@@ -29,9 +29,28 @@
 
 	$toursRelacionados = $tours->relatedTours($formCategorias);
     $rangoMenores  = $tour["paquete"][0]["edad_menor_min"]." - ".$tour["paquete"][0]["edad_menor_max"]." años";
-    $rangoInfantes = $tour["paquete"][0]["edad_infante_min"]." - ".$tour["paquete"][0]["edad_infante_max"]." años";
+    //$rangoInfantes = $tour["paquete"][0]["edad_infante_min"]." - ".$tour["paquete"][0]["edad_infante_max"]." años";
     $edadAdulta    = $tour["paquete"][0]["edad_menor_max"] + 1;
     $rangoAdultos  = "A partir de ".$edadAdulta." años";	
+
+	if($tour["paquete"][0]["tipo_min_infantes"] == 0 && $tour["paquete"][0]["tipo_max_infantes"] == 0){
+        //Ambos rangos son Años
+        $rangoInfantes  = $tour["paquete"][0]["edad_infante_min"]." - ".$tour["paquete"][0]["edad_infante_max"];
+        $rangoInfantes .= $tour["paquete"][0]["edad_infante_max"] == 1 ? ' año' : ' años';
+    }else{
+        if($tour["paquete"][0]["tipo_min_infantes"] == 1 && $tour["paquete"][0]["tipo_max_infantes"] == 1){
+            //Ambos rangos son meses
+            $rangoInfantes  = $tour["paquete"][0]["edad_infante_min"]." - ".$tour["paquete"][0]["edad_infante_max"];
+            $rangoInfantes .= $tour["paquete"][0]["edad_infante_max"] == 1 ? ' mes' : ' meses';
+        }else{
+            //De meses a años
+            $rangoInfantes  = $tour["paquete"][0]["edad_infante_min"];
+            $rangoInfantes .= $tour["paquete"][0]["edad_infante_min"] == 1 ? ' mes' : ' meses';
+
+            $rangoInfantes .= " - ".$tour["paquete"][0]["edad_infante_max"];
+            $rangoInfantes .= $tour["paquete"][0]["tipo_max_infantes"] == 1 ? ($tour["paquete"][0]["edad_infante_max"] == 1 ? ' mes' : ' meses') : ($tour["paquete"][0]["edad_infante_max"] == 0 ? ' año' : ' años');
+        }
+    }
 ?>   
 <head>
     <base href="<?php echo $fn->baseMeta(); ?>">

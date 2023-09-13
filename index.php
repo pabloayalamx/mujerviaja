@@ -174,7 +174,7 @@
 
 	<section class="container margin_60">
 		<div class="main_title">
-			<h3>Por que elegir a Mujer Viaja</h3>
+			<h3>Porque elegir a Mujer Viaja</h3>
 			<p>Somos una empresa verdaderamente comprometida con nuestros clientes.</p>
 		</div>
 		<div class="row">

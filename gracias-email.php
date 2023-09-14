@@ -73,15 +73,15 @@
 
         //Recipients
        // $mail->setFrom('notificaciones@bookingtrap.com', 'Notificaciones Viaja Mujer');
-       $mail->setFrom('notificaciones@bookingtech.mx', 'Notificaciones Viaja Mujer');
-        $mail->addAddress($myWebSite["email_form"]);     //Add a recipient
+       $mail->setFrom('programadorbt3@gmail.com', 'Notificaciones Viaja Mujer');
+       /* $mail->addAddress($myWebSite["email_form"]);     //Add a recipient
         if($myWebSite["cc_email_form"] != ''){
             $mail->addAddress($myWebSite["cc_email_form"]);  
         }  
         if($email_afiliado != ''){
             $mail->addAddress($email_afiliado);  
         }       
-
+*/
         $mail->addReplyTo($email_contact, $name_contact.' '.$lastname_contact);
 
         $mail->isHTML(true);   

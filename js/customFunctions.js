@@ -419,6 +419,65 @@ function calculaPreciosCircuito(){
     var fecha = $("#fecha_viaje").val();
     var hab = $("#tip_habitacion_1").val();
 
+    // Cambios pedrito travel-cit
+    const adultos = document.querySelector("#adultos")
+    const menores = document.querySelector("#menores")
+    let adultosvalue = adultos.value;
+    let menoresvalue = menores.value
+    if(hab === "sen"){
+        adultos.innerHTML = ""
+        menores.innerHTML = ""
+        adultosvalue = adultosvalue <= 1 ? adultosvalue : 1;
+        menoresvalue = menoresvalue <= 2 ? menoresvalue : 2;
+
+        adultos.add(new Option("0"))
+        adultos.add(new Option("1"))
+        menores.add(new Option("0"))
+        menores.add(new Option("1"))
+        menores.add(new Option("2"))
+    }
+    if(hab === "dbl"){
+        adultos.innerHTML = ""
+        menores.innerHTML = ""
+        adultosvalue = adultosvalue <= 2 ? adultosvalue : 2;
+        menoresvalue = menoresvalue <= 2 ? menoresvalue : 2;
+
+        adultos.add(new Option("0"))
+        adultos.add(new Option("1"))
+        adultos.add(new Option("2"))
+        menores.add(new Option("0"))
+        menores.add(new Option("1"))
+        menores.add(new Option("2"))
+    }
+    if(hab === "tpl"){
+        adultos.innerHTML = ""
+        menores.innerHTML = ""
+        adultosvalue = adultosvalue <= 3 ? adultosvalue : 3;
+        menoresvalue = menoresvalue <= 1 ? menoresvalue : 1;
+
+        adultos.add(new Option("0"))
+        adultos.add(new Option("1"))
+        adultos.add(new Option("2"))
+        adultos.add(new Option("3"))
+        menores.add(new Option("0"))
+        menores.add(new Option("1"))
+    }
+    if(hab === "cpl"){
+        adultos.innerHTML = ""
+        menores.innerHTML = ""
+        adultosvalue = adultosvalue <= 4 ? adultosvalue : 4;
+        menoresvalue = menoresvalue <= 0 ? menoresvalue : 0;
+
+        adultos.add(new Option("0"))
+        adultos.add(new Option("1"))
+        adultos.add(new Option("2"))
+        adultos.add(new Option("3"))
+        adultos.add(new Option("4"))
+        menores.add(new Option("0"))
+    }
+    adultos.value = adultosvalue;
+    menores.value = menoresvalue;
+
     //Datos del servicio seleccionado
     var fecha_inicio = $("#fecha_inicio_"+fecha).val();
     var fecha_fin = $("#fecha_fin_"+fecha).val();

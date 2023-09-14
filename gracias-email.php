@@ -61,7 +61,7 @@
     $mail = new PHPMailer(true);
     try {
         //Server settings
-        $mail->SMTPDebug = false;
+        $mail->SMTPDebug = true;
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.ionos.mx';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication

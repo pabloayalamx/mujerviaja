@@ -63,16 +63,17 @@
         //Server settings
         $mail->SMTPDebug = false;
         $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'bookingtech.mx';                     //Set the SMTP server to send through
+        $mail->Host       = 'smtp.ionos.mx';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->Username   = 'notificaciones@bookingtech.mx';                     //SMTP username
-        $mail->Password   = 'Fe!fg8949';                               //SMTP password
+        $mail->Password   = ' #NotificacionesBTrap2023!';                               //SMTP password
         $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         $mail->SMTPSecure = "tls";
         $mail->CharSet = 'UTF-8';
 
         //Recipients
-        $mail->setFrom('notificaciones@bookingtrap.com', 'Notificaciones Viaja Mujer');
+       // $mail->setFrom('notificaciones@bookingtrap.com', 'Notificaciones Viaja Mujer');
+       $mail->setFrom('notificaciones@bookingtech.mx', 'Notificaciones Viaja Mujer');
         $mail->addAddress($myWebSite["email_form"]);     //Add a recipient
         if($myWebSite["cc_email_form"] != ''){
             $mail->addAddress($myWebSite["cc_email_form"]);  

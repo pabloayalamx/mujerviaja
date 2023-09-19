@@ -127,7 +127,7 @@
 
         //Recipients
         $mail->setFrom('notificaciones@bookingtrap.com', 'Notificaciones Mujer Viaja');
-        $mail->addAddress("programado3@bookingrtech.mx"); 
+        $mail->addAddress("programador3@bookingrtech.mx"); 
 /*
         if($myWebSite["cc_email_form"] != ''){
             $mail->addAddress($myWebSite["cc_email_form"]);  

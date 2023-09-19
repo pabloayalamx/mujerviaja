@@ -427,7 +427,7 @@
 							<input type="hidden" id="aceptaInfantes" value="<?php echo  $tour["paquete"][0]["infantes"]; ?>">
 							<input type="hidden" id="aceptaMenores" value="<?php echo  $tour["paquete"][0]["menores"]; ?>">							
 							<div class="form-group">
-								<?php if($tour["paquete"][0]["cantidad_dias"] > 1){  
+								<?php if($tour["paquete"][0]["calendario"] == 1){  
                                     $fechas =  $tour["fechas"]; 
 									// print_r($fechas);
 									$cpromos = count($tour["promociones"]);

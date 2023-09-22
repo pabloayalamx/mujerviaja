@@ -76,7 +76,7 @@
 					<br><br>
 					Te invitamos a viajar con la asesoría y atención de nuestras franquicias Mujer Viaja.						
 					<br><br>
-						<b>Alejando Mirabal Cornejo<br>
+						<b>Alejandro Mirabal Cornejo<br>
 						Socio Fundador y CEO</b>					
 					</p>					
 				</div>

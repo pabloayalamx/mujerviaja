@@ -37,7 +37,7 @@
     if($aplicapromo == 1 && $tipo_descuento_frm == 1){
         $gtotalPromo = $gtotal - ($gtotal * ($valor_promocion_frm / 100));
     }else{
-        $gototalPromo = 0;
+        $gtotalPromo = 0;
     }
 ?> 
 

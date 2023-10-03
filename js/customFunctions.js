@@ -647,7 +647,7 @@ function calculaPreciosCircuito(){
 
     tadultos = isNaN(tadultos) ? 0 : tadultos
     tmenores = isNaN(tmenores) ? 0 : tmenores
-    tinfantes = isNaN(tinfantes) ? 0 : tmenores
+    tinfantes = isNaN(tinfantes) ? 0 : tinfantes
     grantotal = isNaN(grantotal) ? 0 : grantotal
 
     $(".subtotalAdulto").html(tadultos.toLocaleString('es-MX'));

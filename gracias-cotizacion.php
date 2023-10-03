@@ -119,14 +119,14 @@
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.ionos.mx';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'notificaciones@bookingtrap.com';                     //SMTP username
-        $mail->Password   = '#NotificacionesBTrap2023!';                               //SMTP password
+        $mail->Username   = 'adriana.arguelles@mujerviaja.com';                     //SMTP username
+        $mail->Password   = 'mujerviaja';                               //SMTP password
         $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         $mail->SMTPSecure = "tls";
         $mail->CharSet = 'UTF-8';
 
         //Recipients
-        $mail->setFrom('notificaciones@bookingtrap.com', 'Notificaciones Mujer Viaja');
+        $mail->setFrom('adriana.arguelles@mujerviaja.com', 'Notificaciones Mujer Viaja');
         $mail->addAddress($myWebSite["email_form"]); 
 
         if($myWebSite["cc_email_form"] != ''){

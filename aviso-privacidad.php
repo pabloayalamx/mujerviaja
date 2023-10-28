@@ -6,8 +6,8 @@
 
 <head>
     <title>Aviso de privacidad - Mujer Viaja</title>    
-    <meta name="description" content="">
-    <meta name="keywords" content="">	
+    <meta name="description" content="Nuestra política de privacidad está diseñada para garantizar la seguridad y confidencialidad de tus datos al reservar viajes para mujeres. Descubre cómo protegemos tu información personal.">
+<meta name="keywords" content="política de privacidad, privacidad de datos, seguridad de datos, protección de información, agencia de viajes para mujeres, reservas seguras, datos personales, confidencialidad, viajes para mujeres, experiencias inolvidables">	
     <?php include("templates/head.php"); ?>
 </head>
 

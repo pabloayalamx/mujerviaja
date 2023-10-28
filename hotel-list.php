@@ -7,7 +7,7 @@ $idRegion                = filter_input(INPUT_GET, "destino_tours", FILTER_DEFAU
 $nombreDestino           = filter_input(INPUT_GET, "nombreDestino", FILTER_DEFAULT);
 $adultos                 = intval(filter_input(INPUT_GET, "adultos", FILTER_SANITIZE_NUMBER_INT));
 $menoresInput            = filter_input(INPUT_GET, "menores", FILTER_SANITIZE_NUMBER_INT); //Sirve para contabilizar la cantidad de huespedes 
-$menoresTxt              = $menoresInput > 0 ? implode(",", $_GET["edad"]) : '0';
+$menoresTxt              = $menoresInput > 0 ? implode(",", $_GET["edad"]) : 'cero';
 
 $checkinDate             = filter_input(INPUT_GET, "checkin", FILTER_DEFAULT);
 $checkoutDate            = filter_input(INPUT_GET, "checkout", FILTER_DEFAULT);

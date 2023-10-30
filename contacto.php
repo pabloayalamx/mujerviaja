@@ -7,7 +7,7 @@
 <head>
     <title>Contáctanos - Mujer Viaja</title>
     <meta name="description" content="Contáctanos para embarcarte en viajes increíbles diseñados especialmente para mujeres. Explora nuestras excursiones centradas en mujeres y comunícate con nuestro apasionado equipo para aventuras personalizadas.">
-    <meta name="keywords" content="viajes para mujeres, tours amigables para mujeres, aventuras exclusivas para mujeres, empoderamiento, contacto, viajes a medida, exploración, agencia de viajes, viajeras, experiencias inolvidables">	
+    <meta name="keywords" content="mujerviaja, mujer viaja,contacto, asistencia, viajeras, mujeres viajeras, comunidad de viajeras, empoderamiento de la mujer, aventuras, exploración, turismo, viajes para mujeres, tour company" />	
     <?php include("templates/head.php"); ?>
 </head>
 

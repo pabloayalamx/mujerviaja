@@ -6,7 +6,7 @@
 
 <head>
     <title>Aviso de privacidad - Mujer Viaja</title>    
-    <meta name="descripción" content="Tu privacidad es fundamental para nosotros. Nuestra política de privacidad está diseñada para proteger tus datos personales y garantizar la confidencialidad en tus viajes. Descubre cómo cuidamos tus información mientras te sumerges en emocionantes aventuras como mujer viajera." />
+    <meta name="description" content="Tu privacidad es fundamental para nosotros. Nuestra política de privacidad está diseñada para proteger tus datos personales y garantizar la confidencialidad en tus viajes. Descubre cómo cuidamos tus información mientras te sumerges en emocionantes aventuras como mujer viajera." />
 <meta name="keywords" content="mujerviaja, mujer viaja,política de privacidad, privacidad de datos, seguridad de datos, confidencialidad, protección de datos, turismo, viajes para mujeres, privacidad en línea, privacidad del usuario" />
 	
     <?php include("templates/head.php"); ?>

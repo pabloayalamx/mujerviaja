@@ -6,8 +6,8 @@
 
 <head>
     <title>Términos y condiciones - Mujer Viaja</title>    
-    <meta name="description" content="Bienvenida a nuestros términos y condiciones. Descubre las reglas que rigen nuestras emocionantes y seguras experiencias de viaje diseñadas para mujeres.">
-<meta name="keywords" content="términos y condiciones, viajes para mujeres, condiciones de reserva, política de cancelación, viajes seguros, regulaciones de viaje, políticas de privacidad, agencia de viajes para mujeres, experiencias inolvidables">
+    <meta name="description" content="Nuestros términos y condiciones están diseñados para garantizar una experiencia segura y equitativa para todas nuestras viajeras. Queremos que tu aventura sea inolvidable. Te invitamos a revisar y aceptar nuestros términos antes de embarcarte en esta emocionante travesía con nosotras." />
+<meta name="keywords" content="mujerviaja, mujer viaja,términos y condiciones, política, seguridad, igualdad, acuerdo, normas, responsabilidades, turismo, viajes para mujeres, protección del usuario, condiciones legales" />
     <?php include("templates/head.php"); ?>
 </head>
 

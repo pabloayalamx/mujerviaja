@@ -9,7 +9,7 @@ $form["checkout"] = $_GET["checkout"];
 $form["adults"] = $_GET["adultos"];
 $form["menores"] = $_GET["menores"];
 $form["residency"] = $_GET["nacionalidad"];
-
+$form["currency"] = $monedaSeleccionada;
 $comision = intval($_GET["markup"]);
 $menores  = $_GET["menores"];
 

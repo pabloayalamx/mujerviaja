@@ -56,6 +56,9 @@
          .superflex-fix-pedrito {
                 display: flex;
             }
+#currency{
+            display: none;
+        }
     </style>
 </head>
 

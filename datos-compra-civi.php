@@ -44,7 +44,7 @@
     <meta name="keywords" content="">
     <?php include("templates/head.php"); ?>
 <style>
-        #currency{
+        #currency, #currencyHeader{
             display: none;
         }
     </style>

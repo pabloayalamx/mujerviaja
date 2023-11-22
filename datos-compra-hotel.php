@@ -29,6 +29,11 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <?php include("templates/head.php"); ?>
+<style>
+        #currency{
+            display: none;
+        }
+    </style>
 </head>
 
 <body>

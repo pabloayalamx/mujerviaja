@@ -81,7 +81,7 @@
                         <input type="hidden" name="cartid" value="<?php echo $cart->cartId; ?>">   
                         <input type="hidden" name="gtotal" id="gtotal" value="<?php echo $precioTotal; ?>">    
                         <input type="hidden" name="openpayID" id="openpayID">
-                        <input type="hidden" name="sandbox" value="true">
+                        <input type="hidden" name="sandbox" value="false">
                         <input type="hidden" name="openpayLINK" id="openpayLINK">    
                         <input type="hidden" name="idformulario" value="<?php echo $fields->items[0]->id; ?>">        
                         <input type="hidden" name="nombretour" id="nombretour" value="<?php echo $nombreAct; ?>">              

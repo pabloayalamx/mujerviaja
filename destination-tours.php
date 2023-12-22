@@ -8,7 +8,7 @@
     $fn = new funciones();
 
     $form["search"] = $_GET["search"];
-    $form["sandbox"] = true;
+    $form["sandbox"] = false;
     $destinosJson = $info->civitatisSearch($form);    
     $resultado = json_decode($destinosJson);   
 

@@ -57,6 +57,7 @@ $hotelAds     = $detHotel["hotelAds"];
 		<div id="sub_content_in">
 			<div id="animate_intro">
 				<h1><?php echo $infoHotel["hotelName"] ?></h1>
+				<h2><?php echo $infoHotel["address"] ?></h2>
 				<p>"<?php echo $infoHotel["hotelName"] ?>" te espera para pasar las mejores vacaciones</p>
 			</div>
 		</div>

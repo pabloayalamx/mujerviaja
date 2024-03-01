@@ -1,4 +1,6 @@
 <?php 
+    session_start();
+    $monedaSeleccionada = $_SESSION["moneda"];
     include("class/paquetes.class.php");
     include("class/utilities.class.php");
 
@@ -18,6 +20,7 @@
     $formData["apellido"]    = $apellido;
     $formData["telefono"]    = $telefono;
     $formData["descripcion"] = $descripcion;
+    $formData["currency"]    = $monedaSeleccionada;
     $formData["total"]       = $total;
     $formData["email"]       = $email; 
     $formData["domain"]      = "https://franquicia.mujerviaja.com";

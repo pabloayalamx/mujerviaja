@@ -19,6 +19,7 @@
         $monedaSeleccionada = $_SESSION["moneda"];
     }else{
         $monedaSeleccionada = $monedas["data"]["0"]["iso"];
+        $_SESSION["moneda"] = $monedaSeleccionada;
     }
 
     //Verificando afiliado

@@ -1,4 +1,6 @@
 <?php 
+    session_start();
+    $monedaSeleccionada = $_SESSION["moneda"];
     include("class/paquetes.class.php");
     include("class/utilities.class.php");
 
@@ -16,6 +18,7 @@
 
     $formData["nombre"]      = $nombre;
     $formData["apellido"]    = $apellido;
+    $formData["currency"]    = $monedaSeleccionada;
     $formData["telefono"]    = $telefono;
     $formData["descripcion"] = $descripcion;
     $formData["total"]       = $total;

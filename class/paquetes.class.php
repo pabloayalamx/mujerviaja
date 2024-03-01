@@ -12,7 +12,8 @@ class Paquetes
     public function __construct()
     {
         //Token mujer viaja
-        $this->token = "Bearer 7|KGlBtMybUvRNvuOHH4OSlBRWaP12fJqD4oXONKZg";                
+        //$this->token = "Bearer 7|KGlBtMybUvRNvuOHH4OSlBRWaP12fJqD4oXONKZg";                
+        $this->token = "Bearer 20|zBev3uhkN3RToR6I9dQAC4fecZUh5YnKpZrCYyBa";
         $this->cookie = "XSRF-TOKEN=".uniqid('bt_');
     }
 

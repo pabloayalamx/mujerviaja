@@ -11,7 +11,7 @@
     $fn = new funciones(); 
     
 
-    $sandbox = true;
+    $sandbox = false;
 
     //Monedas
     $monedas       = $tours->monedas();

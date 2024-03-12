@@ -24,7 +24,7 @@
         $reservacion = json_decode($_SESSION["reservaCivi"]);
         $form["idopenpay"] = $idoperacion;
         $form["cartid"]    = $reservacion->cartid;
-        $form["sandbox"]   = false;
+        $form["sandbox"]   = $sandbox;
         $update = $tours->confirmaPagoReservaCivitatis($form);
 
 

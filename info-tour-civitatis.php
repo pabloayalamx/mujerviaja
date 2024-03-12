@@ -5,7 +5,7 @@
 
 	$data["id"]       = filter_input(INPUT_GET, 'tour', FILTER_SANITIZE_NUMBER_INT);
 	$data["currency"] = $monedaSeleccionada;
-	$data["sandbox"]  = false;
+	$data["sandbox"]  = $sandbox;
 	$tour = $tours->getCivitatisTour($data);	
 	// print_r($tour);
 

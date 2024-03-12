@@ -1,0 +1,53 @@
+.statusSandBox {
+    background-color: red;
+    color: #fff;
+    width: max-content;
+    height: max-content;
+    padding: 6px 9px;
+    border-radius: 4px;
+    position: fixed;
+    z-index: 100;
+    bottom: 13px;
+    transform: translate(-50%);
+    left: 50%;
+    opacity: 0.92;
+    align-items: center;
+    display: flex;
+    font-size: 18px;
+    gap: 8px;
+}
+
+.statusSandBox > img {
+    height: 33px;
+    filter: invert(1);
+    animation-name: zoom;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@media(max-width: 799px) {
+    .statusSandBox {
+        font-size: 22px;
+    }
+    .statusSandBox > img {
+        height: 24px;
+    }
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1);
+    }
+    20% {
+        transform: scale(1.2);
+    }
+    33% {
+        transform: scale(1.25);
+    }
+    57% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

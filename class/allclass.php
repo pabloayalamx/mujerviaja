@@ -10,6 +10,9 @@
     $hotels = new Paquetes();
     $fn = new funciones(); 
     
+
+    $sandbox = true;
+
     //Monedas
     $monedas       = $tours->monedas();
     $monedaDefault = $monedas["data"]["0"]["iso"];

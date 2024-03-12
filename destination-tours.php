@@ -1,6 +1,7 @@
 <?php 
     include("class/paquetes.class.php");
     include("class/utilities.class.php");
+    include("class/allclass.php");
 
     use PaquetesClass\Paquetes;
     use funcionesglobales\funciones;
@@ -8,7 +9,7 @@
     $fn = new funciones();
 
     $form["search"] = $_GET["search"];
-    $form["sandbox"] = false;
+    $form["sandbox"] = $sandbox;
     $destinosJson = $info->civitatisSearch($form);    
     $resultado = json_decode($destinosJson);   
 

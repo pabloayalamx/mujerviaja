@@ -34,6 +34,7 @@
 	<link href="css/responsive.css" rel="stylesheet">
 	<link href="css/menu.css" rel="stylesheet">
 	<link href="css/icon_fonts/css/all_icons.min.css" rel="stylesheet">
+	<link href="css/alertasandbox.css" rel="stylesheet">
 
 	<!-- YOUR CUSTOM CSS -->
 	<link href="css/custom.css" rel="stylesheet">

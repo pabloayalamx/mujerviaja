@@ -406,7 +406,14 @@
         $(document).ready(function(){
             let availableDates = [
                 <?php foreach($calendario->schedule as $fechitas){ ?>
-                    '<?php echo $fn->datePickerFormat($fechitas->date); ?>',
+					<?php 
+						$hasTime            = isset($fechitas['times'][0]) ? $fechitas['times'][0] : [];
+						$quotaAvailable     = $hasTime['quotaAvailable'] ?? true;
+						$quota              = $hasTime['quota'] ?? -1;
+					?>
+					<?php if ($quotaAvailable === false || ($fechitas['availability'] > 0 && $quota > 0)) { ?>
+                    	'<?php echo $fn->datePickerFormat($fechitas->date); ?>',
+					<?php } ?>
                 <?php } ?>       
             ];
 
